@@ -1,11 +1,15 @@
 import { Hero, LatestArticles, LatestSnippets } from './components';
 
-const HomePage = () => {
+const HomePage = ({ featuredPost, posts, snippets, categories, loading }) => {
   return (
     <>
-      <Hero />
-      <LatestArticles />
-      <LatestSnippets />
+      <Hero
+        featuredPost={featuredPost}
+        categories={categories}
+        loading={loading}
+      />
+      <LatestArticles posts={posts} loading={loading} />
+      <LatestSnippets snippets={snippets} loading={loading} />
     </>
   );
 };

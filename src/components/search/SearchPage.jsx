@@ -1,12 +1,14 @@
 import React from 'react';
-import { SearchPageBody, SearchPageHeader } from './components';
+import { SearchPageBody } from './components';
 
-const SearchPage = ({ activeTab }) => {
+const SearchPage = ({ activeTab, posts, snippets, categories }) => {
   return (
-    <>
-      <SearchPageHeader activeTab={activeTab} />
-      <SearchPageBody activeTab={activeTab} />
-    </>
+    <SearchPageBody
+      activeTab={activeTab}
+      posts={posts}
+      snippets={snippets}
+      categories={categories}
+    />
   );
 };
 

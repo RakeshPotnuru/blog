@@ -54,7 +54,7 @@ const Newsletter = () => {
   return (
     <Box
       id={'newsletter'}
-      p={20}
+      p={{ base: 10, md: 20 }}
       mt={5}
       bgGradient={
         'linear( 83.2deg,  rgba(150,93,233,1) 10.8%, rgba(99,88,238,1) 94.3% )'
@@ -78,7 +78,7 @@ const Newsletter = () => {
               of websites.
             </ListItem>
           </List>
-          <Box w={'70%'} py={4}>
+          <Box w={'100%'} py={4}>
             <form onSubmit={handleSubmit}>
               <FormControl isRequired>
                 <InputGroup>

@@ -1,5 +1,4 @@
 import {
-  Code,
   Container,
   Divider,
   Heading,
@@ -15,7 +14,6 @@ import {
   Tr,
   UnorderedList
 } from '@chakra-ui/react';
-import { ExternalLinkIcon } from '@chakra-ui/icons';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 
@@ -23,12 +21,12 @@ import { CustomCode } from './';
 
 const MarkdownRenderer = ({ content }) => {
   return (
-    <Container maxW={'container.sm'}>
+    <Container maxW={'container.md'}>
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         components={{
-          h2: (props) => <Heading my={2} size='lg' {...props} />,
-          h3: (props) => <Heading my={2} size='md' {...props} />,
+          h2: (props) => <Heading my={6} size="lg" {...props} />,
+          h3: (props) => <Heading my={4} size="md" {...props} />,
           p: (props) => <Text my={4} color={'textColor'} {...props} />,
           ul: (props) => <UnorderedList my={4} {...props} />,
           ol: (props) => <OrderedList my={4} {...props} />,
@@ -37,12 +35,11 @@ const MarkdownRenderer = ({ content }) => {
           a: (props) => (
             <Link href={props.href} color={'brand.50'} isExternal>
               {props.children}
-              <ExternalLinkIcon />
             </Link>
           ),
           img: (props) => (
             <Image
-              my={4}
+              my={8}
               src={props.src}
               alt={props.alt}
               shadow={'lg'}
@@ -51,7 +48,7 @@ const MarkdownRenderer = ({ content }) => {
           ),
           code: CustomCode,
           table: (props) => (
-            <Table my={4} variant='striped' colorScheme={'gray'} {...props} />
+            <Table my={4} variant="striped" colorScheme={'gray'} {...props} />
           ),
           thead: Thead,
           tr: Tr,

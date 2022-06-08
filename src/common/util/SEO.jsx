@@ -1,14 +1,6 @@
 import Head from 'next/head';
 
-const Meta = ({
-  title,
-  description,
-  keywords,
-  url,
-  image,
-  canonical,
-  ogType
-}) => {
+const Meta = ({ title, description, url, image, canonical, ogType }) => {
   return (
     <Head>
       {/* Primary Meta Tags */}
@@ -17,7 +9,6 @@ const Meta = ({
       <meta charSet="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta name="description" content={description} />
-      <meta name="keywords" content={keywords} />
       <meta name="author" content="Rakesh Potnuru" />
       <meta name="application-name" content="itsrakesh - blog" />
       <meta name="msapplication-TileColor" content="#7868E6" />
@@ -107,13 +98,11 @@ Meta.defaultProps = {
   title: 'itsrakesh - blog',
   description:
     'Hi, I am Rakesh Potnuru, a web developer and technical writer. I write about programming, software and web development.',
-  keywords:
-    'Rakesh Potnuru, content writer, technical writer, blog, programming, software, web development, coding',
-  url: 'https://blog.itsrakesh.co',
+  url: process.env.NEXT_PUBLIC_SITE_URL,
   image:
     'https://ik.imagekit.io/itsrakesh/Blog/itsrakesh_-_blog_PqXT-2m88.png?ik-sdk-version=javascript-1.4.3&updatedAt=1646654484669',
   ogType: 'website',
-  canonical: 'https://blog.itsrakesh.co'
+  canonical: process.env.NEXT_PUBLIC_SITE_URL
 };
 
 export default Meta;

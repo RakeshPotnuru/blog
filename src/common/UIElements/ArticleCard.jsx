@@ -1,133 +1,86 @@
 import {
   Badge,
-  Box,
   Center,
   Heading,
-  HStack,
-  Image, Skeleton, SkeletonText,
+  Image,
+  Link,
+  Skeleton,
+  SkeletonText,
   Text,
   useColorModeValue,
   VStack,
-  Wrap,
-  WrapItem
+  Wrap
 } from '@chakra-ui/react';
-import { CircleIcon } from '../../assets/icons';
+import NextLink from 'next/link';
 import { motion } from 'framer-motion';
+import { CircleIcon } from '../../assets/icons';
+import Moment from 'react-moment';
+import TagCard from './TagCard';
 
-const ArticleCard = () => {
-  const cardHoverShadow = useColorModeValue(
-    'rgba(0, 0, 0, 0.16) 0px 1px 4px',
-    'rgba(255, 255, 255, 0.16) 0px 1px 4px'
-  );
+const ArticleCard = ({ post }) => {
   const textColor = useColorModeValue('text', '#fff');
 
   return (
-    <VStack
-      my={10}
-      p={5}
-      tabIndex={0}
-      borderRadius={'xl'}
-      _hover={{ boxShadow: cardHoverShadow }}
-    >
+    <VStack my={10} borderRadius={'xl'}>
+      {/* Cover image */}
       <Skeleton isLoaded>
-        <Image
-          src={'https://picsum.photos/id/240/800/420'}
-          alt={'ger'}
-          width={'100%'}
-          height={'auto'}
-          rounded={'lg'}
-          cursor={'pointer'}
-        />
+        <NextLink href={`/${post.slug}`} passHref>
+          <Link>
+            <Image
+              src={post.featuredImage.url}
+              alt={post.title}
+              width={'100%'}
+              height={'auto'}
+              rounded={'lg'}
+            />
+          </Link>
+        </NextLink>
       </Skeleton>
-      <HStack
+
+      {/* Publication date, read time & sponsored badge */}
+      <Wrap
         textTransform={'uppercase'}
         alignSelf={'flex-start'}
         color={'brand.50'}
         fontWeight={'bold'}
       >
-        <Skeleton isLoaded><Box>Oct 18, 2021</Box></Skeleton>
+        <Skeleton isLoaded>
+          <Text>
+            <Moment format="MMM DD, YYYY">{post.publishedAt}</Moment>
+          </Text>
+        </Skeleton>
         <Center>
           <CircleIcon boxSize={'2'} />
         </Center>
-        <Skeleton isLoaded><Box>3 min READ</Box></Skeleton>
-        <Skeleton isLoaded><Badge>sponsored</Badge></Skeleton>
-      </HStack>
-      <SkeletonText noOfLines={2} isLoaded>
-        <Heading size={'md'}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        </Heading>
-      </SkeletonText>
-      <SkeletonText noOfLines={4} spacing={4} isLoaded>
-        <Text color={textColor}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
-          quidem. Quasi, quidem. Quasi, quidem. Quasi, quidem. Quasi, quidem.
-          Quasi, quidem. Quasi, quidem. Quasi, quidem. Quasi, quidem. Quasi,
-          quidem. Quasi, quidem. Quasi, quidem.
-        </Text>
-      </SkeletonText>
-      <Wrap alignSelf={'flex-start'}>
-        <WrapItem>
+        <Skeleton isLoaded>
+          <Text>3 min READ</Text>
+        </Skeleton>
+        {post.sponsored && (
           <Skeleton isLoaded>
-            <Badge
-              bg={'brand.100'}
-              color={'white'}
-              px={4}
-              py={2}
-              tabIndex={0}
-              as={motion.div}
-              whileHover={{ y: -5 }}
-              whileTap={{ y: 0 }}
-              cursor={'pointer'}
-            >
-              #ReactJs
-            </Badge>
+            <Badge>sponsored</Badge>
           </Skeleton>
-        </WrapItem>
-        <WrapItem>
-          <Badge
-            bg={'brand.200'}
-            color={'white'}
-            px={4}
-            py={2}
-            tabIndex={0}
-            as={motion.div}
-            whileHover={{ y: -5 }}
-            whileTap={{ y: 0 }}
-            cursor={'pointer'}
-          >
-            #JavaScript
-          </Badge>
-        </WrapItem>
-        <WrapItem>
-          <Badge
-            bg={'brand.300'}
-            color={'white'}
-            px={4}
-            py={2}
-            tabIndex={0}
-            as={motion.div}
-            whileHover={{ y: -5 }}
-            whileTap={{ y: 0 }}
-            cursor={'pointer'}
-          >
-            #ReactJs
-          </Badge>
-        </WrapItem>
-        <WrapItem>
-          <Badge
-            bg={'brand.400'}
-            color={'white'}
-            px={4}
-            py={2}
-            tabIndex={0}
-            as={motion.div}
-            whileHover={{ y: -5 }}
-            whileTap={{ y: 0 }}
-            cursor={'pointer'}
-          >
-            #ReactJs
-          </Badge>
-        </WrapItem>
+        )}
+      </Wrap>
+
+      {/* Title */}
+      <SkeletonText noOfLines={2} alignSelf={'flex-start'} isLoaded>
+        <NextLink href={`/${post.slug}`} passHref>
+          <Link _hover={{ color: 'brand.50' }}>
+            <Heading size={'md'}>{post.title}</Heading>
+          </Link>
+        </NextLink>
+      </SkeletonText>
+
+      {/* Excerpt */}
+      <SkeletonText noOfLines={4} spacing={4} alignSelf={'flex-start'} isLoaded>
+        <Text color={textColor}>{post.excerpt}</Text>
+      </SkeletonText>
+
+      {/* Tags */}
+      <Wrap alignSelf={'flex-start'}>
+        {post.tags.map((tag, _i) => (
+          <TagCard tag={tag} key={_i} />
+        ))}
       </Wrap>
     </VStack>
   );

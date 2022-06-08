@@ -1,12 +1,12 @@
-import { CommentBox, Post } from './components';
-import RelatedArticles from './components/RelatedArticles';
+import { Post, MoreArticles } from './components';
+import { Comment } from '../../common/components/misc';
 
-const PostPage = () => {
+const PostPage = ({ post, posts }) => {
   return (
     <>
-      <Post />
-      <CommentBox />
-      <RelatedArticles />
+      <Post post={post} />
+      <Comment />
+      <MoreArticles posts={posts} />
     </>
   );
 };

@@ -1,51 +1,103 @@
-import { Box, SimpleGrid, Tab, TabList, TabPanel, TabPanels, Tabs, Wrap, WrapItem } from '@chakra-ui/react';
+import {
+  Box,
+  SimpleGrid,
+  Tab,
+  TabList,
+  TabPanel,
+  TabPanels,
+  Tabs,
+  useMediaQuery,
+  Wrap
+} from '@chakra-ui/react';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
 
-import { ArticleCard, SnippetCard } from '../../../common/UIElements';
+import {
+  ArticleCard,
+  CategoryCard,
+  SnippetCard
+} from '../../../common/UIElements';
+import { SearchPageHeader } from './';
 
-const SearchPageBody = ({ activeTab }) => {
-  const [tabIndex, setTabIndex] = useState(activeTab);
+const changeRoute = (tabIndex, router, query) => {
+  switch (tabIndex) {
+    case 0:
+      return router.push(
+        query.c
+          ? `/articles?c=${query.c}`
+          : query.t
+          ? `/articles?t=${query.t}`
+          : '/articles'
+      );
+    case 1:
+      return router.push('/snippets');
+    case 2:
+      return router.push('/categories');
+    default:
+      break;
+  }
+};
+
+const SearchPageBody = ({ activeTab, posts, snippets, categories }) => {
+  const [isLessThan480px] = useMediaQuery('(max-width: 480px)');
 
   const router = useRouter();
+  const { query } = router;
 
-  useEffect(() => {
-    tabIndex === 0 ? router.push('/articles', { shallow: true }) : router.push('/snippets', { shallow: true });
-  }, [tabIndex]);
+  const searchSubmitHandler = (e) => {
+    e.preventDefault();
+  };
 
   return (
-    <Box p={10}>
-      <Tabs onChange={(index) => setTabIndex(index)} defaultIndex={activeTab} isLazy>
-        <TabList>
-          <Tab>Articles</Tab>
-          <Tab>Snippets</Tab>
-        </TabList>
-        <TabPanels>
-          <TabPanel>
-            <SimpleGrid columns={[2, 3]} spacing={10}>
-              <ArticleCard />
-              <ArticleCard />
-              <ArticleCard />
-              <ArticleCard />
-              <ArticleCard />
-            </SimpleGrid>
-          </TabPanel>
-          <TabPanel>
-            <Wrap my={6}>
-              <WrapItem>
-                <SnippetCard />
-              </WrapItem>
-              <WrapItem>
-                <SnippetCard />
-              </WrapItem>
-              <WrapItem>
-                <SnippetCard />
-              </WrapItem>
-            </Wrap>
-          </TabPanel>
-        </TabPanels>
-      </Tabs>
-    </Box>
+    <>
+      <SearchPageHeader
+        activeTab={activeTab}
+        searchSubmitHandler={(e) => searchSubmitHandler(e)}
+      />
+      <Box p={[5, 10]}>
+        <Tabs
+          onChange={(index) => changeRoute(index, router, query)}
+          defaultIndex={activeTab}
+          isLazy
+        >
+          <TabList
+            overflowX={isLessThan480px && 'scroll'}
+            overflowY={isLessThan480px && 'hidden'}
+          >
+            <Tab _focus={{ outline: 'none' }}>Articles</Tab>
+            <Tab _focus={{ outline: 'none' }}>Snippets</Tab>
+            <Tab _focus={{ outline: 'none' }}>Categories</Tab>
+          </TabList>
+          <TabPanels>
+            <TabPanel>
+              <SimpleGrid columns={{ base: 1, md: 3, '2xl': 4 }} spacing={10}>
+                {activeTab === 0 &&
+                  posts.map((post) => {
+                    return <ArticleCard key={post.id} post={post} />;
+                  })}
+              </SimpleGrid>
+            </TabPanel>
+            <TabPanel>
+              <Wrap my={6}>
+                {activeTab === 1 &&
+                  snippets.map((snippet) => {
+                    return <SnippetCard key={snippet.id} snippet={snippet} />;
+                  })}
+              </Wrap>
+            </TabPanel>
+            <TabPanel>
+              <Wrap>
+                {activeTab === 2 &&
+                  categories.map((category) => {
+                    return (
+                      <CategoryCard key={category.id} category={category} />
+                    );
+                  })}
+              </Wrap>
+            </TabPanel>
+          </TabPanels>
+        </Tabs>
+      </Box>
+    </>
   );
 };
 

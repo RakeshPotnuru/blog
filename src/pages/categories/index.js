@@ -1,26 +1,27 @@
-import { gql } from '@apollo/client';
+import Script from 'next/script';
 
 import { Analytics, client, SEO } from '../../common/util';
 import Navbar from '../../common/components/navbar/Navbar';
 import Footer from '../../common/components/footer/Footer';
 import CopyrightNotice from '../../common/components/footer/CopyrightNotice';
 import SearchPage from '../../components/search/SearchPage';
+import { gql } from '@apollo/client';
 import { Newsletter } from '../../common/components/misc';
 
-const Snippets = ({ snippets }) => {
+const Categories = ({ categories }) => {
   return (
     <>
       <SEO
-        title={'Snippets'}
-        description={'Explore snippets'}
-        canonical={`${process.env.NEXT_PUBLIC_SITE_URL}/snippets`}
+        title={'Categories'}
+        description={'Explore articles'}
+        canonical={`${process.env.NEXT_PUBLIC_SITE_URL}/categories`}
       />
       <Analytics />
 
       <Navbar />
 
       <main>
-        <SearchPage activeTab={1} snippets={snippets} />
+        <SearchPage activeTab={2} categories={categories} />
         <Newsletter />
       </main>
 
@@ -33,10 +34,10 @@ const Snippets = ({ snippets }) => {
 export async function getStaticProps() {
   const { data } = await client.query({
     query: gql`
-      query SnippetsPage {
-        snippets(orderBy: publishedAt_DESC, first: 4) {
+      query CategoriesPage {
+        categories(first: 4) {
           id
-          title
+          name
           slug
         }
       }
@@ -45,9 +46,9 @@ export async function getStaticProps() {
 
   return {
     props: {
-      snippets: data.snippets
+      categories: data.categories
     }
   };
 }
 
-export default Snippets;
+export default Categories;

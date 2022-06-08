@@ -7,38 +7,83 @@ import {
   InputGroup,
   InputLeftElement,
   useColorModeValue,
+  useMediaQuery,
   VStack
 } from '@chakra-ui/react';
+import { useEffect, useState } from 'react';
 
-const SearchPageHeader = ({ activeTab }) => {
+const changePlaceholderText = (param) => {
+  switch (param) {
+    case 0:
+      return 'articles';
+    case 1:
+      return 'snippets';
+    case 2:
+      return 'categories';
+    default:
+      break;
+  }
+};
+
+const SearchPageHeader = ({ activeTab, searchSubmitHandler }) => {
+  const [searchQuery, setSearchQuery] = useState('');
+
   const inputBg = useColorModeValue('white', '#1A202C');
+  const [isLessThan480px] = useMediaQuery('(max-width: 480px)');
+
+  searchSubmitHandler = (e) => {
+    e.preventDefault();
+  };
 
   return (
-    <Box
-      bgGradient={
-        'linear( 102.4deg,  rgba(253,189,85,1) 7.8%, rgba(249,131,255,1) 100.3% )'
-      }
-    >
-      <Box py={20}>
-        <Center>
-          <VStack spacing={6}>
-            <Heading color={'white'}>What you want to {activeTab === 0 ? 'read' : 'know'}?</Heading>
-            <form>
-              <InputGroup>
-                <InputLeftElement pointerEvents={'none'}>
-                  <Search2Icon />
-                </InputLeftElement>
-                <Input
-                  type={'text'}
-                  placeholder={`Search ${activeTab === 0 ? 'articles' : 'snippets'}...`}
-                  bg={inputBg}
-                />
-              </InputGroup>
-            </form>
-          </VStack>
-        </Center>
-      </Box>
-    </Box>
+    <>
+      {isLessThan480px ? (
+        <form onSubmit={searchSubmitHandler}>
+          <InputGroup m={7}>
+            <InputLeftElement pointerEvents={'none'}>
+              <Search2Icon />
+            </InputLeftElement>
+            <Input
+              type={'text'}
+              name={'search'}
+              placeholder={`Search ${changePlaceholderText(activeTab)}...`}
+              bg={inputBg}
+              w={'85%'}
+            />
+          </InputGroup>
+        </form>
+      ) : (
+        <Box
+          bgGradient={
+            'linear( 102.4deg,  rgba(253,189,85,1) 7.8%, rgba(249,131,255,1) 100.3% )'
+          }
+        >
+          <Box py={20}>
+            <Center>
+              <VStack spacing={6}>
+                <Heading color={'white'}>
+                  What you want to {activeTab === 0 ? 'read' : 'know'}?
+                </Heading>
+                <form>
+                  <InputGroup>
+                    <InputLeftElement pointerEvents={'none'}>
+                      <Search2Icon />
+                    </InputLeftElement>
+                    <Input
+                      type={'text'}
+                      placeholder={`Search ${changePlaceholderText(
+                        activeTab
+                      )}...`}
+                      bg={inputBg}
+                    />
+                  </InputGroup>
+                </form>
+              </VStack>
+            </Center>
+          </Box>
+        </Box>
+      )}
+    </>
   );
 };
 

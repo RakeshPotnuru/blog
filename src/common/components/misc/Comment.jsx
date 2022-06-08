@@ -5,7 +5,7 @@ const CommentBox = () => {
   const giscusTheme = useColorModeValue('light', 'dark');
 
   return (
-    <Container maxW={'container.sm'} my={10}>
+    <Container maxW={'container.md'} my={10}>
       <Heading size={'md'}>LEAVE A COMMENT OR START A DISCUSSION</Heading>
       <Box my={10}>
         <Giscus

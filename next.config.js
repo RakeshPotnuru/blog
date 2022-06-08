@@ -3,6 +3,6 @@
 module.exports = {
   reactStrictMode: true,
   images: {
-    domains: ['ik.imagekit.io', 'picsum.photos']
+    domains: ['ik.imagekit.io', 'picsum.photos', 'media.graphassets.com']
   }
 };

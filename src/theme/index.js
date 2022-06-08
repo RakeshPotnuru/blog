@@ -16,12 +16,12 @@ const colors = {
 };
 
 const fonts = {
-  heading: `Inter, ${base.fonts?.heading}`,
+  heading: `Alliance No 2, ${base.fonts?.heading}`,
   body: `Poppins, ${base.fonts?.body}`
 };
 
 const config = {
-  useSystemColorMode: false
+  useSystemColorMode: false // TODO: change to true
 };
 
 const theme = extendTheme({ colors, fonts, config });

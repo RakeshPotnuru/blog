@@ -26,10 +26,11 @@ const Hero = ({ featuredPost, categories, loading }) => {
           {/* Featured Post cover image */}
           <Skeleton isLoaded={!loading}>
             <NextLink href={`/${featuredPost.slug}`} passHref>
-              <Link>
+              <Link tabIndex={-1}>
                 <Image
                   src={featuredPost.featuredImage.url}
                   alt={featuredPost.title}
+                  tabIndex={0}
                 />
               </Link>
             </NextLink>
@@ -52,8 +53,12 @@ const Hero = ({ featuredPost, categories, loading }) => {
           {/* Featured Post title */}
           <SkeletonText noOfLines={1} isLoaded={!loading}>
             <NextLink href={`/${featuredPost.slug}`} passHref>
-              <Link alignSelf={'self-start'}>
-                <Heading size={'lg'} _hover={{ color: 'brand.50' }}>
+              <Link alignSelf={'self-start'} tabIndex={-1}>
+                <Heading
+                  size={'lg'}
+                  tabIndex={0}
+                  _hover={{ color: 'brand.50' }}
+                >
                   {featuredPost.title}
                 </Heading>
               </Link>
@@ -67,11 +72,7 @@ const Hero = ({ featuredPost, categories, loading }) => {
         <Box>
           <SimpleGrid columns={[2, 2]}>
             {categories.map((category) => {
-              return (
-                <CategoryCard key={category.id} category={category.slug}>
-                  {category.name}
-                </CategoryCard>
-              );
+              return <CategoryCard key={category.id} category={category} />;
             })}
           </SimpleGrid>
           <Center>

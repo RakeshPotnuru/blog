@@ -10,9 +10,9 @@ import Footer from '../../common/components/footer/Footer';
 import CopyrightNotice from '../../common/components/footer/CopyrightNotice';
 import { client } from '../../common/util';
 
-const SnippetHome = ({ snippet, snippets }) => {
+const SnippetHome = ({ snippet, snippets, loading, error }) => {
   const router = useRouter();
-  // TODO1: Create social share image for snippets
+  // TODO: Create social share image for snippets
   return (
     <>
       <SEO
@@ -27,7 +27,12 @@ const SnippetHome = ({ snippet, snippets }) => {
       <Navbar />
 
       <main>
-        <SnippetPage snippet={snippet} snippets={snippets} />
+        <SnippetPage
+          snippet={snippet}
+          snippets={snippets}
+          loading={loading}
+          error={error}
+        />
         <Newsletter />
       </main>
 
@@ -40,9 +45,9 @@ const SnippetHome = ({ snippet, snippets }) => {
 export async function getStaticProps({ params }) {
   const { snippetSlug } = params;
 
-  const { data } = await client.query({
+  const { data, loading, error } = await client.query({
     query: gql`
-      query SnippetPage($slug: String) {
+      query SnippetPage($slug: String!) {
         snippet(where: { slug: $slug }, stage: PUBLISHED) {
           updatedAt
           author {
@@ -76,8 +81,10 @@ export async function getStaticProps({ params }) {
 
   return {
     props: {
-      snippet: data.snippet,
-      snippets: data.snippets
+      snippet: data?.snippet,
+      snippets: data?.snippets,
+      loading,
+      error: error ? error.message : null
     }
   };
 }
@@ -93,7 +100,7 @@ export async function getStaticPaths() {
     `
   });
 
-  const paths = data.snippets.map((snippet) => {
+  const paths = data?.snippets?.map((snippet) => {
     return {
       params: {
         snippetSlug: snippet.slug

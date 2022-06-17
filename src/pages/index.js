@@ -7,7 +7,14 @@ import { Newsletter } from '../common/components/misc';
 import Footer from '../common/components/footer/Footer';
 import CopyrightNotice from '../common/components/footer/CopyrightNotice';
 
-const Home = ({ featuredPost, posts, snippets, categories, loading }) => {
+const Home = ({
+  featuredPost,
+  posts,
+  snippets,
+  categories,
+  loading,
+  error
+}) => {
   return (
     <>
       <SEO />
@@ -22,6 +29,7 @@ const Home = ({ featuredPost, posts, snippets, categories, loading }) => {
           snippets={snippets}
           categories={categories}
           loading={loading}
+          error={error}
         />
         <Newsletter />
       </main>
@@ -32,7 +40,7 @@ const Home = ({ featuredPost, posts, snippets, categories, loading }) => {
 };
 
 export async function getStaticProps() {
-  const { data, loading } = await client.query({
+  const { data, loading, error } = await client.query({
     query: gql`
       query HomePage {
         posts(orderBy: publishedAt_DESC, first: 4) {
@@ -46,6 +54,7 @@ export async function getStaticProps() {
           sponsored
           tags
           title
+          content
         }
         snippets(orderBy: publishedAt_DESC, first: 4) {
           id
@@ -77,11 +86,12 @@ export async function getStaticProps() {
 
   return {
     props: {
-      posts: data.posts,
-      snippets: data.snippets,
-      categories: data.categories,
-      featuredPost: featuredPost.data.posts[0],
-      loading
+      posts: data?.posts,
+      snippets: data?.snippets,
+      categories: data?.categories,
+      featuredPost: featuredPost?.data?.posts[0],
+      loading,
+      error: error ? error.message : null
     }
   };
 }

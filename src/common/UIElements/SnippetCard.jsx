@@ -9,7 +9,7 @@ import {
 import { ArrowForwardIcon } from '@chakra-ui/icons';
 import NextLink from 'next/link';
 
-const SnippetCard = ({ snippet }) => {
+const SnippetCard = ({ snippet, loading }) => {
   const cardShadow = useColorModeValue(
     'rgba(0, 0, 0, 0.16) 0px 1px 4px',
     'rgba(255, 255, 255, 0.16) 0px 1px 4px'
@@ -17,7 +17,7 @@ const SnippetCard = ({ snippet }) => {
 
   return (
     <NextLink href={`/snippets/${snippet.slug}`} passHref>
-      <Link>
+      <Link tabIndex={-1}>
         <Box
           maxW={60}
           p={5}
@@ -27,11 +27,12 @@ const SnippetCard = ({ snippet }) => {
           borderTopStyle={'solid'}
           borderTopColor={'brand.100'}
           cursor={'pointer'}
+          tabIndex={0}
           as={motion.div}
           whileHover={{ y: -5 }}
           whileTap={{ y: 0 }}
         >
-          <SkeletonText noOfLines={4} spacing={4} isLoaded>
+          <SkeletonText noOfLines={4} spacing={4} isLoaded={!loading}>
             <Heading size={'md'}>
               {snippet.title} <ArrowForwardIcon color={'brand.100'} />
             </Heading>

@@ -7,7 +7,7 @@ import CopyrightNotice from '../../common/components/footer/CopyrightNotice';
 import SearchPage from '../../components/search/SearchPage';
 import { Newsletter } from '../../common/components/misc';
 
-const Snippets = ({ snippets }) => {
+const Snippets = ({ snippets, loading, error }) => {
   return (
     <>
       <SEO
@@ -20,7 +20,12 @@ const Snippets = ({ snippets }) => {
       <Navbar />
 
       <main>
-        <SearchPage activeTab={1} snippets={snippets} />
+        <SearchPage
+          activeTab={1}
+          snippets={snippets}
+          loading={loading}
+          error={error}
+        />
         <Newsletter />
       </main>
 
@@ -31,10 +36,10 @@ const Snippets = ({ snippets }) => {
 };
 
 export async function getStaticProps() {
-  const { data } = await client.query({
+  const { data, loading, error } = await client.query({
     query: gql`
       query SnippetsPage {
-        snippets(orderBy: publishedAt_DESC, first: 4) {
+        snippets(orderBy: publishedAt_DESC, first: 10) {
           id
           title
           slug
@@ -45,7 +50,9 @@ export async function getStaticProps() {
 
   return {
     props: {
-      snippets: data.snippets
+      snippets: data?.snippets,
+      loading,
+      error: error ? error.message : null
     }
   };
 }

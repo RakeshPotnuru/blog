@@ -19,7 +19,6 @@ import {
   Skeleton,
   SkeletonCircle,
   SkeletonText,
-  Tooltip,
   useClipboard,
   useColorModeValue,
   useMediaQuery,
@@ -27,106 +26,33 @@ import {
 } from '@chakra-ui/react';
 import { useState, useEffect } from 'react';
 import { ArrowBackIcon, CheckIcon, ChevronRightIcon } from '@chakra-ui/icons';
-import {
-  FaTwitter,
-  FaLinkedin,
-  FaFacebook,
-  FaReddit,
-  FaLink
-} from 'react-icons/fa';
+import NextLink from 'next/link';
+import Script from 'next/script';
+import Moment from 'react-moment';
+import readingTime from 'reading-time';
 
 import { CircleIcon } from '../../../assets/icons';
 import { MarkdownRenderer } from '../../../common/UIElements/markdownRenderer';
-import Script from 'next/script';
-import Moment from 'react-moment';
+import { SocialShareLinks } from '../../../common/UIElements';
 
-const SocialShareIcon = ({ isLoaded, label, placement, href, icon }) => {
-  return (
-    <SkeletonCircle size={10} isLoaded={isLoaded}>
-      <Tooltip hasArrow label={label} placement={placement}>
-        <Link href={href} isExternal>
-          <IconButton aria-label={label} icon={icon} rounded={'full'} />
-        </Link>
-      </Tooltip>
-    </SkeletonCircle>
-  );
-};
-
-const SocialShareLinks = ({
-  toolTipPlacement,
-  isLoaded,
-  onCopy,
-  hasCopied,
-  title,
-  slug
-}) => {
-  return (
-    <>
-      <SocialShareIcon
-        isLoaded
-        label={'Share on Twitter'}
-        placement={toolTipPlacement}
-        href={`https://twitter.com/intent/tweet?url=https://blog.itsrakesh.co/${slug}&text="${title}"%20by%20@rakesh_at_tweet`}
-        icon={<FaTwitter />}
-      />
-      <SocialShareIcon
-        isLoaded
-        label={'Share on LinkedIn'}
-        placement={toolTipPlacement}
-        href={`https://www.linkedin.com/shareArticle?mini=true&url=https://blog.itsrakesh.co/${slug}`}
-        icon={<FaLinkedin />}
-      />
-      <SocialShareIcon
-        isLoaded
-        label={'Share on Facebook'}
-        placement={toolTipPlacement}
-        href={`https://www.facebook.com/sharer/sharer.php?u=https://blog.itsrakesh.co/${slug}`}
-        icon={<FaFacebook />}
-      />
-      <SocialShareIcon
-        isLoaded
-        label={'Share on Reddit'}
-        placement={toolTipPlacement}
-        href={`https://reddit.com/submit?url=https://blog.itsrakesh.co/${slug}&title=${title}`}
-        icon={<FaReddit />}
-      />
-      <SkeletonCircle size={10} isLoaded={isLoaded}>
-        <Tooltip hasArrow label="Copy Link" placement={toolTipPlacement}>
-          <IconButton
-            onClick={onCopy}
-            aria-label="copy link"
-            icon={
-              hasCopied ? (
-                <CheckIcon color={'white'} fontSize={'lg'} />
-              ) : (
-                <FaLink />
-              )
-            }
-            {...(hasCopied && { bg: 'green.400', _hover: { bg: 'green.500' } })}
-            rounded={'full'}
-          />
-        </Tooltip>
-      </SkeletonCircle>
-    </>
-  );
-};
-
-const Post = ({ post }) => {
+const Post = ({ post, loading }) => {
   const [height, setHeight] = useState(0);
-  const [sideContentVisibility, setSideContentVisibility] = useState('');
+  const [sideContentVisibility, setSideContentVisibility] = useState('none');
   const [isLessThan780px] = useMediaQuery('(max-width: 780px)');
+  const textColor = useColorModeValue('text', '#fff');
   const { hasCopied, onCopy } = useClipboard(
     `https://blog.itsrakesh.co/${post.slug}`
   );
 
-  const textColor = useColorModeValue('text', '#fff');
+  const stats = readingTime(post.content);
 
   useEffect(() => {
     let handleProgress = () => {
       const totalScroll =
         document.documentElement.scrollTop -
-        document.getElementById('head-content').clientHeight;
-      const windowHeight = document.getElementById('blog-content').clientHeight;
+        document.getElementById('head-content')?.clientHeight;
+      const windowHeight =
+        document.getElementById('blog-content')?.clientHeight;
       const scroll = `${totalScroll / windowHeight}`;
       setHeight(scroll);
     };
@@ -149,19 +75,21 @@ const Post = ({ post }) => {
     <>
       {/* Breadcrumb */}
       <HStack mt={8} ml={6}>
-        <IconButton
-          aria-label={'go back'}
-          icon={<ArrowBackIcon />}
-          rounded={'full'}
-        />
+        <NextLink href={'/'} passHref>
+          <Link tabIndex={-1}>
+            <IconButton
+              aria-label={'go back'}
+              icon={<ArrowBackIcon />}
+              rounded={'full'}
+            />
+          </Link>
+        </NextLink>
         <Breadcrumb separator={<ChevronRightIcon color="gray.500" />}>
           <BreadcrumbItem>
-            <Skeleton isLoaded>
-              <BreadcrumbLink href={'/'}>Home</BreadcrumbLink>
-            </Skeleton>
+            <BreadcrumbLink href={'/'}>Home</BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbItem>
-            <Skeleton isLoaded>
+            <Skeleton isLoaded={!loading}>
               <BreadcrumbLink href={`/articles?c=${post.category.slug}`}>
                 {post.category.name}
               </BreadcrumbLink>
@@ -182,7 +110,7 @@ const Post = ({ post }) => {
               mt={7}
               mb={5}
             >
-              <Skeleton isLoaded>
+              <Skeleton isLoaded={!loading}>
                 <Box>
                   Last updated:{' '}
                   <Moment format="MMM DD, YYYY">{post.updatedAt}</Moment>
@@ -191,13 +119,13 @@ const Post = ({ post }) => {
               <Center>
                 <CircleIcon boxSize={'2'} />
               </Center>
-              <Skeleton isLoaded>
-                <Box>3 min READ</Box>
+              <Skeleton isLoaded={!loading}>
+                <Box textTransform={'uppercase'}>{stats.text}</Box>
               </Skeleton>
             </HStack>
 
             {/* Featured image */}
-            <Skeleton isLoaded>
+            <Skeleton isLoaded={!loading}>
               <Image
                 src={post.featuredImage.url}
                 alt={post.title}
@@ -208,28 +136,32 @@ const Post = ({ post }) => {
 
             {/* Author image, author name and published date */}
             <HStack alignSelf={'flex-start'} py={5} spacing={4}>
-              <SkeletonCircle size={10} isLoaded>
+              <SkeletonCircle size={10} isLoaded={!loading}>
                 <Avatar name={post.author.name} src={post.author.photo.url} />
               </SkeletonCircle>
               <VStack spacing={0}>
                 <HStack>
-                  <SkeletonText noOfLines={1} isLoaded>
+                  <SkeletonText noOfLines={1} isLoaded={!loading}>
                     <Box color={'brand.50'}>{post.author.name}</Box>
                   </SkeletonText>{' '}
                   <HStack>
                     <SimpleGrid columns={[1, 2]}>
-                      <Skeleton isLoaded>
+                      <Skeleton isLoaded={!loading}>
                         <Badge colorScheme={'green'}>Author</Badge>
                       </Skeleton>
                       {post.sponsored && (
-                        <Skeleton isLoaded>
+                        <Skeleton isLoaded={!loading}>
                           <Badge>sponsored</Badge>
                         </Skeleton>
                       )}
                     </SimpleGrid>
                   </HStack>
                 </HStack>
-                <SkeletonText noOfLines={1} alignSelf={'flex-start'} isLoaded>
+                <SkeletonText
+                  noOfLines={1}
+                  alignSelf={'flex-start'}
+                  isLoaded={!loading}
+                >
                   <Box alignSelf={'flex-start'} fontSize={'small'}>
                     <Moment format="MMM DD, YYYY">
                       {post.customPublicationDate
@@ -266,7 +198,7 @@ const Post = ({ post }) => {
                 right={40}
                 display={sideContentVisibility}
               >
-                <SkeletonCircle size={14} isLoaded>
+                <SkeletonCircle size={14} isLoaded={!loading}>
                   <CircularProgress
                     value={
                       Math.floor(height * 100) < 0
@@ -292,7 +224,7 @@ const Post = ({ post }) => {
                   <Box fontWeight={'bold'}>SHARE</Box>
                   <SocialShareLinks
                     toolTipPlacement={'right'}
-                    isLoaded
+                    isLoaded={!loading}
                     onCopy={onCopy}
                     hasCopied={hasCopied}
                     title={post.title}
@@ -325,13 +257,13 @@ const Post = ({ post }) => {
             />
 
             {/* Post title */}
-            <SkeletonText isLoaded>
+            <SkeletonText isLoaded={!loading}>
               <Heading py={5}>{post.title}</Heading>
             </SkeletonText>
           </Box>
 
           {/* Post content */}
-          <SkeletonText noOfLines={10} spacing={4} isLoaded>
+          <SkeletonText noOfLines={10} spacing={4} isLoaded={!loading}>
             <Box
               lineHeight={1.8}
               letterSpacing={'wide'}

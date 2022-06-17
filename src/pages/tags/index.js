@@ -1,32 +1,26 @@
-import Script from 'next/script';
+import { gql } from '@apollo/client';
+import { Newsletter } from '../../common/components/misc';
 
 import { Analytics, client, SEO } from '../../common/util';
 import Navbar from '../../common/components/navbar/Navbar';
 import Footer from '../../common/components/footer/Footer';
 import CopyrightNotice from '../../common/components/footer/CopyrightNotice';
 import SearchPage from '../../components/search/SearchPage';
-import { gql } from '@apollo/client';
-import { Newsletter } from '../../common/components/misc';
 
-const Categories = ({ categories, loading, error }) => {
+const Tags = ({ tags, loading, error }) => {
   return (
     <>
       <SEO
-        title={'Categories'}
-        description={'Explore articles'}
-        canonical={`${process.env.NEXT_PUBLIC_SITE_URL}/categories`}
+        title={'Tags'}
+        description={'Explore tags'}
+        canonical={`${process.env.NEXT_PUBLIC_SITE_URL}/tags`}
       />
       <Analytics />
 
       <Navbar />
 
       <main>
-        <SearchPage
-          activeTab={2}
-          categories={categories}
-          loading={loading}
-          error={error}
-        />
+        <SearchPage activeTab={3} tags={tags} loading={loading} error={error} />
         <Newsletter />
       </main>
 
@@ -39,11 +33,11 @@ const Categories = ({ categories, loading, error }) => {
 export async function getStaticProps() {
   const { data, loading, error } = await client.query({
     query: gql`
-      query CategoriesPage {
-        categories {
-          id
-          name
-          slug
+      query TagsPage {
+        __type(name: "Tag") {
+          enumValues {
+            name
+          }
         }
       }
     `
@@ -51,11 +45,11 @@ export async function getStaticProps() {
 
   return {
     props: {
-      categories: data?.categories,
+      tags: data?.__type?.enumValues,
       loading,
       error: error ? error.message : null
     }
   };
 }
 
-export default Categories;
+export default Tags;

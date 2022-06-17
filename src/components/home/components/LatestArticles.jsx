@@ -17,7 +17,7 @@ const LatestArticles = ({ posts, loading }) => {
       <Heading color={'brand.50'}>READ LATEST ARTICLES</Heading>
       <SimpleGrid columns={{ base: 1, md: 2 }} spacing={5}>
         {posts.map((post, _i) => {
-          return <ArticleCard key={_i} post={post} />;
+          return <ArticleCard key={_i} post={post} loading={loading} />;
         })}
       </SimpleGrid>
       <Center>

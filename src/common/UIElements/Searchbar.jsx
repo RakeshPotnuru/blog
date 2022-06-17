@@ -1,11 +1,15 @@
 import { Box, Input, InputGroup, InputRightAddon } from '@chakra-ui/react';
 import { Search2Icon } from '@chakra-ui/icons';
 
-const Searchbar = ({ placeholder, width, onSubmit }) => {
+const Searchbar = ({ placeholder, width, searchHandler }) => {
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={(e) => searchHandler(e)}>
       <InputGroup width={width}>
-        <Input placeholder={placeholder ? placeholder : 'Search anything...'} />
+        <Input
+          type={'text'}
+          name={'search'}
+          placeholder={placeholder ? placeholder : 'Search anything...'}
+        />
         <InputRightAddon
           as={'button'}
           type={'submit'}

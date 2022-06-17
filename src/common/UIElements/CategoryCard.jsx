@@ -1,4 +1,4 @@
-import { Center, GridItem, Link } from '@chakra-ui/react';
+import { Center, GridItem, Link, Skeleton } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import NextLink from 'next/link';
 
@@ -9,24 +9,27 @@ const gradients = [
   'linear(109.6deg,  rgba(218,185,252,1) 11.2%, rgba(125,89,252,1) 91.1%)'
 ];
 
-const CategoryCard = ({ children, m, category }) => {
+const CategoryCard = ({ m, category, loading }) => {
   return (
     <NextLink href={`/articles?c=${category.slug}`} passHref>
-      <Link>
-        <Center
-          m={m || 5}
-          p={4}
-          bgGradient={
-            gradients[Math.floor(Math.random() * (gradients.length - 1) + 1)]
-          }
-          borderRadius={'md'}
-          shadow={'md'}
-          as={motion.div}
-          whileHover={{ y: -5 }}
-          whileTap={{ y: 0 }}
-        >
-          {category.name}
-        </Center>
+      <Link tabIndex={-1}>
+        <Skeleton isLoaded={!loading}>
+          <Center
+            m={m || 5}
+            p={4}
+            bgGradient={
+              gradients[Math.floor(Math.random() * (gradients.length - 1) + 1)]
+            }
+            borderRadius={'md'}
+            shadow={'md'}
+            tabIndex={0}
+            as={motion.div}
+            whileHover={{ y: -5 }}
+            whileTap={{ y: 0 }}
+          >
+            {category.name}
+          </Center>
+        </Skeleton>
       </Link>
     </NextLink>
   );

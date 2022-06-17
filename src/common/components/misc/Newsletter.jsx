@@ -3,8 +3,8 @@ import {
   Button,
   Center,
   FormControl,
-  FormHelperText,
   Heading,
+  Text,
   Input,
   InputGroup,
   InputRightElement,
@@ -13,42 +13,48 @@ import {
   ListIcon,
   ListItem,
   VStack,
-  CircularProgress
+  CircularProgress,
+  SimpleGrid,
+  Divider
 } from '@chakra-ui/react';
 import { CheckCircleIcon } from '@chakra-ui/icons';
 import { useState } from 'react';
 
+import { ErrorBox } from '../../UIElements';
+
 const Newsletter = () => {
-  const [email, setEmail] = useState('');
   const [isSubscribed, setIsSubscribed] = useState(false);
   const [isSubscribing, setIsSubscribing] = useState(false);
   const [isSubscriptionError, setIsSubscriptionError] = useState(false);
+  const [message, setMessage] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { email } = e.target;
-    console.log(email.value);
     setIsSubscribing(true);
-    setIsSubscriptionError(false);
-    const response = await fetch(
-      'https://api.hsforms.com/submissions/v3/integration/submit/' +
-        'ff9f8f9f-9f9f-9f9f-9f9f-9f9f9f9f9f9',
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: 'Basic ' + btoa('user:pass')
-        }
-      }
-    );
-    const data = await response.json();
-    if (data.status === 'success') {
-      setIsSubscribed(true);
-      setIsSubscribing(false);
-    } else {
+    const res = await fetch(`/api/revue`, {
+      body: JSON.stringify({
+        email: e.target.email.value
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      method: 'POST'
+    });
+
+    const { error } = await res.json();
+    if (error) {
       setIsSubscriptionError(true);
       setIsSubscribing(false);
+      setMessage(
+        'Your e-mail address is invalid or you are already subscribed!'
+      );
+      return;
     }
+
+    setIsSubscriptionError(false);
+    setIsSubscribed(true);
+    setIsSubscribing(false);
+    setMessage('Success! 🎉 You are now subscribed.');
   };
 
   return (
@@ -62,23 +68,39 @@ const Newsletter = () => {
     >
       <Center color={'white'}>
         <VStack>
-          <Heading mb={4}>Subscribe to Newsletter</Heading>
-          <List spacing={4}>
-            <ListItem>
-              <ListIcon as={CheckCircleIcon} />
-              Never miss an update.
-            </ListItem>
-            <ListItem>
-              <ListIcon as={CheckCircleIcon} />
-              Get articles and snippets directly to your inbox.
-            </ListItem>
-            <ListItem>
-              <ListIcon as={CheckCircleIcon} />
-              Subscribe to stay connected and avoid getting lost among millions
-              of websites.
-            </ListItem>
-          </List>
-          <Box w={'100%'} py={4}>
+          <Heading mb={4} textAlign={['center', null]}>
+            Subscribe to Newsletter
+          </Heading>
+          <SimpleGrid columns={[1, 2]} spacing={4} w={[null, '70%']}>
+            <Box>
+              <Center>
+                <Heading size={'md'}>Weekly</Heading>
+              </Center>
+              <List spacing={4} my={2}>
+                <ListItem>
+                  <ListIcon as={CheckCircleIcon} />
+                  Never miss an update.
+                </ListItem>
+                <ListItem>
+                  <ListIcon as={CheckCircleIcon} />
+                  Get articles and snippets directly to your inbox.
+                </ListItem>
+                <ListItem>
+                  <ListIcon as={CheckCircleIcon} />
+                  Subscribe to stay connected and avoid getting lost among
+                  millions of websites.
+                </ListItem>
+              </List>
+            </Box>
+            <Box>
+              <Center>
+                <Heading size={'md'}>Monthly</Heading>
+              </Center>
+              <Text>Coming soon...</Text>
+            </Box>
+          </SimpleGrid>
+
+          <Box w={['100%', '50%']} py={4}>
             <form onSubmit={handleSubmit}>
               <FormControl isRequired>
                 <InputGroup>
@@ -88,6 +110,7 @@ const Newsletter = () => {
                     name={'email'}
                     placeholder="Your email address*"
                     _placeholder={{ color: 'white' }}
+                    disabled={isSubscribed}
                   />
                   <InputRightElement w={'7rem'}>
                     <Button
@@ -98,6 +121,7 @@ const Newsletter = () => {
                       _hover={{}}
                       _visited={{}}
                       _active={{}}
+                      disabled={isSubscribed}
                     >
                       {isSubscribing ? (
                         <CircularProgress
@@ -112,6 +136,17 @@ const Newsletter = () => {
                   </InputRightElement>
                 </InputGroup>
               </FormControl>
+
+              {isSubscriptionError ? (
+                <Box my={2} width={'fit-content'}>
+                  <ErrorBox error={message} />
+                </Box>
+              ) : (
+                <Box my={2} fontSize={'small'} color={'green.300'}>
+                  {message}
+                </Box>
+              )}
+
               <Box fontSize={'small'} my={2}>
                 By subscribing, you agree with Revue&apos;s{' '}
                 <Link href={'https://www.getrevue.co/terms'} isExternal>

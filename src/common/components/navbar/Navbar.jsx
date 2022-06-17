@@ -1,7 +1,9 @@
 import {
   Box,
   Center,
+  Divider,
   Flex,
+  Heading,
   HStack,
   IconButton,
   Link,
@@ -20,12 +22,16 @@ import Image from 'next/image';
 import { MoonIcon, SunIcon } from '@chakra-ui/icons';
 import { useColorMode } from '@chakra-ui/react';
 import { useState } from 'react';
+import { gql } from '@apollo/client/core';
+import { useLazyQuery } from '@apollo/client/react';
 
 import { Searchbar } from '../../UIElements';
 import { Logo } from '../../../assets/images';
+import SearchResultsDisplay from './SearchResultsDisplay';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
 
   const [isLessThan780px] = useMediaQuery('(min-width: 768px)');
 
@@ -34,10 +40,37 @@ const Navbar = () => {
   const toggleIcon = useColorModeValue(<MoonIcon />, <SunIcon />);
   const navColor = useColorModeValue('white', '#1A202C');
 
-  const handleSubmit = (e) => {
+  const GET_SEARCH_ITEM = gql`
+    query NavSearch($searchQuery: String) {
+      posts(where: { _search: $searchQuery }, stage: PUBLISHED) {
+        id
+        title
+        slug
+      }
+      snippets(where: { _search: $searchQuery }, stage: PUBLISHED) {
+        id
+        title
+        slug
+      }
+      categories(where: { _search: $searchQuery }, stage: PUBLISHED) {
+        id
+        name
+        slug
+      }
+    }
+  `;
+
+  const [getData, { data, loading, error }] = useLazyQuery(GET_SEARCH_ITEM, {
+    variables: {
+      searchQuery: searchQuery
+    }
+  });
+
+  const searchHandler = (e) => {
     e.preventDefault();
+    setSearchQuery(e.target.search.value);
     setIsOpen(true);
-    console.log('Searching...');
+    getData();
   };
 
   return (
@@ -58,12 +91,13 @@ const Navbar = () => {
         {/* Logo */}
         <Center cursor={'pointer'}>
           <NextLink href={'/'} passHref>
-            <Link>
+            <Link tabIndex={-1}>
               <Image
                 src={Logo}
                 alt={'itsrakesh blog logo'}
                 width={50}
                 height={50}
+                tabIndex={0}
               />
             </Link>
           </NextLink>
@@ -74,7 +108,7 @@ const Navbar = () => {
           <Center mx={5}>
             <Searchbar
               width={{ sm: '10rem', md: '25rem ' }}
-              onSubmit={handleSubmit}
+              searchHandler={searchHandler}
             />
           </Center>
         )}
@@ -88,53 +122,13 @@ const Navbar = () => {
           />
         </Center>
       </Flex>
-
-      {/* Popover for search results */}
-      {isLessThan780px && (
-        <Box pos={'fixed'} zIndex={9999}>
-          <Popover
-            placement={'bottom'}
-            isOpen={isOpen}
-            trigger={'click'}
-            isLazy
-          >
-            <PopoverContent w={'100vw'} h={'100vh'}>
-              <PopoverCloseButton onClick={() => setIsOpen(false)} />
-              <Center>
-                <HStack>
-                  <VStack>
-                    <PopoverHeader>Articles</PopoverHeader>
-                    <SkeletonText w={'17rem'} h={'100vh'} noOfLines={5}>
-                      <PopoverBody>
-                        Nothing in
-                        articlesssssssssssssssssssdbfebfebebbtrbrtbtbtrbtr
-                      </PopoverBody>
-                    </SkeletonText>
-                  </VStack>
-                  <VStack>
-                    <PopoverHeader>Snippets</PopoverHeader>
-                    <PopoverBody w={'17rem'} h={'100vh'}>
-                      Nothing in snippets
-                    </PopoverBody>
-                  </VStack>
-                  <VStack>
-                    <PopoverHeader>Categories</PopoverHeader>
-                    <PopoverBody w={'17rem'} h={'100vh'}>
-                      Nothing in categories
-                    </PopoverBody>
-                  </VStack>
-                  <VStack>
-                    <PopoverHeader>Tags</PopoverHeader>
-                    <PopoverBody w={'17rem'} h={'100vh'}>
-                      Nothing in tags
-                    </PopoverBody>
-                  </VStack>
-                </HStack>
-              </Center>
-            </PopoverContent>
-          </Popover>
-        </Box>
-      )}
+      <SearchResultsDisplay
+        queriedItems={data}
+        loading={loading}
+        error={error}
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+      />
     </>
   );
 };

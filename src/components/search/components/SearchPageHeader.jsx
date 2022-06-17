@@ -10,7 +10,6 @@ import {
   useMediaQuery,
   VStack
 } from '@chakra-ui/react';
-import { useEffect, useState } from 'react';
 
 const changePlaceholderText = (param) => {
   switch (param) {
@@ -20,25 +19,21 @@ const changePlaceholderText = (param) => {
       return 'snippets';
     case 2:
       return 'categories';
+    case 3:
+      return 'tags';
     default:
       break;
   }
 };
 
-const SearchPageHeader = ({ activeTab, searchSubmitHandler }) => {
-  const [searchQuery, setSearchQuery] = useState('');
-
+const SearchPageHeader = ({ activeTab, searchHandler }) => {
   const inputBg = useColorModeValue('white', '#1A202C');
   const [isLessThan480px] = useMediaQuery('(max-width: 480px)');
-
-  searchSubmitHandler = (e) => {
-    e.preventDefault();
-  };
 
   return (
     <>
       {isLessThan480px ? (
-        <form onSubmit={searchSubmitHandler}>
+        <form onSubmit={(e) => searchHandler(e)}>
           <InputGroup m={7}>
             <InputLeftElement pointerEvents={'none'}>
               <Search2Icon />
@@ -62,15 +57,16 @@ const SearchPageHeader = ({ activeTab, searchSubmitHandler }) => {
             <Center>
               <VStack spacing={6}>
                 <Heading color={'white'}>
-                  What you want to {activeTab === 0 ? 'read' : 'know'}?
+                  What you want to {activeTab === 0 ? 'read' : 'explore'}?
                 </Heading>
-                <form>
+                <form onSubmit={(e) => searchHandler(e)}>
                   <InputGroup>
                     <InputLeftElement pointerEvents={'none'}>
                       <Search2Icon />
                     </InputLeftElement>
                     <Input
                       type={'text'}
+                      name={'search'}
                       placeholder={`Search ${changePlaceholderText(
                         activeTab
                       )}...`}

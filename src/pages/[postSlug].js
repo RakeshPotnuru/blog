@@ -8,7 +8,7 @@ import Footer from '../common/components/footer/Footer';
 import CopyrightNotice from '../common/components/footer/CopyrightNotice';
 import { client } from '../common/util';
 
-const PostHome = ({ post, posts, error }) => {
+const PostHome = ({ post, posts, loading, error }) => {
   return (
     <>
       <SEO
@@ -27,7 +27,7 @@ const PostHome = ({ post, posts, error }) => {
       <Navbar />
 
       <main>
-        <PostPage post={post} posts={posts} error={error} />
+        <PostPage post={post} posts={posts} loading={loading} error={error} />
         <Newsletter />
       </main>
 
@@ -40,9 +40,9 @@ const PostHome = ({ post, posts, error }) => {
 export async function getStaticProps({ params }) {
   const { postSlug } = params;
 
-  const { data } = await client.query({
+  const { data, loading, error } = await client.query({
     query: gql`
-      query PostPage($slug: String) {
+      query PostPage($slug: String!) {
         post(where: { slug: $slug }, stage: PUBLISHED) {
           category {
             name
@@ -77,13 +77,15 @@ export async function getStaticProps({ params }) {
 
   const morePosts = await client.query({
     query: gql`
-      query MorePosts($slug: String) {
+      query MorePosts($slug: String!) {
         posts(first: 2, where: { slug_not: $slug }, stage: PUBLISHED) {
           id
           slug
           sponsored
           title
+          content
           tags
+          customPublicationDate
           publishedAt
           excerpt
           featuredImage {
@@ -99,8 +101,10 @@ export async function getStaticProps({ params }) {
 
   return {
     props: {
-      post: data.post,
-      posts: morePosts.data.posts
+      post: data?.post,
+      posts: morePosts?.data.posts,
+      loading,
+      error: error ? error.message : null
     }
   };
 }
@@ -116,7 +120,7 @@ export async function getStaticPaths() {
     `
   });
 
-  const paths = data.posts.map((post) => {
+  const paths = data?.posts?.map((post) => {
     return {
       params: {
         postSlug: post.slug

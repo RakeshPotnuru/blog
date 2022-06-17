@@ -7,7 +7,7 @@ import Footer from '../../common/components/footer/Footer';
 import CopyrightNotice from '../../common/components/footer/CopyrightNotice';
 import SearchPage from '../../components/search/SearchPage';
 
-const Articles = ({ posts }) => {
+const Articles = ({ posts, loading, error }) => {
   return (
     <>
       <SEO
@@ -20,7 +20,12 @@ const Articles = ({ posts }) => {
       <Navbar />
 
       <main>
-        <SearchPage activeTab={0} posts={posts} />
+        <SearchPage
+          activeTab={0}
+          posts={posts}
+          loading={loading}
+          error={error}
+        />
         <Newsletter />
       </main>
 
@@ -31,10 +36,10 @@ const Articles = ({ posts }) => {
 };
 
 export async function getStaticProps() {
-  const { data, loading } = await client.query({
+  const { data, loading, error } = await client.query({
     query: gql`
       query ArticlesPage {
-        posts(orderBy: publishedAt_DESC, first: 4) {
+        posts(orderBy: publishedAt_DESC, first: 6) {
           featuredImage {
             url
           }
@@ -46,6 +51,7 @@ export async function getStaticProps() {
           sponsored
           tags
           title
+          content
         }
       }
     `
@@ -53,8 +59,9 @@ export async function getStaticProps() {
 
   return {
     props: {
-      posts: data.posts,
-      loading
+      posts: data?.posts,
+      loading,
+      error: error ? error.message : null
     }
   };
 }

@@ -12,26 +12,30 @@ import {
   Wrap
 } from '@chakra-ui/react';
 import NextLink from 'next/link';
-import { motion } from 'framer-motion';
-import { CircleIcon } from '../../assets/icons';
 import Moment from 'react-moment';
+import readingTime from 'reading-time';
+
+import { CircleIcon } from '../../assets/icons';
 import TagCard from './TagCard';
 
-const ArticleCard = ({ post }) => {
+const ArticleCard = ({ post, loading }) => {
   const textColor = useColorModeValue('text', '#fff');
+
+  const stats = readingTime(post.content);
 
   return (
     <VStack my={10} borderRadius={'xl'}>
       {/* Cover image */}
-      <Skeleton isLoaded>
+      <Skeleton isLoaded={!loading}>
         <NextLink href={`/${post.slug}`} passHref>
-          <Link>
+          <Link tabIndex={-1}>
             <Image
               src={post.featuredImage.url}
               alt={post.title}
               width={'100%'}
               height={'auto'}
               rounded={'lg'}
+              tabIndex={0}
             />
           </Link>
         </NextLink>
@@ -44,16 +48,18 @@ const ArticleCard = ({ post }) => {
         color={'brand.50'}
         fontWeight={'bold'}
       >
-        <Skeleton isLoaded>
+        <Skeleton isLoaded={!loading}>
           <Text>
-            <Moment format="MMM DD, YYYY">{post.publishedAt}</Moment>
+            <Moment format="MMM DD, YYYY">
+              {post.customPublicationDate || post.publishedAt}
+            </Moment>
           </Text>
         </Skeleton>
         <Center>
           <CircleIcon boxSize={'2'} />
         </Center>
-        <Skeleton isLoaded>
-          <Text>3 min READ</Text>
+        <Skeleton isLoaded={!loading}>
+          <Text textTransform={'uppercase'}>{stats.text}</Text>
         </Skeleton>
         {post.sponsored && (
           <Skeleton isLoaded>
@@ -63,16 +69,23 @@ const ArticleCard = ({ post }) => {
       </Wrap>
 
       {/* Title */}
-      <SkeletonText noOfLines={2} alignSelf={'flex-start'} isLoaded>
+      <SkeletonText noOfLines={2} alignSelf={'flex-start'} isLoaded={!loading}>
         <NextLink href={`/${post.slug}`} passHref>
-          <Link _hover={{ color: 'brand.50' }}>
-            <Heading size={'md'}>{post.title}</Heading>
+          <Link tabIndex={-1} _hover={{ color: 'brand.50' }}>
+            <Heading size={'md'} tabIndex={0}>
+              {post.title}
+            </Heading>
           </Link>
         </NextLink>
       </SkeletonText>
 
       {/* Excerpt */}
-      <SkeletonText noOfLines={4} spacing={4} alignSelf={'flex-start'} isLoaded>
+      <SkeletonText
+        noOfLines={4}
+        spacing={4}
+        alignSelf={'flex-start'}
+        isLoaded={!loading}
+      >
         <Text color={textColor}>{post.excerpt}</Text>
       </SkeletonText>
 

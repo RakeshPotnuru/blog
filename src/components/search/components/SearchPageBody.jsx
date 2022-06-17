@@ -1,5 +1,6 @@
 import {
   Box,
+  Center,
   SimpleGrid,
   Tab,
   TabList,
@@ -14,9 +15,10 @@ import { useRouter } from 'next/router';
 import {
   ArticleCard,
   CategoryCard,
-  SnippetCard
+  ErrorBox,
+  SnippetCard,
+  TagCard
 } from '../../../common/UIElements';
-import { SearchPageHeader } from './';
 
 const changeRoute = (tabIndex, router, query) => {
   switch (tabIndex) {
@@ -32,27 +34,29 @@ const changeRoute = (tabIndex, router, query) => {
       return router.push('/snippets');
     case 2:
       return router.push('/categories');
+    case 3:
+      return router.push('/tags');
     default:
       break;
   }
 };
 
-const SearchPageBody = ({ activeTab, posts, snippets, categories }) => {
+const SearchPageBody = ({
+  activeTab,
+  posts,
+  snippets,
+  categories,
+  tags,
+  loading,
+  error
+}) => {
   const [isLessThan480px] = useMediaQuery('(max-width: 480px)');
 
   const router = useRouter();
   const { query } = router;
 
-  const searchSubmitHandler = (e) => {
-    e.preventDefault();
-  };
-
   return (
     <>
-      <SearchPageHeader
-        activeTab={activeTab}
-        searchSubmitHandler={(e) => searchSubmitHandler(e)}
-      />
       <Box p={[5, 10]}>
         <Tabs
           onChange={(index) => changeRoute(index, router, query)}
@@ -66,33 +70,107 @@ const SearchPageBody = ({ activeTab, posts, snippets, categories }) => {
             <Tab _focus={{ outline: 'none' }}>Articles</Tab>
             <Tab _focus={{ outline: 'none' }}>Snippets</Tab>
             <Tab _focus={{ outline: 'none' }}>Categories</Tab>
+            <Tab _focus={{ outline: 'none' }}>Tags</Tab>
           </TabList>
           <TabPanels>
             <TabPanel>
-              <SimpleGrid columns={{ base: 1, md: 3, '2xl': 4 }} spacing={10}>
-                {activeTab === 0 &&
-                  posts.map((post) => {
-                    return <ArticleCard key={post.id} post={post} />;
-                  })}
-              </SimpleGrid>
+              {error ? (
+                <Center>
+                  <ErrorBox error={error} />
+                </Center>
+              ) : (
+                <>
+                  {activeTab === 0 && posts.length > 0 ? (
+                    <SimpleGrid
+                      columns={{ base: 1, md: 3, '2xl': 4 }}
+                      spacing={10}
+                    >
+                      {posts.map((post) => {
+                        return (
+                          <ArticleCard
+                            key={post.id}
+                            post={post}
+                            loading={loading}
+                          />
+                        );
+                      })}
+                    </SimpleGrid>
+                  ) : (
+                    <Center>No articles found</Center>
+                  )}
+                </>
+              )}
             </TabPanel>
             <TabPanel>
-              <Wrap my={6}>
-                {activeTab === 1 &&
-                  snippets.map((snippet) => {
-                    return <SnippetCard key={snippet.id} snippet={snippet} />;
-                  })}
-              </Wrap>
+              {error ? (
+                <Center>
+                  <ErrorBox error={error} />
+                </Center>
+              ) : (
+                <>
+                  {activeTab === 1 && snippets.length > 0 ? (
+                    <Wrap my={6}>
+                      {snippets.map((snippet) => {
+                        return (
+                          <SnippetCard
+                            key={snippet.id}
+                            snippet={snippet}
+                            loading={loading}
+                          />
+                        );
+                      })}
+                    </Wrap>
+                  ) : (
+                    <Center>No snippets found</Center>
+                  )}
+                </>
+              )}
             </TabPanel>
             <TabPanel>
-              <Wrap>
-                {activeTab === 2 &&
-                  categories.map((category) => {
-                    return (
-                      <CategoryCard key={category.id} category={category} />
-                    );
-                  })}
-              </Wrap>
+              {error ? (
+                <Center>
+                  <ErrorBox error={error} />
+                </Center>
+              ) : (
+                <>
+                  {activeTab === 2 && categories.length > 0 ? (
+                    <Wrap>
+                      {categories.map((category) => {
+                        return (
+                          <CategoryCard
+                            key={category.id}
+                            category={category}
+                            loading={loading}
+                          />
+                        );
+                      })}
+                    </Wrap>
+                  ) : (
+                    <Center>No categories found</Center>
+                  )}
+                </>
+              )}
+            </TabPanel>
+            <TabPanel>
+              {error ? (
+                <Center>
+                  <ErrorBox error={error} />
+                </Center>
+              ) : (
+                <>
+                  {activeTab === 3 && tags.length > 0 ? (
+                    <Wrap>
+                      {tags.map((tag, _i) => {
+                        return (
+                          <TagCard key={_i} tag={tag.name} loading={loading} />
+                        );
+                      })}
+                    </Wrap>
+                  ) : (
+                    <Center>No tags found</Center>
+                  )}
+                </>
+              )}
             </TabPanel>
           </TabPanels>
         </Tabs>

@@ -9,10 +9,10 @@ const CommentBox = () => {
       <Heading size={'md'}>LEAVE A COMMENT OR START A DISCUSSION</Heading>
       <Box my={10}>
         <Giscus
-          repo="RakeshPotnuru/Blog"
-          repoId="R_kgDOHSxmrw"
-          category="Comments"
-          categoryId="DIC_kwDOHSxmr84CO-Dj"
+          repo={process.env.NEXT_PUBLIC_GISCUS_REPO}
+          repoId={process.env.NEXT_PUBLIC_GISCUS_REPO_ID}
+          category={process.env.NEXT_PUBLIC_GISCUS_CATEGORY}
+          categoryId={process.env.NEXT_PUBLIC_GISCUS_CATEGORY_ID}
           mapping="url"
           reactionsEnabled="1"
           emitMetadata="0"

@@ -1,3 +1,6 @@
+import { Center } from '@chakra-ui/react';
+
+import { ErrorBox } from '../../common/UIElements';
 import { Hero, LatestArticles, LatestSnippets } from './components';
 
 const HomePage = ({

@@ -1,5 +1,8 @@
+import { Center } from '@chakra-ui/react';
+
 import { Post, MoreArticles } from './components';
 import { Comment } from '../../common/components/misc';
+import { ErrorBox } from '../../common/UIElements';
 
 const PostPage = ({ post, posts, loading, error }) => {
   return (

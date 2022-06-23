@@ -66,7 +66,7 @@ const SupportMePage = () => {
           </ListItem>
         </List>
         <Text as={'i'} fontSize={'sm'}>
-          If you don't want to use this widget, you can donate via my{' '}
+          If you don&apos;t want to use this widget, you can donate via my{' '}
           <Link
             href={'https://ko-fi.com/itsrakesh'}
             color={'brand.50'}

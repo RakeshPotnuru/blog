@@ -25,6 +25,7 @@ const MarkdownRenderer = ({ content }) => {
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         components={{
+          h1: Heading,
           h2: (props) => <Heading my={6} size="lg" {...props} />,
           h3: (props) => <Heading my={4} size="md" {...props} />,
           p: (props) => <Text my={4} color={'textColor'} {...props} />,

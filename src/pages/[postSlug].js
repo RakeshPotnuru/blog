@@ -13,7 +13,7 @@ const PostHome = ({ post, posts, loading, error }) => {
     <>
       <SEO
         title={post.title}
-        description={post.excerpt}
+        description={post.description}
         url={`${process.env.NEXT_PUBLIC_SITE_URL}/${post.slug}`}
         canonical={
           post.canonicalUrl ||
@@ -65,7 +65,7 @@ export async function getStaticProps({ params }) {
           title
           canonicalUrl
           content
-          excerpt
+          description
           customPublicationDate
         }
       }

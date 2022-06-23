@@ -43,7 +43,7 @@ export async function getStaticProps() {
   const { data, loading, error } = await client.query({
     query: gql`
       query HomePage {
-        posts(orderBy: publishedAt_DESC, first: 4) {
+        posts(orderBy: publishedAt_DESC, first: 3) {
           featuredImage {
             url
           }

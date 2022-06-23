@@ -11,7 +11,7 @@ const CopyrightNotice = () => {
     >
       <Flex direction={{ base: 'column', md: 'row' }}>
         <Text>
-          Copyright @ {new Date().getFullYear()} itsrakesh. All rights reserved.
+          @ {new Date().getFullYear()} itsrakesh. All rights reserved.
         </Text>
         <Spacer />
         <Text>v1.0.0</Text>

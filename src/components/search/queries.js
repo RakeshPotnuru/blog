@@ -7,7 +7,7 @@ const GET_ARTICLES = gql`
         title_contains: $searchQuery
         OR: { excerpt_contains: $searchQuery }
       }
-      first: 6
+      first: 12
       stage: PUBLISHED
     ) {
       customPublicationDate
@@ -27,11 +27,7 @@ const GET_ARTICLES = gql`
 
 const GET_ARTICLES_MATCHING_CATEGORY = gql`
   query ArticlesMatchingCategory($searchQuery: String!) {
-    posts(
-      where: { category: { slug: $searchQuery } }
-      first: 6
-      stage: PUBLISHED
-    ) {
+    posts(where: { category: { slug: $searchQuery } }, stage: PUBLISHED) {
       customPublicationDate
       excerpt
       featuredImage {
@@ -49,11 +45,7 @@ const GET_ARTICLES_MATCHING_CATEGORY = gql`
 
 const GET_ARTICLES_MATCHING_TAG = gql`
   query ArticlesMatchingTag($searchQuery: Tag!) {
-    posts(
-      where: { tags_contains_some: [$searchQuery] }
-      stage: PUBLISHED
-      first: 6
-    ) {
+    posts(where: { tags_contains_some: [$searchQuery] }, stage: PUBLISHED) {
       customPublicationDate
       excerpt
       featuredImage {
@@ -76,7 +68,7 @@ const GET_SNIPPETS = gql`
         title_contains: $searchQuery
         OR: { content_contains: $searchQuery }
       }
-      first: 6
+      first: 12
       stage: PUBLISHED
     ) {
       slug
@@ -87,11 +79,7 @@ const GET_SNIPPETS = gql`
 
 const GET_CATEGORIES = gql`
   query GetCategories($searchQuery: String!) {
-    categories(
-      where: { name_contains: $searchQuery }
-      first: 6
-      stage: PUBLISHED
-    ) {
+    categories(where: { name_contains: $searchQuery }, stage: PUBLISHED) {
       name
       slug
     }

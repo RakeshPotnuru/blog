@@ -1,4 +1,3 @@
-import Script from 'next/script';
 import { useRouter } from 'next/router';
 import { gql } from '@apollo/client';
 
@@ -17,7 +16,7 @@ const SnippetHome = ({ snippet, snippets, loading, error }) => {
     <>
       <SEO
         title={snippet.title}
-        description={snippet.excerpt}
+        description={snippet.description}
         url={`${process.env.NEXT_PUBLIC_SITE_URL}/snippets/${snippet.slug}`}
         canonical={`${process.env.NEXT_PUBLIC_SITE_URL}/snippets/${snippet.slug}`}
         ogType={'article'}
@@ -59,7 +58,7 @@ export async function getStaticProps({ params }) {
           }
           slug
           title
-          excerpt
+          description
           content
           publishedAt
         }

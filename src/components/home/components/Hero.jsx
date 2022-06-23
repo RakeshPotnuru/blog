@@ -51,9 +51,13 @@ const Hero = ({ featuredPost, categories, loading }) => {
           </Box>
 
           {/* Featured Post title */}
-          <SkeletonText noOfLines={1} isLoaded={!loading}>
+          <SkeletonText
+            alignSelf={'self-start'}
+            noOfLines={1}
+            isLoaded={!loading}
+          >
             <NextLink href={`/${featuredPost.slug}`} passHref>
-              <Link alignSelf={'self-start'} tabIndex={-1}>
+              <Link tabIndex={-1}>
                 <Heading
                   size={'lg'}
                   tabIndex={0}
@@ -78,11 +82,11 @@ const Hero = ({ featuredPost, categories, loading }) => {
           <Center>
             <NextLink href={'/categories'} passHref>
               <Link tabIndex={-1}>
-                <Button bgColor={'transparent'}>
-                  Browse all categories{' '}
-                  <Box>
-                    <ChevronRightIcon />
-                  </Box>
+                <Button
+                  rightIcon={<ChevronRightIcon />}
+                  bgColor={'transparent'}
+                >
+                  Browse all categories
                 </Button>
               </Link>
             </NextLink>

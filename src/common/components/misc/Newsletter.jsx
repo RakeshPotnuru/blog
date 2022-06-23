@@ -23,7 +23,6 @@ import { useState } from 'react';
 import { ErrorBox } from '../../UIElements';
 
 const Newsletter = () => {
-  const [isSubscribed, setIsSubscribed] = useState(false);
   const [isSubscribing, setIsSubscribing] = useState(false);
   const [isSubscriptionError, setIsSubscriptionError] = useState(false);
   const [message, setMessage] = useState('');
@@ -52,7 +51,6 @@ const Newsletter = () => {
     }
 
     setIsSubscriptionError(false);
-    setIsSubscribed(true);
     setIsSubscribing(false);
     setMessage('Success! 🎉 You are now subscribed.');
   };
@@ -110,7 +108,7 @@ const Newsletter = () => {
                     name={'email'}
                     placeholder="Your email address*"
                     _placeholder={{ color: 'white' }}
-                    disabled={isSubscribed}
+                    disabled={isSubscribing}
                   />
                   <InputRightElement w={'7rem'}>
                     <Button
@@ -118,10 +116,9 @@ const Newsletter = () => {
                       name={'subscribe'}
                       size={'sm'}
                       bg={'brand.400'}
-                      _hover={{}}
-                      _visited={{}}
-                      _active={{}}
-                      disabled={isSubscribed}
+                      _hover={{ bg: 'brand.400', opacity: 0.8 }}
+                      _active={{ bg: 'brand.400', opacity: 0.8 }}
+                      disabled={isSubscribing}
                     >
                       {isSubscribing ? (
                         <CircularProgress

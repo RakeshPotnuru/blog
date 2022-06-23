@@ -10,7 +10,8 @@ import {
   ListItem,
   SimpleGrid
 } from '@chakra-ui/react';
-import { FaTwitter, FaLinkedin, FaFacebook, FaInstagram } from 'react-icons/fa';
+import { Link } from '@chakra-ui/react';
+import { FaTwitter, FaLinkedin, FaGithub, FaInstagram } from 'react-icons/fa';
 
 const Footer = () => {
   return (
@@ -19,47 +20,58 @@ const Footer = () => {
         <VStack>
           <Heading fontFamily={'Poppins'}>itsrakesh</Heading>
           <HStack spacing={2}>
-            <IconButton
-              aria-label="twitter"
-              bg={'transparent'}
-              _hover={{ bg: 'transparent', color: 'twitter' }}
-              _active={{ bg: 'transparent', color: 'twitter' }}
-              _visited={{ bg: 'transparent', color: 'twitter' }}
-              icon={<Icon as={FaTwitter} w={6} h={6} />}
-            />
-            <IconButton
-              aria-label="linkedin"
-              bg={'transparent'}
-              _hover={{ bg: 'transparent', color: 'linkedin' }}
-              _active={{ bg: 'transparent', color: 'linkedin' }}
-              _visited={{ bg: 'transparent', color: 'linkedin' }}
-              icon={<Icon as={FaLinkedin} w={6} h={6} />}
-            />
-            <IconButton
-              aria-label="facebook"
-              bg={'transparent'}
-              _hover={{ bg: 'transparent', color: 'facebook' }}
-              _active={{ bg: 'transparent', color: 'facebook' }}
-              _visited={{ bg: 'transparent', color: 'facebook' }}
-              icon={<Icon as={FaFacebook} w={6} h={6} />}
-            />
-            <IconButton
-              aria-label="instagram"
-              bg={'transparent'}
-              _hover={{
-                bg: 'transparent',
-                color: 'brand.100'
-              }}
-              _active={{
-                bg: 'transparent',
-                color: 'brand.100'
-              }}
-              _visited={{
-                bg: 'transparent',
-                color: 'brand.100'
-              }}
-              icon={<Icon as={FaInstagram} w={6} h={6} />}
-            />
+            <Link href={'https://twitter.com/rakesh_at_tweet'} isExternal>
+              <IconButton
+                aria-label="twitter"
+                bg={'transparent'}
+                _hover={{ bg: 'transparent', color: 'twitter' }}
+                _active={{ bg: 'transparent', color: 'twitter' }}
+                _visited={{ bg: 'transparent', color: 'twitter' }}
+                icon={<Icon as={FaTwitter} w={6} h={6} />}
+              />
+            </Link>
+            <Link
+              href={'https://www.linkedin.com/in/itsrakeshdotco'}
+              isExternal
+            >
+              <IconButton
+                aria-label="linkedin"
+                bg={'transparent'}
+                _hover={{ bg: 'transparent', color: 'linkedin' }}
+                _active={{ bg: 'transparent', color: 'linkedin' }}
+                _visited={{ bg: 'transparent', color: 'linkedin' }}
+                icon={<Icon as={FaLinkedin} w={6} h={6} />}
+              />
+            </Link>
+            <Link href={'https://github.com/RakeshPotnuru'} isExternal>
+              <IconButton
+                aria-label="github"
+                bg={'transparent'}
+                _hover={{ bg: 'transparent', color: 'whiteAlpha.500' }}
+                _active={{ bg: 'transparent', color: 'whiteAlpha.500' }}
+                _visited={{ bg: 'transparent', color: 'whiteAlpha.500' }}
+                icon={<Icon as={FaGithub} w={6} h={6} />}
+              />
+            </Link>
+            <Link href={'https://www.instagram.com/rakesh_at_insta'} isExternal>
+              <IconButton
+                aria-label="instagram"
+                bg={'transparent'}
+                _hover={{
+                  bg: 'transparent',
+                  color: 'brand.100'
+                }}
+                _active={{
+                  bg: 'transparent',
+                  color: 'brand.100'
+                }}
+                _visited={{
+                  bg: 'transparent',
+                  color: 'brand.100'
+                }}
+                icon={<Icon as={FaInstagram} w={6} h={6} />}
+              />
+            </Link>
           </HStack>
         </VStack>
 
@@ -75,11 +87,25 @@ const Footer = () => {
               alignSelf={'flex-start'}
               whiteSpace={'nowrap'}
             >
-              <ListItem>About</ListItem>
-              <ListItem>External Articles</ListItem>
-              <ListItem>Status</ListItem>
-              <ListItem>Newsletter</ListItem>
-              <ListItem>Support Me</ListItem>
+              <ListItem>
+                <Link href={'https://itsrakesh.co/about'} isExternal>
+                  About
+                </Link>
+              </ListItem>
+              {/* <ListItem>External Articles</ListItem> */}
+              <ListItem>
+                <Link href="https://status.itsrakesh.co" isExternal>
+                  Status
+                </Link>
+              </ListItem>
+              <ListItem>
+                <Link href={'https://newsletter.itsrakesh.co'} isExternal>
+                  Newsletter
+                </Link>
+              </ListItem>
+              <ListItem>
+                <Link href={'/support-me'}>Support Me </Link>❤️
+              </ListItem>
             </List>
           </VStack>
 
@@ -90,9 +116,17 @@ const Footer = () => {
               LEGAL
             </Heading>
             <List fontSize={'small'} alignSelf={'flex-start'}>
-              <ListItem>Privacy Policy</ListItem>
-              <ListItem>Cookies</ListItem>
-              <ListItem>Terms &amp; Conditions</ListItem>
+              <ListItem>
+                <Link href={'/legal/privacy-policy'}>Privacy Policy</Link>
+              </ListItem>
+              <ListItem>
+                <Link href={'/legal/cookie-policy'}>Cookie Policy</Link>
+              </ListItem>
+              <ListItem>
+                <Link href={'/legal/terms-and-conditions'}>
+                  Terms &amp; Conditions
+                </Link>
+              </ListItem>
             </List>
           </VStack>
         </SimpleGrid>

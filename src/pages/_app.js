@@ -6,7 +6,7 @@ import theme from '../theme';
 import '../styles/globals.css';
 import Fonts from '../theme/Fonts';
 
-function MyApp({ Component, pageProps }) {
+const MyApp = ({ Component, pageProps }) => {
   return (
     <ApolloProvider client={client}>
       <ChakraProvider theme={theme}>
@@ -15,6 +15,6 @@ function MyApp({ Component, pageProps }) {
       </ChakraProvider>
     </ApolloProvider>
   );
-}
+};
 
 export default MyApp;

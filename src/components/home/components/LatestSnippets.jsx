@@ -24,11 +24,8 @@ const LatestSnippets = ({ snippets }) => {
       <Center>
         <NextLink href={'/snippets'} passHref>
           <Link tabIndex={-1}>
-            <Button bgColor={'transparent'}>
-              Browse all snippets{' '}
-              <Box>
-                <ChevronRightIcon />
-              </Box>
+            <Button rightIcon={<ChevronRightIcon />} bgColor={'transparent'}>
+              Browse all snippets
             </Button>
           </Link>
         </NextLink>

@@ -20,11 +20,19 @@ import TagCard from './TagCard';
 
 const ArticleCard = ({ post, loading }) => {
   const textColor = useColorModeValue('text', '#fff');
+  const shadow = useColorModeValue(
+    'lg',
+    'rgba(149, 157, 165, 0.2) 0px 8px 24px'
+  );
 
   const stats = readingTime(post.content);
 
+  const cutText = (text) => {
+    return text.substring(0, 250) + '...';
+  };
+
   return (
-    <VStack my={10} borderRadius={'xl'}>
+    <VStack my={10} p={4} borderRadius={'xl'} shadow={shadow} h={'max-content'}>
       {/* Cover image */}
       <Skeleton isLoaded={!loading}>
         <NextLink href={`/${post.slug}`} passHref>
@@ -86,7 +94,7 @@ const ArticleCard = ({ post, loading }) => {
         alignSelf={'flex-start'}
         isLoaded={!loading}
       >
-        <Text color={textColor}>{post.excerpt}</Text>
+        <Text color={textColor}>{cutText(post.excerpt)}</Text>
       </SkeletonText>
 
       {/* Tags */}

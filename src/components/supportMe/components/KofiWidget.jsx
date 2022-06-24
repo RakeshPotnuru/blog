@@ -16,7 +16,7 @@ const KofiWidget = () => {
           border: 'none',
           width: '100%'
         }}
-        height={'712'}
+        height={'700'}
       ></iframe>
     </Box>
   );

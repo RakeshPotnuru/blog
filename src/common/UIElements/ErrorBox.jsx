@@ -1,5 +1,5 @@
-import { WarningIcon } from '@chakra-ui/icons';
 import { Box, HStack, Text } from '@chakra-ui/react';
+import { WarningIcon } from '@chakra-ui/icons';
 
 const ErrorBox = ({ error }) => {
   return (

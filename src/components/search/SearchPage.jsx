@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { useLazyQuery } from '@apollo/client/react';
 import { useRouter } from 'next/router';
+import { useLazyQuery } from '@apollo/client/react';
 
 import { SearchPageBody, SearchPageHeader } from './components';
 import { queries } from './queries';
@@ -11,7 +11,6 @@ const SearchPage = ({
   snippets,
   categories,
   tags,
-  loading,
   error
 }) => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -19,29 +18,27 @@ const SearchPage = ({
   const [queriedSnippets, setQueriedSnippets] = useState([]);
   const [queriedCategories, setQueriedCategories] = useState([]);
   const [queriedTags, setQueriedTags] = useState([]);
-  const [variableLoading, setVariableLoading] = useState(false);
   const [variableError, setVariableError] = useState(null);
 
   const router = useRouter();
   const { query } = router;
 
-  const [getData, { data, loading: queryLoading, error: queryError }] =
-    useLazyQuery(
-      activeTab === 0
-        ? query.c
-          ? queries.GET_ARTICLES_MATCHING_CATEGORY
-          : query.t
-          ? queries.GET_ARTICLES_MATCHING_TAG
-          : queries.GET_ARTICLES
-        : activeTab === 1
-        ? queries.GET_SNIPPETS
-        : queries.GET_CATEGORIES,
-      {
-        variables: {
-          searchQuery: searchQuery
-        }
+  const [getData, { data, loading, error: queryError }] = useLazyQuery(
+    activeTab === 0
+      ? query.c
+        ? queries.GET_ARTICLES_MATCHING_CATEGORY
+        : query.t
+        ? queries.GET_ARTICLES_MATCHING_TAG
+        : queries.GET_ARTICLES
+      : activeTab === 1
+      ? queries.GET_SNIPPETS
+      : queries.GET_CATEGORIES,
+    {
+      variables: {
+        searchQuery: searchQuery
       }
-    );
+    }
+  );
 
   useEffect(() => {
     if (activeTab === 0) {
@@ -55,7 +52,6 @@ const SearchPage = ({
         (searchQuery && tags.filter((tag) => searchQuery === tag.name)) || tags
       );
     }
-    setVariableLoading(queryLoading || loading);
     setVariableError(queryError || error);
   }, [data, searchQuery]);
 
@@ -91,7 +87,7 @@ const SearchPage = ({
         snippets={queriedSnippets}
         categories={queriedCategories}
         tags={queriedTags}
-        loading={variableLoading}
+        loading={loading}
         error={variableError}
       />
     </>

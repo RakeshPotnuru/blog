@@ -7,8 +7,6 @@ import {
   Image,
   Link,
   SimpleGrid,
-  Skeleton,
-  SkeletonText,
   Spacer,
   Text,
   VStack
@@ -24,17 +22,15 @@ const Hero = ({ featuredPost, categories, loading }) => {
       <Flex flexDirection={{ base: 'column', md: 'row' }}>
         <VStack w={{ base: '100%', md: '60%' }}>
           {/* Featured Post cover image */}
-          <Skeleton isLoaded={!loading}>
-            <NextLink href={`/${featuredPost.slug}`} passHref>
-              <Link tabIndex={-1}>
-                <Image
-                  src={featuredPost.featuredImage.url}
-                  alt={featuredPost.title}
-                  tabIndex={0}
-                />
-              </Link>
-            </NextLink>
-          </Skeleton>
+          <NextLink href={`/${featuredPost.slug}`} passHref>
+            <Link tabIndex={-1}>
+              <Image
+                src={featuredPost.featuredImage.url}
+                alt={featuredPost.title}
+                tabIndex={0}
+              />
+            </Link>
+          </NextLink>
 
           <Box
             p={1}
@@ -51,23 +47,18 @@ const Hero = ({ featuredPost, categories, loading }) => {
           </Box>
 
           {/* Featured Post title */}
-          <SkeletonText
-            alignSelf={'self-start'}
-            noOfLines={1}
-            isLoaded={!loading}
-          >
-            <NextLink href={`/${featuredPost.slug}`} passHref>
-              <Link tabIndex={-1}>
-                <Heading
-                  size={'lg'}
-                  tabIndex={0}
-                  _hover={{ color: 'brand.50' }}
-                >
-                  {featuredPost.title}
-                </Heading>
-              </Link>
-            </NextLink>
-          </SkeletonText>
+          <NextLink href={`/${featuredPost.slug}`} passHref>
+            <Link tabIndex={-1}>
+              <Heading
+                size={'lg'}
+                tabIndex={0}
+                alignSelf={'self-start'}
+                _hover={{ color: 'brand.50' }}
+              >
+                {featuredPost.title}
+              </Heading>
+            </Link>
+          </NextLink>
         </VStack>
 
         <Spacer />
@@ -81,7 +72,7 @@ const Hero = ({ featuredPost, categories, loading }) => {
           </SimpleGrid>
           <Center>
             <NextLink href={'/categories'} passHref>
-              <Link tabIndex={-1}>
+              <Link textDecor={'none'} tabIndex={-1}>
                 <Button
                   rightIcon={<ChevronRightIcon />}
                   bgColor={'transparent'}

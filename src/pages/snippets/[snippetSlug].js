@@ -1,13 +1,12 @@
 import { useRouter } from 'next/router';
 import { gql } from '@apollo/client';
 
-import { Analytics, SEO } from '../../common/util';
+import { Analytics, SEO, client } from '../../common/util';
 import Navbar from '../../common/components/navbar/Navbar';
 import SnippetPage from '../../components/snippet/SnippetPage';
 import { Newsletter } from '../../common/components/misc';
 import Footer from '../../common/components/footer/Footer';
 import CopyrightNotice from '../../common/components/footer/CopyrightNotice';
-import { client } from '../../common/util';
 
 const SnippetHome = ({ snippet, snippets, loading, error }) => {
   const router = useRouter();
@@ -44,7 +43,7 @@ const SnippetHome = ({ snippet, snippets, loading, error }) => {
 export async function getStaticProps({ params }) {
   const { snippetSlug } = params;
 
-  const { data, loading, error } = await client.query({
+  const { data, error } = await client.query({
     query: gql`
       query SnippetPage($slug: String!) {
         snippet(where: { slug: $slug }, stage: PUBLISHED) {
@@ -82,7 +81,6 @@ export async function getStaticProps({ params }) {
     props: {
       snippet: data?.snippet,
       snippets: data?.snippets,
-      loading,
       error: error ? error.message : null
     }
   };

@@ -1,11 +1,11 @@
 import { gql } from '@apollo/client';
-import { Newsletter } from '../../common/components/misc';
 
 import { Analytics, client, SEO } from '../../common/util';
 import Navbar from '../../common/components/navbar/Navbar';
+import SearchPage from '../../components/search/SearchPage';
+import { Newsletter } from '../../common/components/misc';
 import Footer from '../../common/components/footer/Footer';
 import CopyrightNotice from '../../common/components/footer/CopyrightNotice';
-import SearchPage from '../../components/search/SearchPage';
 
 const Tags = ({ tags, loading, error }) => {
   return (
@@ -31,7 +31,7 @@ const Tags = ({ tags, loading, error }) => {
 };
 
 export async function getStaticProps() {
-  const { data, loading, error } = await client.query({
+  const { data, error } = await client.query({
     query: gql`
       query TagsPage {
         __type(name: "Tag") {
@@ -46,7 +46,6 @@ export async function getStaticProps() {
   return {
     props: {
       tags: data?.__type?.enumValues,
-      loading,
       error: error ? error.message : null
     }
   };

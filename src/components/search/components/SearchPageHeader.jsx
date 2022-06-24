@@ -1,4 +1,3 @@
-import { Search2Icon } from '@chakra-ui/icons';
 import {
   Box,
   Center,
@@ -10,6 +9,7 @@ import {
   useMediaQuery,
   VStack
 } from '@chakra-ui/react';
+import { Search2Icon } from '@chakra-ui/icons';
 
 const changePlaceholderText = (param) => {
   switch (param) {
@@ -27,11 +27,12 @@ const changePlaceholderText = (param) => {
 };
 
 const SearchPageHeader = ({ activeTab, searchHandler }) => {
-  const inputBg = useColorModeValue('white', '#1A202C');
   const [isLessThan480px] = useMediaQuery('(max-width: 480px)');
+  const inputBg = useColorModeValue('white', '#1A202C');
 
   return (
     <>
+      {/* Search input on mobile screens */}
       {isLessThan480px ? (
         <form onSubmit={(e) => searchHandler(e)}>
           <InputGroup m={7}>
@@ -53,6 +54,7 @@ const SearchPageHeader = ({ activeTab, searchHandler }) => {
             'linear( 102.4deg,  rgba(253,189,85,1) 7.8%, rgba(249,131,255,1) 100.3% )'
           }
         >
+          {/* Search input on all screens expect mobile */}
           <Box py={20}>
             <Center>
               <VStack spacing={6}>

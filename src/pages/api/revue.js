@@ -6,13 +6,12 @@ export default async (req, res) => {
   }
 
   try {
-    const API_KEY = process.env.REVUE_API_KEY;
     const revueRoute = `${process.env.REVUE_API_URL}subscribers`;
 
     const response = await fetch(revueRoute, {
       method: 'POST',
       headers: {
-        Authorization: `Token ${API_KEY}`,
+        Authorization: `Token ${process.env.REVUE_API_KEY}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({ email, double_opt_in: false })

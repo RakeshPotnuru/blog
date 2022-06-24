@@ -1,14 +1,13 @@
 import { gql } from '@apollo/client';
 
-import { Analytics, SEO } from '../common/util';
+import { Analytics, SEO, client } from '../common/util';
 import Navbar from '../common/components/navbar/Navbar';
 import PostPage from '../components/post/PostPage';
 import { Newsletter } from '../common/components/misc';
 import Footer from '../common/components/footer/Footer';
 import CopyrightNotice from '../common/components/footer/CopyrightNotice';
-import { client } from '../common/util';
 
-const PostHome = ({ post, posts, loading, error }) => {
+const PostHome = ({ post, posts, error }) => {
   return (
     <>
       <SEO
@@ -27,7 +26,7 @@ const PostHome = ({ post, posts, loading, error }) => {
       <Navbar />
 
       <main>
-        <PostPage post={post} posts={posts} loading={loading} error={error} />
+        <PostPage post={post} posts={posts} error={error} />
         <Newsletter />
       </main>
 
@@ -40,7 +39,7 @@ const PostHome = ({ post, posts, loading, error }) => {
 export async function getStaticProps({ params }) {
   const { postSlug } = params;
 
-  const { data, loading, error } = await client.query({
+  const { data, error } = await client.query({
     query: gql`
       query PostPage($slug: String!) {
         post(where: { slug: $slug }, stage: PUBLISHED) {
@@ -103,7 +102,6 @@ export async function getStaticProps({ params }) {
     props: {
       post: data?.post,
       posts: morePosts?.data.posts,
-      loading,
       error: error ? error.message : null
     }
   };

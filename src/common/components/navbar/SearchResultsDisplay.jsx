@@ -10,11 +10,12 @@ import {
   PopoverCloseButton,
   PopoverContent,
   PopoverHeader,
-  SkeletonText,
+  Spinner,
   useMediaQuery,
   VStack
 } from '@chakra-ui/react';
 import NextLink from 'next/link';
+
 import { ErrorBox } from '../../UIElements';
 
 const SearchResultsDisplay = ({
@@ -24,12 +25,12 @@ const SearchResultsDisplay = ({
   isOpen,
   setIsOpen
 }) => {
-  const [isLessThan780px] = useMediaQuery('(min-width: 768px)');
+  const [isGreaterThan780px] = useMediaQuery('(min-width: 768px)');
 
   return (
     <>
       {/* Popover for search results */}
-      {isLessThan780px && (
+      {isGreaterThan780px && (
         <Box pos={'fixed'} zIndex={9999}>
           <Popover
             placement={'bottom'}
@@ -37,126 +38,127 @@ const SearchResultsDisplay = ({
             trigger={'click'}
             isLazy
           >
-            <PopoverContent w={'100vw'} h={'100vh'}>
+            <PopoverContent w={'100vw'}>
               <PopoverCloseButton onClick={() => setIsOpen(false)} />
-              <Center>
+              <Center overflowInline={'auto'}>
                 <HStack>
                   <VStack>
                     <PopoverHeader>Articles</PopoverHeader>
-                    <SkeletonText
-                      w={'17rem'}
-                      h={'100vh'}
-                      noOfLines={5}
-                      isLoaded={!loading}
-                    >
-                      <PopoverBody>
-                        {error && <ErrorBox error={error.message} />}
-                        {!error &&
-                        queriedItems &&
-                        queriedItems.posts.length > 0 ? (
-                          queriedItems.posts.map((item) => (
-                            <>
-                              <NextLink
-                                key={item.id}
-                                href={`/${item.slug}`}
-                                passHref
-                              >
-                                <Link>
-                                  <Heading
-                                    my={2}
-                                    size={'sm'}
-                                    _hover={{ color: 'brand.50' }}
-                                  >
-                                    {item.title}
-                                  </Heading>
-                                </Link>
-                              </NextLink>
-                              <Divider />
-                            </>
-                          ))
-                        ) : (
-                          <Heading size={'sm'}>Nothing in Articles</Heading>
-                        )}
-                      </PopoverBody>
-                    </SkeletonText>
+                    <PopoverBody w={'17rem'} h={'100vh'}>
+                      {error && <ErrorBox error={error.message} />}
+                      {!error &&
+                      queriedItems &&
+                      !loading &&
+                      queriedItems.posts.length > 0 ? (
+                        queriedItems.posts.map((item) => (
+                          <>
+                            <NextLink
+                              key={item.id}
+                              href={`/${item.slug}`}
+                              passHref
+                            >
+                              <Link tabIndex={-1}>
+                                <Heading
+                                  my={2}
+                                  size={'sm'}
+                                  _hover={{ color: 'brand.50' }}
+                                  tabIndex={0}
+                                >
+                                  {item.title}
+                                </Heading>
+                              </Link>
+                            </NextLink>
+                            <Divider />
+                          </>
+                        ))
+                      ) : (
+                        <Center my={20}>
+                          {loading ? (
+                            <Spinner size={'lg'} />
+                          ) : (
+                            <Heading size={'sm'}>Nothing in Articles</Heading>
+                          )}
+                        </Center>
+                      )}
+                    </PopoverBody>
                   </VStack>
                   <VStack>
                     <PopoverHeader>Snippets</PopoverHeader>
-                    <SkeletonText
-                      w={'17rem'}
-                      h={'100vh'}
-                      noOfLines={5}
-                      isLoaded={!loading}
-                    >
-                      <PopoverBody>
-                        {error && <ErrorBox error={error.message} />}
-                        {!error &&
-                        queriedItems &&
-                        queriedItems.snippets.length > 0 ? (
-                          queriedItems.snippets.map((item) => (
-                            <>
-                              <NextLink
-                                key={item.id}
-                                href={`/snippets/${item.slug}`}
-                                passHref
-                              >
-                                <Link>
-                                  <Heading
-                                    my={2}
-                                    size={'sm'}
-                                    _hover={{ color: 'brand.50' }}
-                                  >
-                                    {item.title}
-                                  </Heading>
-                                </Link>
-                              </NextLink>
-                              <Divider />
-                            </>
-                          ))
-                        ) : (
-                          <Heading size={'sm'}>Nothing in Snippets</Heading>
-                        )}
-                      </PopoverBody>
-                    </SkeletonText>
+                    <PopoverBody w={'17rem'} h={'100vh'}>
+                      {error && <ErrorBox error={error.message} />}
+                      {!error &&
+                      queriedItems &&
+                      queriedItems.snippets.length > 0 ? (
+                        queriedItems.snippets.map((item) => (
+                          <>
+                            <NextLink
+                              key={item.id}
+                              href={`/snippets/${item.slug}`}
+                              passHref
+                            >
+                              <Link tabIndex={-1}>
+                                <Heading
+                                  my={2}
+                                  size={'sm'}
+                                  _hover={{ color: 'brand.50' }}
+                                  tabIndex={0}
+                                >
+                                  {item.title}
+                                </Heading>
+                              </Link>
+                            </NextLink>
+                            <Divider />
+                          </>
+                        ))
+                      ) : (
+                        <Center my={20}>
+                          {loading ? (
+                            <Spinner size={'lg'} />
+                          ) : (
+                            <Heading size={'sm'}>Nothing in Snippets</Heading>
+                          )}
+                        </Center>
+                      )}
+                    </PopoverBody>
                   </VStack>
                   <VStack>
                     <PopoverHeader>Categories</PopoverHeader>
-                    <SkeletonText
-                      w={'17rem'}
-                      h={'100vh'}
-                      noOfLines={5}
-                      isLoaded={!loading}
-                    >
-                      <PopoverBody>
-                        {error && <ErrorBox error={error.message} />}
-                        {!error &&
-                        queriedItems &&
-                        queriedItems.categories.length > 0 ? (
-                          queriedItems.categories.map((item) => (
-                            <>
-                              <NextLink
-                                key={item.id}
-                                href={`/articles?c=${item.slug}`}
-                                passHref
-                              >
-                                <Link>
-                                  <Heading
-                                    my={2}
-                                    size={'sm'}
-                                    _hover={{ color: 'brand.50' }}
-                                  >
-                                    {item.name}
-                                  </Heading>
-                                </Link>
-                              </NextLink>
-                              <Divider />
-                            </>
-                          ))
-                        ) : (
-                          <Heading size={'sm'}>Nothing in Categories</Heading>
-                        )}
-                      </PopoverBody>
-                    </SkeletonText>
+                    <PopoverBody w={'17rem'} h={'100vh'}>
+                      {error && <ErrorBox error={error.message} />}
+                      {!error &&
+                      queriedItems &&
+                      queriedItems.categories.length > 0 ? (
+                        queriedItems.categories.map((item) => (
+                          <>
+                            <NextLink
+                              key={item.id}
+                              href={`/articles?c=${item.slug}`}
+                              passHref
+                            >
+                              <Link tabIndex={-1}>
+                                <Heading
+                                  my={2}
+                                  size={'sm'}
+                                  _hover={{ color: 'brand.50' }}
+                                  tabIndex={0}
+                                >
+                                  {item.name}
+                                </Heading>
+                              </Link>
+                            </NextLink>
+                            <Divider />
+                          </>
+                        ))
+                      ) : (
+                        <Center my={20}>
+                          {loading ? (
+                            <Spinner size={'lg'} />
+                          ) : (
+                            <Heading size={'sm'}>Nothing in Categories</Heading>
+                          )}
+                        </Center>
+                      )}
+                    </PopoverBody>
                   </VStack>
                 </HStack>
               </Center>

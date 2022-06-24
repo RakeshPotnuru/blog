@@ -1,14 +1,13 @@
-import Script from 'next/script';
+import { gql } from '@apollo/client';
 
 import { Analytics, client, SEO } from '../../common/util';
 import Navbar from '../../common/components/navbar/Navbar';
+import SearchPage from '../../components/search/SearchPage';
+import { Newsletter } from '../../common/components/misc';
 import Footer from '../../common/components/footer/Footer';
 import CopyrightNotice from '../../common/components/footer/CopyrightNotice';
-import SearchPage from '../../components/search/SearchPage';
-import { gql } from '@apollo/client';
-import { Newsletter } from '../../common/components/misc';
 
-const Categories = ({ categories, loading, error }) => {
+const Categories = ({ categories, error }) => {
   return (
     <>
       <SEO
@@ -21,12 +20,7 @@ const Categories = ({ categories, loading, error }) => {
       <Navbar />
 
       <main>
-        <SearchPage
-          activeTab={2}
-          categories={categories}
-          loading={loading}
-          error={error}
-        />
+        <SearchPage activeTab={2} categories={categories} error={error} />
         <Newsletter />
       </main>
 
@@ -37,7 +31,7 @@ const Categories = ({ categories, loading, error }) => {
 };
 
 export async function getStaticProps() {
-  const { data, loading, error } = await client.query({
+  const { data, error } = await client.query({
     query: gql`
       query CategoriesPage {
         categories {
@@ -52,7 +46,6 @@ export async function getStaticProps() {
   return {
     props: {
       categories: data?.categories,
-      loading,
       error: error ? error.message : null
     }
   };

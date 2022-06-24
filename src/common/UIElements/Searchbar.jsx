@@ -1,4 +1,4 @@
-import { Box, Input, InputGroup, InputRightAddon } from '@chakra-ui/react';
+import { Input, InputGroup, InputRightAddon } from '@chakra-ui/react';
 import { Search2Icon } from '@chakra-ui/icons';
 
 const Searchbar = ({ placeholder, width, searchHandler }) => {

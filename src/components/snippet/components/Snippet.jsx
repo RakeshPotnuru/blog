@@ -7,8 +7,6 @@ import {
   Heading,
   HStack,
   SimpleGrid,
-  Skeleton,
-  SkeletonCircle,
   SkeletonText,
   useClipboard,
   useColorModeValue,
@@ -19,9 +17,9 @@ import Moment from 'react-moment';
 import { MarkdownRenderer } from '../../../common/UIElements/markdownRenderer';
 import { SocialShareLinks } from '../../../common/UIElements';
 
-const Snippet = ({ snippet, loading }) => {
+const Snippet = ({ snippet }) => {
   const { hasCopied, onCopy } = useClipboard(
-    `https://blog.itsrakesh.co/snippets/${snippet.slug}`
+    `${process.env.NEXT_PUBLIC_SITE_URL}/snippets/${snippet.slug}`
   );
 
   const textColor = useColorModeValue('text', '#fff');
@@ -40,44 +38,31 @@ const Snippet = ({ snippet, loading }) => {
                 mt={7}
                 mb={5}
               >
-                <Skeleton isLoaded={!loading}>
-                  <Box>
-                    Last updated:{' '}
-                    <Moment format="MMM DD, YYYY">{snippet.updatedAt}</Moment>
-                  </Box>
-                </Skeleton>
+                <Box>
+                  Last updated:{' '}
+                  <Moment format="MMM DD, YYYY">{snippet.updatedAt}</Moment>
+                </Box>
               </HStack>
             )}
 
             <SimpleGrid columns={[1, 2]}>
-              {/* Author image, author name and published date */}
               <HStack alignSelf={'flex-start'} py={5} spacing={4}>
-                <SkeletonCircle size={10} isLoaded={!loading}>
-                  <Avatar
-                    name={snippet.author.name}
-                    src={snippet.author.photo.url}
-                  />
-                </SkeletonCircle>
+                {/* Author image */}
+                <Avatar
+                  name={snippet.author.name}
+                  src={snippet.author.photo.url}
+                />
                 <VStack spacing={0}>
+                  {/* Author name */}
                   <HStack>
-                    <SkeletonText noOfLines={1} isLoaded={!loading}>
-                      <Box color={'brand.50'}>{snippet.author.name}</Box>
-                    </SkeletonText>{' '}
-                    <Skeleton isLoaded>
-                      <Badge colorScheme={'green'}>Author</Badge>
-                    </Skeleton>
+                    <Box color={'brand.50'}>{snippet.author.name}</Box>{' '}
+                    <Badge colorScheme={'green'}>Author</Badge>
                   </HStack>
-                  <SkeletonText
-                    noOfLines={1}
-                    alignSelf={'flex-start'}
-                    isLoaded={!loading}
-                  >
-                    <Box alignSelf={'flex-start'} fontSize={'small'}>
-                      <Moment format="MMM DD, YYYY">
-                        {snippet.publishedAt}
-                      </Moment>
-                    </Box>
-                  </SkeletonText>
+
+                  {/* Published date */}
+                  <Box alignSelf={'flex-start'} fontSize={'small'}>
+                    <Moment format="MMM DD, YYYY">{snippet.publishedAt}</Moment>
+                  </Box>
                 </VStack>
               </HStack>
 

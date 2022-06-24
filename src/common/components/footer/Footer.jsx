@@ -8,10 +8,13 @@ import {
   Spacer,
   List,
   ListItem,
-  SimpleGrid
+  SimpleGrid,
+  Link
 } from '@chakra-ui/react';
-import { Link } from '@chakra-ui/react';
-import { FaTwitter, FaLinkedin, FaGithub, FaInstagram } from 'react-icons/fa';
+import { FaTwitter, FaLinkedin, FaGithub } from 'react-icons/fa';
+
+import { ShowwcaseIcon } from '../../../assets/icons';
+import siteConfig from '../../../../config/site.config';
 
 const Footer = () => {
   return (
@@ -20,7 +23,7 @@ const Footer = () => {
         <VStack>
           <Heading fontFamily={'Poppins'}>itsrakesh</Heading>
           <HStack spacing={2}>
-            <Link href={'https://twitter.com/rakesh_at_tweet'} isExternal>
+            <Link href={siteConfig.urls.socials.twitter} isExternal>
               <IconButton
                 aria-label="twitter"
                 bg={'transparent'}
@@ -30,10 +33,7 @@ const Footer = () => {
                 icon={<Icon as={FaTwitter} w={6} h={6} />}
               />
             </Link>
-            <Link
-              href={'https://www.linkedin.com/in/itsrakeshdotco'}
-              isExternal
-            >
+            <Link href={siteConfig.urls.socials.linkedin} isExternal>
               <IconButton
                 aria-label="linkedin"
                 bg={'transparent'}
@@ -43,7 +43,7 @@ const Footer = () => {
                 icon={<Icon as={FaLinkedin} w={6} h={6} />}
               />
             </Link>
-            <Link href={'https://github.com/RakeshPotnuru'} isExternal>
+            <Link href={siteConfig.urls.socials.github} isExternal>
               <IconButton
                 aria-label="github"
                 bg={'transparent'}
@@ -53,23 +53,14 @@ const Footer = () => {
                 icon={<Icon as={FaGithub} w={6} h={6} />}
               />
             </Link>
-            <Link href={'https://www.instagram.com/rakesh_at_insta'} isExternal>
+            <Link href={siteConfig.urls.socials.showwcase} isExternal>
               <IconButton
-                aria-label="instagram"
+                aria-label="showwcase"
                 bg={'transparent'}
-                _hover={{
-                  bg: 'transparent',
-                  color: 'brand.100'
-                }}
-                _active={{
-                  bg: 'transparent',
-                  color: 'brand.100'
-                }}
-                _visited={{
-                  bg: 'transparent',
-                  color: 'brand.100'
-                }}
-                icon={<Icon as={FaInstagram} w={6} h={6} />}
+                _hover={{ bg: 'transparent', color: 'whiteAlpha.500' }}
+                _active={{ bg: 'transparent', color: 'whiteAlpha.500' }}
+                _visited={{ bg: 'transparent', color: 'whiteAlpha.500' }}
+                icon={<Icon as={ShowwcaseIcon} w={6} h={6} />}
               />
             </Link>
           </HStack>
@@ -88,18 +79,18 @@ const Footer = () => {
               whiteSpace={'nowrap'}
             >
               <ListItem>
-                <Link href={'https://itsrakesh.co/about'} isExternal>
+                <Link href={siteConfig.urls.about} isExternal>
                   About
                 </Link>
               </ListItem>
               {/* <ListItem>External Articles</ListItem> */}
               <ListItem>
-                <Link href="https://status.itsrakesh.co" isExternal>
+                <Link href={siteConfig.urls.status} isExternal>
                   Status
                 </Link>
               </ListItem>
               <ListItem>
-                <Link href={'https://newsletter.itsrakesh.co'} isExternal>
+                <Link href={siteConfig.urls.newsletter} isExternal>
                   Newsletter
                 </Link>
               </ListItem>

@@ -2,6 +2,7 @@ import {
   Box,
   Center,
   SimpleGrid,
+  Spinner,
   Tab,
   TabList,
   TabPanel,
@@ -80,23 +81,19 @@ const SearchPageBody = ({
                 </Center>
               ) : (
                 <>
-                  {activeTab === 0 && posts.length > 0 ? (
+                  {activeTab === 0 && !loading && posts.length > 0 ? (
                     <SimpleGrid
                       columns={{ base: 1, md: 3, '2xl': 4 }}
                       spacing={10}
                     >
                       {posts.map((post) => {
-                        return (
-                          <ArticleCard
-                            key={post.id}
-                            post={post}
-                            loading={loading}
-                          />
-                        );
+                        return <ArticleCard key={post.id} post={post} />;
                       })}
                     </SimpleGrid>
                   ) : (
-                    <Center>No articles found</Center>
+                    <Center my={20}>
+                      {loading ? <Spinner size={'lg'} /> : 'No articles found'}
+                    </Center>
                   )}
                 </>
               )}
@@ -108,20 +105,18 @@ const SearchPageBody = ({
                 </Center>
               ) : (
                 <>
-                  {activeTab === 1 && snippets.length > 0 ? (
+                  {activeTab === 1 && !loading && snippets.length > 0 ? (
                     <Wrap my={6}>
                       {snippets.map((snippet) => {
                         return (
-                          <SnippetCard
-                            key={snippet.id}
-                            snippet={snippet}
-                            loading={loading}
-                          />
+                          <SnippetCard key={snippet.id} snippet={snippet} />
                         );
                       })}
                     </Wrap>
                   ) : (
-                    <Center>No snippets found</Center>
+                    <Center my={20}>
+                      {loading ? <Spinner size={'lg'} /> : 'No snippets found'}
+                    </Center>
                   )}
                 </>
               )}
@@ -133,20 +128,22 @@ const SearchPageBody = ({
                 </Center>
               ) : (
                 <>
-                  {activeTab === 2 && categories.length > 0 ? (
+                  {activeTab === 2 && !loading && categories.length > 0 ? (
                     <Wrap>
                       {categories.map((category) => {
                         return (
-                          <CategoryCard
-                            key={category.id}
-                            category={category}
-                            loading={loading}
-                          />
+                          <CategoryCard key={category.id} category={category} />
                         );
                       })}
                     </Wrap>
                   ) : (
-                    <Center>No categories found</Center>
+                    <Center my={20}>
+                      {loading ? (
+                        <Spinner size={'lg'} />
+                      ) : (
+                        'No categories found'
+                      )}
+                    </Center>
                   )}
                 </>
               )}
@@ -158,16 +155,16 @@ const SearchPageBody = ({
                 </Center>
               ) : (
                 <>
-                  {activeTab === 3 && tags.length > 0 ? (
+                  {activeTab === 3 && !loading && tags.length > 0 ? (
                     <Wrap>
                       {tags.map((tag, _i) => {
-                        return (
-                          <TagCard key={_i} tag={tag.name} loading={loading} />
-                        );
+                        return <TagCard key={_i} tag={tag.name} />;
                       })}
                     </Wrap>
                   ) : (
-                    <Center>No tags found</Center>
+                    <Center my={20}>
+                      {loading ? <Spinner size={'lg'} /> : 'No tags found'}
+                    </Center>
                   )}
                 </>
               )}

@@ -7,14 +7,7 @@ import { Newsletter } from '../common/components/misc';
 import Footer from '../common/components/footer/Footer';
 import CopyrightNotice from '../common/components/footer/CopyrightNotice';
 
-const Home = ({
-  featuredPost,
-  posts,
-  snippets,
-  categories,
-  loading,
-  error
-}) => {
+const Home = ({ featuredPost, posts, snippets, categories, error }) => {
   return (
     <>
       <SEO />
@@ -28,7 +21,6 @@ const Home = ({
           posts={posts}
           snippets={snippets}
           categories={categories}
-          loading={loading}
           error={error}
         />
         <Newsletter />
@@ -40,7 +32,7 @@ const Home = ({
 };
 
 export async function getStaticProps() {
-  const { data, loading, error } = await client.query({
+  const { data, error } = await client.query({
     query: gql`
       query HomePage {
         posts(orderBy: publishedAt_DESC, first: 3) {
@@ -90,7 +82,6 @@ export async function getStaticProps() {
       snippets: data?.snippets,
       categories: data?.categories,
       featuredPost: featuredPost?.data?.posts[0],
-      loading,
       error: error ? error.message : null
     }
   };

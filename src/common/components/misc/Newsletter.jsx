@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {
   Box,
   Button,
@@ -14,11 +15,9 @@ import {
   ListItem,
   VStack,
   CircularProgress,
-  SimpleGrid,
-  Divider
+  SimpleGrid
 } from '@chakra-ui/react';
 import { CheckCircleIcon } from '@chakra-ui/icons';
-import { useState } from 'react';
 
 import { ErrorBox } from '../../UIElements';
 
@@ -106,8 +105,9 @@ const Newsletter = () => {
                     id={'email'}
                     type={'email'}
                     name={'email'}
-                    placeholder="Your email address*"
+                    placeholder={'Your email address*'}
                     _placeholder={{ color: 'white' }}
+                    borderColor={'white'}
                     disabled={isSubscribing}
                   />
                   <InputRightElement w={'7rem'}>

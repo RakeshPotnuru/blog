@@ -3,14 +3,7 @@ import { Center } from '@chakra-ui/react';
 import { ErrorBox } from '../../common/UIElements';
 import { Hero, LatestArticles, LatestSnippets } from './components';
 
-const HomePage = ({
-  featuredPost,
-  posts,
-  snippets,
-  categories,
-  loading,
-  error
-}) => {
+const HomePage = ({ featuredPost, posts, snippets, categories, error }) => {
   return (
     <>
       {error ? (
@@ -19,13 +12,9 @@ const HomePage = ({
         </Center>
       ) : (
         <>
-          <Hero
-            featuredPost={featuredPost}
-            categories={categories}
-            loading={loading}
-          />
-          <LatestArticles posts={posts} loading={loading} />
-          <LatestSnippets snippets={snippets} loading={loading} />
+          <Hero featuredPost={featuredPost} categories={categories} />
+          <LatestArticles posts={posts} />
+          <LatestSnippets snippets={snippets} />
         </>
       )}
     </>

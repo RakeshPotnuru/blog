@@ -1,5 +1,7 @@
 import { Box, Flex, Spacer, Text } from '@chakra-ui/react';
 
+import siteConfig from '../../../../config/site.config';
+
 const CopyrightNotice = () => {
   return (
     <Box
@@ -10,11 +12,9 @@ const CopyrightNotice = () => {
       color={'white'}
     >
       <Flex direction={{ base: 'column', md: 'row' }}>
-        <Text>
-          @ {new Date().getFullYear()} itsrakesh. All rights reserved.
-        </Text>
+        <Text>{siteConfig.copyrightText}</Text>
         <Spacer />
-        <Text>v1.0.0</Text>
+        <Text>v{siteConfig.siteVersion}</Text>
       </Flex>
     </Box>
   );

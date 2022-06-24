@@ -12,11 +12,11 @@ import {
   Text,
   useColorModeValue
 } from '@chakra-ui/react';
-import Script from 'next/script';
 import { FaTwitter } from 'react-icons/fa';
-import { BiCoffeeTogo } from 'react-icons/bi';
 import { CheckCircleIcon } from '@chakra-ui/icons';
 import { KofiWidget } from './components';
+
+import siteConfig from '../../../config/site.config';
 
 const SupportMePage = () => {
   const bgColor = useColorModeValue('gray.100', 'gray.700');
@@ -27,7 +27,7 @@ const SupportMePage = () => {
         Content creation is hard without your support.
       </Text>
       <Box my={8}>
-        <SimpleGrid my={8} columns={[1, 3]}>
+        <SimpleGrid my={8} columns={{ base: 1, md: 3 }}>
           <Box>
             <Heading size={'md'}>Follow me on Twitter</Heading>
             <Text my={4}>
@@ -37,7 +37,7 @@ const SupportMePage = () => {
           </Box>
           <Spacer />
           <Center bg={bgColor} p={12} my={2} rounded={'md'}>
-            <Link href={'https://twitter.com/rakesh_at_tweet'} isExternal>
+            <Link href={siteConfig.urls.socials.twitter} isExternal>
               <Button
                 leftIcon={<FaTwitter />}
                 bg={'twitter'}
@@ -54,31 +54,31 @@ const SupportMePage = () => {
       </Box>
 
       <Box my={8}>
-        <Heading size={'md'}>Donate</Heading>
-        <Text my={4}>
-          Your donations keep this blog running and motivate me to create more
-          content.
-        </Text>
-        <List my={4}>
-          <ListItem>
-            <ListIcon as={CheckCircleIcon} color={'green.500'} />
-            You will be added to the list of supporters.
-          </ListItem>
-        </List>
-        <Text as={'i'} fontSize={'sm'}>
-          If you don&apos;t want to use this widget, you can donate via my{' '}
-          <Link
-            href={'https://ko-fi.com/itsrakesh'}
-            color={'brand.50'}
-            isExternal
-          >
-            ko-fi page
-          </Link>
-          .
-        </Text>
+        <SimpleGrid my={8} columns={{ base: 1, md: 2 }} spacing={6}>
+          {/* Ko-fi widget */}
+          <KofiWidget />
 
-        {/* Ko-fi widget */}
-        <KofiWidget />
+          <Box>
+            <Heading size={'md'}>Donate</Heading>
+            <Text my={4}>
+              Your donations keep this blog running and motivate me to create
+              more content.
+            </Text>
+            <List my={4}>
+              <ListItem>
+                <ListIcon as={CheckCircleIcon} color={'green.500'} />
+                You will be added to the list of supporters.
+              </ListItem>
+            </List>
+            <Text as={'i'} fontSize={'sm'}>
+              If you don&apos;t want to use this widget, you can donate via my{' '}
+              <Link href={siteConfig.urls.kofi} color={'brand.50'} isExternal>
+                ko-fi page
+              </Link>
+              .
+            </Text>
+          </Box>
+        </SimpleGrid>
       </Box>
     </Box>
   );

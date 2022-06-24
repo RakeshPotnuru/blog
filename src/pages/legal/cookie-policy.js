@@ -4,10 +4,10 @@ import path from 'path';
 import { useRouter } from 'next/router';
 
 import { Analytics, SEO } from '../../common/util';
+import { MarkdownRenderer } from '../../common/UIElements/markdownRenderer';
 import Navbar from '../../common/components/navbar/Navbar';
 import Footer from '../../common/components/footer/Footer';
 import CopyrightNotice from '../../common/components/footer/CopyrightNotice';
-import { MarkdownRenderer } from '../../common/UIElements/markdownRenderer';
 
 const CookiePolicy = ({ data }) => {
   const router = useRouter();

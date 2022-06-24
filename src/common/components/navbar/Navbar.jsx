@@ -1,27 +1,16 @@
+import { useState } from 'react';
 import {
-  Box,
   Center,
-  Divider,
   Flex,
-  Heading,
-  HStack,
   IconButton,
   Link,
-  Popover,
-  PopoverBody,
-  PopoverCloseButton,
-  PopoverContent,
-  PopoverHeader,
-  SkeletonText,
   useColorModeValue,
   useMediaQuery,
-  VStack
+  useColorMode
 } from '@chakra-ui/react';
+import { MoonIcon, SunIcon } from '@chakra-ui/icons';
 import NextLink from 'next/link';
 import Image from 'next/image';
-import { MoonIcon, SunIcon } from '@chakra-ui/icons';
-import { useColorMode } from '@chakra-ui/react';
-import { useState } from 'react';
 import { gql } from '@apollo/client/core';
 import { useLazyQuery } from '@apollo/client/react';
 
@@ -122,6 +111,7 @@ const Navbar = () => {
           />
         </Center>
       </Flex>
+
       <SearchResultsDisplay
         queriedItems={data}
         loading={loading}

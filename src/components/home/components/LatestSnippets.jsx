@@ -1,12 +1,4 @@
-import {
-  Box,
-  Button,
-  Center,
-  Heading,
-  Link,
-  useColorModeValue,
-  Wrap
-} from '@chakra-ui/react';
+import { Box, Button, Center, Heading, Link, Wrap } from '@chakra-ui/react';
 import { ChevronRightIcon } from '@chakra-ui/icons';
 import NextLink from 'next/link';
 
@@ -23,7 +15,7 @@ const LatestSnippets = ({ snippets }) => {
       </Wrap>
       <Center>
         <NextLink href={'/snippets'} passHref>
-          <Link tabIndex={-1}>
+          <Link textDecor={'none'} tabIndex={-1}>
             <Button rightIcon={<ChevronRightIcon />} bgColor={'transparent'}>
               Browse all snippets
             </Button>

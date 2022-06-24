@@ -2,12 +2,12 @@ import { gql } from '@apollo/client';
 
 import { Analytics, client, SEO } from '../../common/util';
 import Navbar from '../../common/components/navbar/Navbar';
-import Footer from '../../common/components/footer/Footer';
-import CopyrightNotice from '../../common/components/footer/CopyrightNotice';
 import SearchPage from '../../components/search/SearchPage';
 import { Newsletter } from '../../common/components/misc';
+import Footer from '../../common/components/footer/Footer';
+import CopyrightNotice from '../../common/components/footer/CopyrightNotice';
 
-const Snippets = ({ snippets, loading, error }) => {
+const Snippets = ({ snippets, error }) => {
   return (
     <>
       <SEO
@@ -20,12 +20,7 @@ const Snippets = ({ snippets, loading, error }) => {
       <Navbar />
 
       <main>
-        <SearchPage
-          activeTab={1}
-          snippets={snippets}
-          loading={loading}
-          error={error}
-        />
+        <SearchPage activeTab={1} snippets={snippets} error={error} />
         <Newsletter />
       </main>
 
@@ -36,7 +31,7 @@ const Snippets = ({ snippets, loading, error }) => {
 };
 
 export async function getStaticProps() {
-  const { data, loading, error } = await client.query({
+  const { data, error } = await client.query({
     query: gql`
       query SnippetsPage {
         snippets(orderBy: publishedAt_DESC, first: 10) {
@@ -51,7 +46,6 @@ export async function getStaticProps() {
   return {
     props: {
       snippets: data?.snippets,
-      loading,
       error: error ? error.message : null
     }
   };

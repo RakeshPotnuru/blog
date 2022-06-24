@@ -8,7 +8,7 @@ import { Newsletter } from '../../common/components/misc';
 import Footer from '../../common/components/footer/Footer';
 import CopyrightNotice from '../../common/components/footer/CopyrightNotice';
 
-const SnippetHome = ({ snippet, snippets, loading, error }) => {
+const SnippetHome = ({ snippet, snippets, error }) => {
   const router = useRouter();
   // TODO: Create social share image for snippets
   return (
@@ -25,12 +25,7 @@ const SnippetHome = ({ snippet, snippets, loading, error }) => {
       <Navbar />
 
       <main>
-        <SnippetPage
-          snippet={snippet}
-          snippets={snippets}
-          loading={loading}
-          error={error}
-        />
+        <SnippetPage snippet={snippet} snippets={snippets} error={error} />
         <Newsletter />
       </main>
 

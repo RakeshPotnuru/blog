@@ -7,7 +7,6 @@ import {
   Heading,
   HStack,
   SimpleGrid,
-  SkeletonText,
   useClipboard,
   useColorModeValue,
   VStack
@@ -82,17 +81,13 @@ const Snippet = ({ snippet }) => {
             <Divider />
 
             {/* Snippet title */}
-            <SkeletonText isLoaded={!loading}>
-              <Heading py={5}>{snippet.title}</Heading>
-            </SkeletonText>
+            <Heading py={5}>{snippet.title}</Heading>
           </Box>
 
           {/* Snippet content */}
-          <SkeletonText noOfLines={10} spacing={4} isLoaded={!loading}>
-            <Box lineHeight={1.8} letterSpacing={'wide'} color={textColor}>
-              <MarkdownRenderer content={snippet.content} />
-            </Box>
-          </SkeletonText>
+          <Box lineHeight={1.8} letterSpacing={'wide'} color={textColor}>
+            <MarkdownRenderer content={snippet.content} />
+          </Box>
           <Divider py={5} />
         </VStack>
       </Container>

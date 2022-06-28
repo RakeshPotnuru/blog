@@ -37,6 +37,7 @@ const Snippet = ({ snippet }) => {
                 textTransform={'uppercase'}
                 mt={7}
                 mb={5}
+                fontSize={'sm'}
               >
                 <Box>
                   Last updated:{' '}
@@ -67,18 +68,17 @@ const Snippet = ({ snippet }) => {
               </HStack>
 
               {/* Social-media sharing links */}
-              <HStack my={2}>
-                <Center>
+              <Center>
+                <HStack my={2}>
                   <SocialShareLinks
                     toolTipPlacement={'top'}
-                    isLoaded
                     onCopy={onCopy}
                     hasCopied={hasCopied}
                     slug={snippet.slug}
                     title={snippet.title}
                   />
-                </Center>
-              </HStack>
+                </HStack>
+              </Center>
             </SimpleGrid>
 
             <Divider />

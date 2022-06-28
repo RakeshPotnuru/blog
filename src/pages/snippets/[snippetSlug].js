@@ -9,7 +9,6 @@ import Footer from '../../common/components/footer/Footer';
 import CopyrightNotice from '../../common/components/footer/CopyrightNotice';
 
 const SnippetHome = ({ snippet, snippets, error }) => {
-  
   return (
     <>
       <SEO
@@ -58,7 +57,7 @@ export async function getStaticProps({ params }) {
         }
         snippets(
           first: 4
-          orderBy: publishedAt_ASC
+          orderBy: publishedAt_DESC
           where: { slug_not: $slug }
         ) {
           title

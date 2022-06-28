@@ -174,8 +174,8 @@ const Post = ({ post }) => {
               <Box
                 id={'side-content'}
                 pos={'fixed'}
-                top={40}
-                right={40}
+                top={{ base: 40, '2xl': 60 }}
+                right={{ base: 40, '2xl': 80 }}
                 display={sideContentVisibility}
               >
                 <CircularProgress
@@ -230,7 +230,7 @@ const Post = ({ post }) => {
               src={
                 'https://proxy.beyondwords.io/npm/@beyondwords/audio-player@latest/dist/module/iframe-helper.js'
               }
-              type={'text/javascript'} 
+              type={'text/javascript'}
               strategy={'beforeInteractive'}
             />
 

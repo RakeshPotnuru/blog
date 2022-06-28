@@ -67,17 +67,12 @@ export async function getStaticProps({ params }) {
           description
           customPublicationDate
         }
-      }
-    `,
-    variables: {
-      slug: postSlug
-    }
-  });
-
-  const morePosts = await client.query({
-    query: gql`
-      query MorePosts($slug: String!) {
-        posts(first: 2, where: { slug_not: $slug }, stage: PUBLISHED) {
+        posts(
+          first: 2
+          orderBy: publishedAt_DESC
+          where: { slug_not: $slug }
+          stage: PUBLISHED
+        ) {
           id
           slug
           sponsored
@@ -101,7 +96,7 @@ export async function getStaticProps({ params }) {
   return {
     props: {
       post: data?.post,
-      posts: morePosts?.data.posts,
+      posts: data?.posts,
       error: error ? error.message : null
     }
   };

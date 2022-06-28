@@ -16,9 +16,9 @@ import NextLink from 'next/link';
 
 import { CategoryCard } from '../../../common/UIElements';
 
-const Hero = ({ featuredPost, categories, loading }) => {
+const Hero = ({ featuredPost, categories }) => {
   return (
-    <Box m={{ base: '5% 10%', '2xl': '5% 15%' }}>
+    <Box m={{ base: '5%', '2xl': '5% 15%' }}>
       <Flex flexDirection={{ base: 'column', md: 'row' }}>
         <VStack w={{ base: '100%', md: '60%' }}>
           {/* Featured Post cover image */}

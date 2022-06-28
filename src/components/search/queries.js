@@ -2,14 +2,7 @@ import { gql } from '@apollo/client/core';
 
 const GET_ARTICLES = gql`
   query GetArticles($searchQuery: String!) {
-    posts(
-      where: {
-        title_contains: $searchQuery
-        OR: { excerpt_contains: $searchQuery }
-      }
-      first: 12
-      stage: PUBLISHED
-    ) {
+    posts(where: { _search: $searchQuery }, first: 12, stage: PUBLISHED) {
       customPublicationDate
       excerpt
       featuredImage {
@@ -63,14 +56,7 @@ const GET_ARTICLES_MATCHING_TAG = gql`
 
 const GET_SNIPPETS = gql`
   query GetSnippets($searchQuery: String!) {
-    snippets(
-      where: {
-        title_contains: $searchQuery
-        OR: { content_contains: $searchQuery }
-      }
-      first: 12
-      stage: PUBLISHED
-    ) {
+    snippets(where: { _search: $searchQuery }, first: 12, stage: PUBLISHED) {
       slug
       title
     }
@@ -79,7 +65,7 @@ const GET_SNIPPETS = gql`
 
 const GET_CATEGORIES = gql`
   query GetCategories($searchQuery: String!) {
-    categories(where: { name_contains: $searchQuery }, stage: PUBLISHED) {
+    categories(where: { _search: $searchQuery }, stage: PUBLISHED) {
       name
       slug
     }

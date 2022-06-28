@@ -14,8 +14,8 @@ import {
 } from '@chakra-ui/react';
 import { FaTwitter } from 'react-icons/fa';
 import { CheckCircleIcon } from '@chakra-ui/icons';
-import { KofiWidget } from './components';
 
+import { KofiWidget } from './components';
 import siteConfig from '../../../config/site.config';
 
 const SupportMePage = () => {

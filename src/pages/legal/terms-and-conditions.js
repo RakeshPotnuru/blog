@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 
 import { Analytics, SEO } from '../../common/util';
 import { MarkdownRenderer } from '../../common/UIElements/markdownRenderer';
+import siteConfig from '../../../config/site.config';
 import Navbar from '../../common/components/navbar/Navbar';
 import Footer from '../../common/components/footer/Footer';
 import CopyrightNotice from '../../common/components/footer/CopyrightNotice';
@@ -16,12 +17,11 @@ const TermsAndConditions = ({ data }) => {
   return (
     <>
       <SEO
-        title={'Terms & Conditions | itsrakesh - blog'}
+        title={siteConfig.seo.pages.terms.title}
+        description={siteConfig.seo.pages.terms.description}
+        image={siteConfig.seo.pages.terms.image}
         canonical={`${process.env.NEXT_PUBLIC_SITE_URL}${path}`}
         url={`${process.env.NEXT_PUBLIC_SITE_URL}${path}`}
-        description={
-          "These terms and conditions outline the rules and regulations for the use of itsrakesh's Website, located at itsrakesh - blog."
-        }
       />
       <Analytics />
 

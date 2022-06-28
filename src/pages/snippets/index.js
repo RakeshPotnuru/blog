@@ -1,6 +1,7 @@
 import { gql } from '@apollo/client';
 
 import { Analytics, client, SEO } from '../../common/util';
+import siteConfig from '../../../config/site.config';
 import Navbar from '../../common/components/navbar/Navbar';
 import SearchPage from '../../components/search/SearchPage';
 import { Newsletter } from '../../common/components/misc';
@@ -11,9 +12,11 @@ const Snippets = ({ snippets, error }) => {
   return (
     <>
       <SEO
-        title={'Snippets'}
-        description={'Explore snippets'}
+        title={siteConfig.seo.pages.snippets.title}
+        description={siteConfig.seo.pages.snippets.description}
+        image={siteConfig.seo.pages.snippets.image}
         canonical={`${process.env.NEXT_PUBLIC_SITE_URL}/snippets`}
+        url={`${process.env.NEXT_PUBLIC_SITE_URL}/snippets`}
       />
       <Analytics />
 

@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 
 import { Analytics, SEO } from '../../common/util';
 import { MarkdownRenderer } from '../../common/UIElements/markdownRenderer';
+import siteConfig from '../../../config/site.config';
 import Navbar from '../../common/components/navbar/Navbar';
 import Footer from '../../common/components/footer/Footer';
 import CopyrightNotice from '../../common/components/footer/CopyrightNotice';
@@ -16,12 +17,11 @@ const PrivacyPolicy = ({ data }) => {
   return (
     <>
       <SEO
-        title={'Privacy Policy | itsrakesh - blog'}
+        title={siteConfig.seo.pages.privacy.title}
+        description={siteConfig.seo.pages.privacy.description}
+        image={siteConfig.seo.pages.privacy.image}
         canonical={`${process.env.NEXT_PUBLIC_SITE_URL}${path}`}
         url={`${process.env.NEXT_PUBLIC_SITE_URL}${path}`}
-        description={
-          'This Privacy Policy describes Our policies and procedures on the collection, use and disclosure of Your information when You use the Service and tells You about Your privacy rights and how the law protects You.'
-        }
       />
       <Analytics />
 

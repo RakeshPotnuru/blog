@@ -1,11 +1,12 @@
 import { useRouter } from 'next/router';
 
 import { Analytics, SEO } from '../common/util';
+import siteConfig from '../../config/site.config';
 import Navbar from '../common/components/navbar/Navbar';
+import SupportMePage from '../components/supportMe/SupportMePage';
 import { Newsletter } from '../common/components/misc';
 import Footer from '../common/components/footer/Footer';
 import CopyrightNotice from '../common/components/footer/CopyrightNotice';
-import SupportMePage from '../components/supportMe/SupportMePage';
 
 const SupportMe = () => {
   const router = useRouter();
@@ -14,10 +15,9 @@ const SupportMe = () => {
   return (
     <>
       <SEO
-        title={'Support Me | itsrakesh - blog'}
-        description={
-          'Your support keeps this blog alive and motivates me to keep creating content.'
-        }
+        title={siteConfig.seo.pages.supportMe.title}
+        description={siteConfig.seo.pages.supportMe.description}
+        image={siteConfig.seo.pages.supportMe.image}
         canonical={`${process.env.NEXT_PUBLIC_SITE_URL}${path}`}
         url={`${process.env.NEXT_PUBLIC_SITE_URL}${path}`}
       />

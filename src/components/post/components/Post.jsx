@@ -222,7 +222,7 @@ const Post = ({ post }) => {
                   frameBorder={'0'}
                   id={'speechkit-io-iframe'}
                   scrolling={'no'}
-                  style={{ display: 'none' }}
+                  style={{ width: '100%' }}
                 ></iframe>
               </Box>
             )}
@@ -230,7 +230,8 @@ const Post = ({ post }) => {
               src={
                 'https://proxy.beyondwords.io/npm/@beyondwords/audio-player@latest/dist/module/iframe-helper.js'
               }
-              type={'text/javascript'}
+              type={'text/javascript'} 
+              strategy={'beforeInteractive'}
             />
 
             {/* Post title */}

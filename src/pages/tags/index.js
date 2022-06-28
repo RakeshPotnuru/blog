@@ -1,6 +1,7 @@
 import { gql } from '@apollo/client';
 
 import { Analytics, client, SEO } from '../../common/util';
+import siteConfig from '../../../config/site.config';
 import Navbar from '../../common/components/navbar/Navbar';
 import SearchPage from '../../components/search/SearchPage';
 import { Newsletter } from '../../common/components/misc';
@@ -11,9 +12,11 @@ const Tags = ({ tags, loading, error }) => {
   return (
     <>
       <SEO
-        title={'Tags'}
-        description={'Explore tags'}
+        title={siteConfig.seo.pages.tags.title}
+        description={siteConfig.seo.pages.tags.description}
+        image={siteConfig.seo.pages.tags.image}
         canonical={`${process.env.NEXT_PUBLIC_SITE_URL}/tags`}
+        url={`${process.env.NEXT_PUBLIC_SITE_URL}/tags`}
       />
       <Analytics />
 

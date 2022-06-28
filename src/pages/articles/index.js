@@ -1,9 +1,10 @@
 import { gql } from '@apollo/client';
 
-import { Newsletter } from '../../common/components/misc';
 import { Analytics, client, SEO } from '../../common/util';
+import siteConfig from '../../../config/site.config';
 import Navbar from '../../common/components/navbar/Navbar';
 import SearchPage from '../../components/search/SearchPage';
+import { Newsletter } from '../../common/components/misc';
 import Footer from '../../common/components/footer/Footer';
 import CopyrightNotice from '../../common/components/footer/CopyrightNotice';
 
@@ -11,10 +12,9 @@ const Articles = ({ posts, error }) => {
   return (
     <>
       <SEO
-        title={'Articles | itsrakesh - blog'}
-        description={
-          'Read articles on web development, web3, blockchain, design, and more.'
-        }
+        title={siteConfig.seo.pages.articles.title}
+        description={siteConfig.seo.pages.articles.description}
+        image={siteConfig.seo.pages.articles.image}
         canonical={`${process.env.NEXT_PUBLIC_SITE_URL}/articles`}
         url={`${process.env.NEXT_PUBLIC_SITE_URL}/articles`}
       />

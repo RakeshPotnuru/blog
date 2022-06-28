@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 
 import { Analytics, SEO } from '../../common/util';
 import { MarkdownRenderer } from '../../common/UIElements/markdownRenderer';
+import siteConfig from '../../../config/site.config';
 import Navbar from '../../common/components/navbar/Navbar';
 import Footer from '../../common/components/footer/Footer';
 import CopyrightNotice from '../../common/components/footer/CopyrightNotice';
@@ -16,12 +17,11 @@ const CookiePolicy = ({ data }) => {
   return (
     <>
       <SEO
-        title={'Cookie Policy | itsrakesh - blog'}
+        title={siteConfig.seo.pages.cookie.title}
+        description={siteConfig.seo.pages.cookie.description}
+        image={siteConfig.seo.pages.cookie.image}
         canonical={`${process.env.NEXT_PUBLIC_SITE_URL}${path}`}
         url={`${process.env.NEXT_PUBLIC_SITE_URL}${path}`}
-        description={
-          'In this Cookie Policy we will provide you with detailed information on how itsrakesh - blog (hereinafter - the "we" or "our"), shall undertake to ensure the security of personal information and the protection of rights of the visitors and users of the websites '
-        }
       />
       <Analytics />
 

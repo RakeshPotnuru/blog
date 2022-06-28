@@ -1,7 +1,7 @@
-import { useRouter } from 'next/router';
 import { gql } from '@apollo/client';
 
 import { Analytics, SEO, client } from '../../common/util';
+import siteConfig from '../../../config/site.config';
 import Navbar from '../../common/components/navbar/Navbar';
 import SnippetPage from '../../components/snippet/SnippetPage';
 import { Newsletter } from '../../common/components/misc';
@@ -9,15 +9,15 @@ import Footer from '../../common/components/footer/Footer';
 import CopyrightNotice from '../../common/components/footer/CopyrightNotice';
 
 const SnippetHome = ({ snippet, snippets, error }) => {
-  const router = useRouter();
-  // TODO: Create social share image for snippets
+  
   return (
     <>
       <SEO
         title={snippet.title}
         description={snippet.description}
-        url={`${process.env.NEXT_PUBLIC_SITE_URL}/snippets/${snippet.slug}`}
+        image={siteConfig.seo.pages.snippets.image}
         canonical={`${process.env.NEXT_PUBLIC_SITE_URL}/snippets/${snippet.slug}`}
+        url={`${process.env.NEXT_PUBLIC_SITE_URL}/snippets/${snippet.slug}`}
         ogType={'article'}
       />
       <Analytics />

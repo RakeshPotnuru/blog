@@ -2,6 +2,7 @@ import {
   Avatar,
   Badge,
   Box,
+  Center,
   Container,
   Divider,
   Heading,
@@ -67,14 +68,16 @@ const Snippet = ({ snippet }) => {
 
               {/* Social-media sharing links */}
               <HStack my={2}>
-                <SocialShareLinks
-                  toolTipPlacement={'top'}
-                  isLoaded
-                  onCopy={onCopy}
-                  hasCopied={hasCopied}
-                  slug={snippet.slug}
-                  title={snippet.title}
-                />
+                <Center>
+                  <SocialShareLinks
+                    toolTipPlacement={'top'}
+                    isLoaded
+                    onCopy={onCopy}
+                    hasCopied={hasCopied}
+                    slug={snippet.slug}
+                    title={snippet.title}
+                  />
+                </Center>
               </HStack>
             </SimpleGrid>
 

@@ -45,9 +45,7 @@ export async function getStaticProps({ params }) {
           author {
             bio
             name
-            photo {
-              url
-            }
+            photo
           }
           slug
           title

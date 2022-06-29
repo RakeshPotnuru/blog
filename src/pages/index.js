@@ -36,9 +36,7 @@ export async function getStaticProps() {
     query: gql`
       query HomePage {
         posts(orderBy: publishedAt_DESC, first: 3) {
-          featuredImage {
-            url
-          }
+          featuredImage
           customPublicationDate
           excerpt
           publishedAt
@@ -68,9 +66,7 @@ export async function getStaticProps() {
         posts(first: 1, where: { featuredPost: true }) {
           slug
           title
-          featuredImage {
-            url
-          }
+          featuredImage
         }
       }
     `

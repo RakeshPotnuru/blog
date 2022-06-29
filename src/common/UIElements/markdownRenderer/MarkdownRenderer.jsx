@@ -7,12 +7,14 @@ import {
   ListItem,
   OrderedList,
   Table,
+  TableContainer,
   Tbody,
   Text,
   Th,
   Thead,
   Tr,
-  UnorderedList
+  UnorderedList,
+  useMediaQuery
 } from '@chakra-ui/react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
@@ -20,6 +22,8 @@ import remarkGfm from 'remark-gfm';
 import { CustomCode } from './';
 
 const MarkdownRenderer = ({ content }) => {
+  const [isLessThan780px] = useMediaQuery('(max-width: 360px)');
+
   return (
     <Container maxW={'container.md'}>
       <ReactMarkdown
@@ -41,15 +45,21 @@ const MarkdownRenderer = ({ content }) => {
           img: (props) => (
             <Image
               my={8}
+              shadow={'lg'}
               src={props.src}
               alt={props.alt}
-              shadow={'lg'}
               {...props}
             />
           ),
           code: CustomCode,
           table: (props) => (
-            <Table my={4} variant="striped" colorScheme={'gray'} {...props} />
+            <TableContainer
+              w={isLessThan780px && '17rem'}
+              overflowX={'scroll'}
+              whiteSpace={'pre-wrap'}
+            >
+              <Table my={4} variant="striped" colorScheme={'gray'} {...props} />
+            </TableContainer>
           ),
           thead: Thead,
           tr: Tr,

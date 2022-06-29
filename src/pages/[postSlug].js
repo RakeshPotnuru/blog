@@ -48,14 +48,10 @@ export async function getStaticProps({ params }) {
             slug
           }
           updatedAt
-          featuredImage {
-            url
-          }
+          featuredImage
           author {
             name
-            photo {
-              url
-            }
+            photo
           }
           publishedAt
           slug
@@ -82,9 +78,7 @@ export async function getStaticProps({ params }) {
           customPublicationDate
           publishedAt
           excerpt
-          featuredImage {
-            url
-          }
+          featuredImage
         }
       }
     `,

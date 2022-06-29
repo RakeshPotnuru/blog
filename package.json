@@ -13,6 +13,7 @@
     "@apollo/client": "^3.6.5",
     "@chakra-ui/icons": "^1.1.7",
     "@chakra-ui/react": "^1.8.8",
+    "@cloudinary/url-gen": "^1.8.0",
     "@emotion/react": "11",
     "@emotion/styled": "11",
     "@giscus/react": "^2.0.3",

@@ -18,7 +18,7 @@ const CustomCode = ({ node, inline, className, children, ...props }) => {
       {String(children).replace(/\n$/, '')}
     </SyntaxHighlighter>
   ) : (
-    <Code borderRadius={'md'} {...props}>
+    <Code maxW={isLessThan780px && '15rem'} borderRadius={'md'} {...props}>
       {children}
     </Code>
   );

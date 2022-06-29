@@ -641,6 +641,11 @@
   dependencies:
     "@chakra-ui/utils" "1.10.4"
 
+"@cloudinary/url-gen@^1.8.0":
+  version "1.8.0"
+  resolved "https://registry.yarnpkg.com/@cloudinary/url-gen/-/url-gen-1.8.0.tgz#dcadd7de08314d79c225a710efb93a51b1fab413"
+  integrity sha512-sSbLY3i/FZ+yHAinVbTzUjIzFGsnpYajWTLG+dc/80GbSfODuxZ0OyXp2kOxtf7MUyx5y998BIa8ketnVr7chA==
+
 "@corex/deepmerge@^4.0.26":
   version "4.0.26"
   resolved "https://registry.yarnpkg.com/@corex/deepmerge/-/deepmerge-4.0.26.tgz#5ebd60608e5050a336f3163e68ac58152963a3aa"

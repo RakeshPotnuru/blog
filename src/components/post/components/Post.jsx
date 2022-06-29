@@ -31,6 +31,8 @@ import readingTime from 'reading-time';
 import { CircleIcon } from '../../../assets/icons';
 import { MarkdownRenderer } from '../../../common/UIElements/markdownRenderer';
 import { SocialShareLinks } from '../../../common/UIElements';
+import { buildImage } from '../../../common/util';
+import { Resize } from '@cloudinary/url-gen/actions';
 
 const Post = ({ post }) => {
   const [height, setHeight] = useState(0);
@@ -122,7 +124,9 @@ const Post = ({ post }) => {
 
             {/* Featured image */}
             <Image
-              src={post.featuredImage.url}
+              src={buildImage(post.featuredImage.public_id)
+                .resize(Resize.scale().width(1600).height(840))
+                .toURL()}
               alt={post.title}
               width={'100%'}
               height={'auto'}
@@ -130,7 +134,10 @@ const Post = ({ post }) => {
 
             <HStack alignSelf={'flex-start'} py={5} spacing={4}>
               {/* Author image */}
-              <Avatar name={post.author.name} src={post.author.photo.url} />
+              <Avatar
+                name={post.author.name}
+                src={buildImage(post.author.photo.public_id).toURL()}
+              />
               <VStack spacing={0}>
                 {/* Author name */}
                 <HStack>

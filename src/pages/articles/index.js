@@ -38,9 +38,7 @@ export async function getStaticProps() {
     query: gql`
       query ArticlesPage {
         posts(orderBy: publishedAt_DESC, first: 12) {
-          featuredImage {
-            url
-          }
+          featuredImage
           id
           customPublicationDate
           excerpt

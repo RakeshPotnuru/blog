@@ -15,6 +15,8 @@ import readingTime from 'reading-time';
 
 import { CircleIcon } from '../../assets/icons';
 import TagCard from './TagCard';
+import { buildImage } from '../util';
+import { Resize } from '@cloudinary/url-gen/actions';
 
 const ArticleCard = ({ post }) => {
   const textColor = useColorModeValue('text', '#fff');
@@ -36,10 +38,12 @@ const ArticleCard = ({ post }) => {
       <NextLink href={`/${post.slug}`} passHref>
         <Link tabIndex={-1}>
           <Image
-            src={post.featuredImage.url}
+            src={buildImage(post.featuredImage.public_id)
+              .resize(Resize.scale().width(1600).height(840))
+              .toURL()}
             alt={post.title}
-            width={'100%'}
-            height={'auto'}
+            w={'100%'}
+            h={'auto'}
             rounded={'lg'}
             tabIndex={0}
           />

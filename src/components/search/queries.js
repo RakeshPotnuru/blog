@@ -5,9 +5,7 @@ const GET_ARTICLES = gql`
     posts(where: { _search: $searchQuery }, first: 12, stage: PUBLISHED) {
       customPublicationDate
       excerpt
-      featuredImage {
-        url
-      }
+      featuredImage
       publishedAt
       slug
       sponsored
@@ -23,9 +21,7 @@ const GET_ARTICLES_MATCHING_CATEGORY = gql`
     posts(where: { category: { slug: $searchQuery } }, stage: PUBLISHED) {
       customPublicationDate
       excerpt
-      featuredImage {
-        url
-      }
+      featuredImage
       publishedAt
       slug
       sponsored
@@ -41,9 +37,7 @@ const GET_ARTICLES_MATCHING_TAG = gql`
     posts(where: { tags_contains_some: [$searchQuery] }, stage: PUBLISHED) {
       customPublicationDate
       excerpt
-      featuredImage {
-        url
-      }
+      featuredImage
       publishedAt
       slug
       sponsored

@@ -15,18 +15,21 @@ import { ChevronRightIcon } from '@chakra-ui/icons';
 import NextLink from 'next/link';
 
 import { CategoryCard } from '../../../common/UIElements';
+import { buildImage } from '../../../common/util';
 
 const Hero = ({ featuredPost, categories }) => {
   return (
-    <Box m={{ base: '5%', '2xl': '5% 15%' }}>
+    <Box m={{ base: '5%', md: '5% 10%', '2xl': '5% 15%' }}>
       <Flex flexDirection={{ base: 'column', md: 'row' }}>
         <VStack w={{ base: '100%', md: '60%' }}>
           {/* Featured Post cover image */}
           <NextLink href={`/${featuredPost.slug}`} passHref>
             <Link tabIndex={-1}>
               <Image
-                src={featuredPost.featuredImage.url}
+                src={buildImage(featuredPost.featuredImage.public_id).toURL()}
                 alt={featuredPost.title}
+                w={'100%'}
+                h={'auto'}
                 tabIndex={0}
               />
             </Link>

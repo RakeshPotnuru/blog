@@ -46,6 +46,8 @@ const MarkdownRenderer = ({ content }) => {
             <Image
               my={8}
               shadow={'lg'}
+              htmlWidth={'100%'}
+              htmlHeight={'auto'}
               src={props.src}
               alt={props.alt}
               {...props}

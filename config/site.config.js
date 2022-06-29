@@ -64,6 +64,7 @@ const siteConfig = {
     }
   },
   branding: {
+    logo: 'https://ik.imagekit.io/itsrakesh/Blog/blog_logo_Gk6jqlMK8.png?ik-sdk-version=javascript-1.4.3&updatedAt=1650611776118',
     colors: {
       brand: {
         50: '#7868E6',
@@ -74,7 +75,8 @@ const siteConfig = {
         500: '#769FCD'
       },
       text: '#454E56',
-      theme: '#7868E6'
+      themeLight: '#7868E6',
+      themeDark: '#000000'
     },
     fonts: {
       heading: 'Alliance No 2',

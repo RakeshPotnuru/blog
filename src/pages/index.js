@@ -5,7 +5,6 @@ import Navbar from '../common/components/navbar/Navbar';
 import HomePage from '../components/home/HomePage';
 import { Newsletter } from '../common/components/misc';
 import Footer from '../common/components/footer/Footer';
-import CopyrightNotice from '../common/components/footer/CopyrightNotice';
 
 const Home = ({ featuredPost, posts, snippets, categories, error }) => {
   return (
@@ -26,7 +25,6 @@ const Home = ({ featuredPost, posts, snippets, categories, error }) => {
         <Newsletter />
       </main>
       <Footer />
-      <CopyrightNotice />
     </>
   );
 };

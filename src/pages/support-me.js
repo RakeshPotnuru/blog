@@ -6,7 +6,6 @@ import Navbar from '../common/components/navbar/Navbar';
 import SupportMePage from '../components/supportMe/SupportMePage';
 import { Newsletter } from '../common/components/misc';
 import Footer from '../common/components/footer/Footer';
-import CopyrightNotice from '../common/components/footer/CopyrightNotice';
 
 const SupportMe = () => {
   const router = useRouter();
@@ -31,7 +30,6 @@ const SupportMe = () => {
       </main>
 
       <Footer />
-      <CopyrightNotice />
     </>
   );
 };

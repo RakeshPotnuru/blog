@@ -16,6 +16,7 @@ import NextLink from 'next/link';
 
 import { CategoryCard } from '../../../common/UIElements';
 import { buildImage } from '../../../common/util';
+import { Resize } from '@cloudinary/url-gen/actions';
 
 const Hero = ({ featuredPost, categories }) => {
   return (
@@ -26,10 +27,12 @@ const Hero = ({ featuredPost, categories }) => {
           <NextLink href={`/${featuredPost.slug}`} passHref>
             <Link tabIndex={-1}>
               <Image
-                src={buildImage(featuredPost.featuredImage.public_id).toURL()}
+                src={buildImage(featuredPost.featuredImage.public_id)
+                  .resize(Resize.scale().width(1600).height(840))
+                  .toURL()}
                 alt={featuredPost.title}
-                w={'100%'}
-                h={'auto'}
+                htmlWidth={'100%'}
+                htmlHeight={'auto'}
                 tabIndex={0}
               />
             </Link>

@@ -6,7 +6,6 @@ import Navbar from '../../common/components/navbar/Navbar';
 import SnippetPage from '../../components/snippet/SnippetPage';
 import { Newsletter } from '../../common/components/misc';
 import Footer from '../../common/components/footer/Footer';
-import CopyrightNotice from '../../common/components/footer/CopyrightNotice';
 
 const SnippetHome = ({ snippet, snippets, error }) => {
   return (
@@ -29,7 +28,6 @@ const SnippetHome = ({ snippet, snippets, error }) => {
       </main>
 
       <Footer />
-      <CopyrightNotice />
     </>
   );
 };

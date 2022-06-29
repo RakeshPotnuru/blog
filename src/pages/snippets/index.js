@@ -6,7 +6,6 @@ import Navbar from '../../common/components/navbar/Navbar';
 import SearchPage from '../../components/search/SearchPage';
 import { Newsletter } from '../../common/components/misc';
 import Footer from '../../common/components/footer/Footer';
-import CopyrightNotice from '../../common/components/footer/CopyrightNotice';
 
 const Snippets = ({ snippets, error }) => {
   return (
@@ -28,7 +27,6 @@ const Snippets = ({ snippets, error }) => {
       </main>
 
       <Footer />
-      <CopyrightNotice />
     </>
   );
 };

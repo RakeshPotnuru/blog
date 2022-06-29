@@ -128,8 +128,8 @@ const Post = ({ post }) => {
                 .resize(Resize.scale().width(1600).height(840))
                 .toURL()}
               alt={post.title}
-              width={'100%'}
-              height={'auto'}
+              htmlWidth={'100%'}
+              htmlHeight={'auto'}
             />
 
             <HStack alignSelf={'flex-start'} py={5} spacing={4}>

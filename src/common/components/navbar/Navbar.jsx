@@ -6,17 +6,17 @@ import {
   Link,
   useColorModeValue,
   useMediaQuery,
-  useColorMode
+  useColorMode,
+  Image
 } from '@chakra-ui/react';
 import { MoonIcon, SunIcon } from '@chakra-ui/icons';
 import NextLink from 'next/link';
-import Image from 'next/image';
 import { gql } from '@apollo/client/core';
 import { useLazyQuery } from '@apollo/client/react';
 
 import { Searchbar } from '../../UIElements';
-import { Logo } from '../../../assets/images';
 import SearchResultsDisplay from './SearchResultsDisplay';
+import siteConfig from '../../../../config/site.config';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -82,10 +82,10 @@ const Navbar = () => {
           <NextLink href={'/'} passHref>
             <Link tabIndex={-1}>
               <Image
-                src={Logo}
+                src={siteConfig.branding.logo}
                 alt={'itsrakesh blog logo'}
-                width={50}
-                height={50}
+                htmlWidth={50}
+                htmlHeight={50}
                 tabIndex={0}
               />
             </Link>

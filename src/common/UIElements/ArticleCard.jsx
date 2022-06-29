@@ -42,8 +42,8 @@ const ArticleCard = ({ post }) => {
               .resize(Resize.scale().width(1600).height(840))
               .toURL()}
             alt={post.title}
-            w={'100%'}
-            h={'auto'}
+            htmlWidth={'100%'}
+            htmlHeight={'auto'}
             rounded={'lg'}
             tabIndex={0}
           />

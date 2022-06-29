@@ -5,7 +5,6 @@ import Navbar from '../common/components/navbar/Navbar';
 import PostPage from '../components/post/PostPage';
 import { Newsletter } from '../common/components/misc';
 import Footer from '../common/components/footer/Footer';
-import CopyrightNotice from '../common/components/footer/CopyrightNotice';
 
 const PostHome = ({ post, posts, error }) => {
   return (
@@ -31,7 +30,6 @@ const PostHome = ({ post, posts, error }) => {
       </main>
 
       <Footer />
-      <CopyrightNotice />
     </>
   );
 };

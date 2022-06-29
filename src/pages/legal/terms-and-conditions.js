@@ -8,7 +8,6 @@ import { MarkdownRenderer } from '../../common/UIElements/markdownRenderer';
 import siteConfig from '../../../config/site.config';
 import Navbar from '../../common/components/navbar/Navbar';
 import Footer from '../../common/components/footer/Footer';
-import CopyrightNotice from '../../common/components/footer/CopyrightNotice';
 
 const TermsAndConditions = ({ data }) => {
   const router = useRouter();
@@ -38,7 +37,6 @@ const TermsAndConditions = ({ data }) => {
       </main>
 
       <Footer />
-      <CopyrightNotice />
     </>
   );
 };

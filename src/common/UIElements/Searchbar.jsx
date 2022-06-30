@@ -11,12 +11,13 @@ const Searchbar = ({ placeholder, width, searchHandler }) => {
           placeholder={placeholder ? placeholder : 'Search anything...'}
         />
         <InputRightAddon
+          aria-label={'Search'}
           as={'button'}
           type={'submit'}
-          cursor="pointer"
-          bgColor="brand.50"
+          cursor={'pointer'}
+          bgColor={'brand.50'}
         >
-          <Search2Icon color="white" />
+          <Search2Icon color={'white'} />
         </InputRightAddon>
       </InputGroup>
     </form>

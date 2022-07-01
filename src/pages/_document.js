@@ -8,7 +8,7 @@ export default function Document() {
         <script
           async
           src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5607528168839545`} // Change this
-          crossorigin={'anonymous'}
+          crossOrigin={'anonymous'}
         ></script>
       </Head>
       <body>

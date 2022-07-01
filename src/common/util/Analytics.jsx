@@ -5,9 +5,9 @@ const Analytics = () => {
     <>
       <Script
         src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_MEASUREMENT_ID}`}
-        strategy="afterInteractive"
+        strategy={'afterInteractive'}
       />
-      <Script id="gtag" strategy="afterInteractive">
+      <Script id={'gtag'} strategy={'afterInteractive'}>
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}

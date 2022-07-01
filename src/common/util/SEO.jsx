@@ -1,6 +1,7 @@
 import Head from 'next/head';
 
 import siteConfig from '../../../config/site.config';
+import AdSense from './AdSense';
 
 const Meta = ({ title, description, url, image, canonical, ogType }) => {
   return (
@@ -145,6 +146,9 @@ const Meta = ({ title, description, url, image, canonical, ogType }) => {
         }
         rel={'stylesheet'}
       />
+
+      {/* Google AdSense */}
+      <AdSense />
     </Head>
   );
 };

@@ -1,11 +1,12 @@
 import { useRouter } from 'next/router';
 
-import { Analytics, SEO } from '../common/util';
+import { Analytics, SEO } from '@/utils/index.js';
+import { BreadcrumbSchemaMarkup } from '@/schemaMarkup/index.js';
 import siteConfig from '../../config/site.config';
-import Navbar from '../common/components/navbar/Navbar';
-import SupportMePage from '../components/supportMe/SupportMePage';
-import { Newsletter } from '../common/components/misc';
-import Footer from '../common/components/footer/Footer';
+import Navbar from '@/components/navbar/Navbar';
+import SupportMePage from '@/supportMe/SupportMePage';
+import { Newsletter } from '@/components/misc';
+import Footer from '@/components/footer/Footer';
 
 const SupportMe = () => {
   const router = useRouter();
@@ -19,6 +20,20 @@ const SupportMe = () => {
         image={siteConfig.seo.pages.supportMe.image}
         canonical={`${process.env.NEXT_PUBLIC_SITE_URL}${path}`}
         url={`${process.env.NEXT_PUBLIC_SITE_URL}${path}`}
+      />
+      <BreadcrumbSchemaMarkup
+        items={[
+          {
+            position: 1,
+            name: 'Home',
+            item: process.env.NEXT_PUBLIC_SITE_URL
+          },
+          {
+            position: 2,
+            name: 'Support Me',
+            item: `${process.env.NEXT_PUBLIC_SITE_URL}/support-me`
+          }
+        ]}
       />
       <Analytics />
 

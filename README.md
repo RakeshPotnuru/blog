@@ -65,6 +65,7 @@ Follow [this]() guide to set up your own instance of this blog.
 * [Google Analytics](https://analytics.google.com/)
 * [Google AdSense](https://www.google.com/adsense/start/)
 * [Giscus](https://giscus.app/) - A comments system powered by [GitHub Discussions](https://docs.github.com/en/discussions).
+* [Vercel](https://vercel.com/)
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>

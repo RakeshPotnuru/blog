@@ -14,8 +14,8 @@ import {
 } from '@chakra-ui/react';
 import Moment from 'react-moment';
 
-import { MarkdownRenderer } from '../../../common/UIElements/markdownRenderer';
-import { SocialShareLinks } from '../../../common/UIElements';
+import { MarkdownRenderer } from '@/UIElements/markdownRenderer';
+import { SocialShareLinks } from '@/UIElements/index.js';
 
 const Snippet = ({ snippet }) => {
   const { hasCopied, onCopy } = useClipboard(

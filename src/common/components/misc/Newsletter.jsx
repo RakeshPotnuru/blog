@@ -19,7 +19,7 @@ import {
 } from '@chakra-ui/react';
 import { CheckCircleIcon } from '@chakra-ui/icons';
 
-import { ErrorBox } from '../../UIElements';
+import { ErrorBox } from '@/UIElements/index.js';
 
 const Newsletter = () => {
   const [isSubscribing, setIsSubscribing] = useState(false);

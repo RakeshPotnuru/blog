@@ -1,6 +1,6 @@
 import { Container, Heading, SimpleGrid } from '@chakra-ui/react';
 
-import { SnippetCard } from '../../../common/UIElements';
+import { SnippetCard } from '@/UIElements/index.js';
 
 const MoreSnippets = ({ snippets, loading }) => {
   return (

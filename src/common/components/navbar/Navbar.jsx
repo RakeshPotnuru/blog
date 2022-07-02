@@ -14,7 +14,7 @@ import NextLink from 'next/link';
 import { gql } from '@apollo/client/core';
 import { useLazyQuery } from '@apollo/client/react';
 
-import { Searchbar } from '../../UIElements';
+import { Searchbar } from '@/UIElements/index.js';
 import SearchResultsDisplay from './SearchResultsDisplay';
 import siteConfig from '../../../../config/site.config';
 

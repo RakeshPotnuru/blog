@@ -13,7 +13,7 @@ import {
 } from '@chakra-ui/react';
 import { FaTwitter, FaLinkedin, FaGithub } from 'react-icons/fa';
 
-import { ShowwcaseIcon } from '../../../assets/icons';
+import { ShowwcaseIcon } from '@/icons/index.js';
 import siteConfig from '../../../../config/site.config';
 import CopyrightNotice from './CopyrightNotice';
 

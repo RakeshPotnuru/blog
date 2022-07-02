@@ -16,7 +16,7 @@ import {
 } from '@chakra-ui/react';
 import NextLink from 'next/link';
 
-import { ErrorBox } from '../../UIElements';
+import { ErrorBox } from '@/UIElements/index.js';
 
 const SearchResultsDisplay = ({
   queriedItems,

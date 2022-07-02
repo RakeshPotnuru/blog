@@ -1,10 +1,14 @@
 import { gql } from '@apollo/client';
 
-import { Analytics, SEO, client } from '../common/util';
-import Navbar from '../common/components/navbar/Navbar';
-import PostPage from '../components/post/PostPage';
-import { Newsletter } from '../common/components/misc';
-import Footer from '../common/components/footer/Footer';
+import { Analytics, SEO, client } from '@/utils/index.js';
+import {
+  BreadcrumbSchemaMarkup,
+  ArticleSchemaMarkup
+} from '@/schemaMarkup/index.js';
+import Navbar from '@/components/navbar/Navbar';
+import PostPage from '@/post/PostPage';
+import { Newsletter } from '@/components/misc';
+import Footer from '@/components/footer/Footer';
 
 const PostHome = ({ post, posts, error }) => {
   return (
@@ -19,6 +23,43 @@ const PostHome = ({ post, posts, error }) => {
         }
         image={post.featuredImage.url}
         ogType={'article'}
+      />
+      <BreadcrumbSchemaMarkup
+        items={[
+          {
+            position: 1,
+            name: 'Home',
+            item: process.env.NEXT_PUBLIC_SITE_URL
+          },
+          {
+            position: 2,
+            name: 'Articles',
+            item: `${process.env.NEXT_PUBLIC_SITE_URL}/articles`
+          },
+          {
+            position: 3,
+            name: post.category.name,
+            item: `${process.env.NEXT_PUBLIC_SITE_URL}/articles?c=${post.category.slug}`
+          },
+          {
+            position: 4,
+            name: post.title,
+            item: `${process.env.NEXT_PUBLIC_SITE_URL}/${post.slug}`
+          }
+        ]}
+      />
+      <ArticleSchemaMarkup
+        url={`${process.env.NEXT_PUBLIC_SITE_URL}/${post.slug}`}
+        title={post.title}
+        image={post.featuredImage.url}
+        publishedAt={
+          post.customPublicationDate
+            ? post.customPublicationDate
+            : post.publishedAt
+        }
+        updatedAt={post.updatedAt}
+        author={post.author.name}
+        description={post.description}
       />
       <Analytics />
 

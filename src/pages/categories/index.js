@@ -1,11 +1,12 @@
 import { gql } from '@apollo/client';
 
-import { Analytics, client, SEO } from '../../common/util';
+import { Analytics, client, SEO } from '@/utils/index.js';
+import { BreadcrumbSchemaMarkup } from '@/schemaMarkup/index.js';
 import siteConfig from '../../../config/site.config';
-import Navbar from '../../common/components/navbar/Navbar';
-import SearchPage from '../../components/search/SearchPage';
-import { Newsletter } from '../../common/components/misc';
-import Footer from '../../common/components/footer/Footer';
+import Navbar from '@/components/navbar/Navbar';
+import SearchPage from '@/search/SearchPage';
+import { Newsletter } from '@/components/misc';
+import Footer from '@/components/footer/Footer';
 
 const Categories = ({ categories, error }) => {
   return (
@@ -16,6 +17,20 @@ const Categories = ({ categories, error }) => {
         image={siteConfig.seo.pages.categories.image}
         canonical={`${process.env.NEXT_PUBLIC_SITE_URL}/categories`}
         url={`${process.env.NEXT_PUBLIC_SITE_URL}/categories`}
+      />
+      <BreadcrumbSchemaMarkup
+        items={[
+          {
+            position: 1,
+            name: 'Home',
+            item: process.env.NEXT_PUBLIC_SITE_URL
+          },
+          {
+            position: 2,
+            name: 'Categories',
+            item: `${process.env.NEXT_PUBLIC_SITE_URL}/categories`
+          }
+        ]}
       />
       <Analytics />
 

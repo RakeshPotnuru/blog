@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "@/*": ["components/*"],
+      "@/components/*": ["common/components/*"],
+      "@/utils/*": ["common/utils/"],
+      "@/schemaMarkup/*": ["common/utils/schemaMarkup/*"],
+      "@/UIElements/*": ["common/UIElements/*"],
+      "@/icons/*": ["assets/icons/*"]
+    }
+  }
+}

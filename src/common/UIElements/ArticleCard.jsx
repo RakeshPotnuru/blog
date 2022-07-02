@@ -15,7 +15,7 @@ import readingTime from 'reading-time';
 
 import { CircleIcon } from '../../assets/icons';
 import TagCard from './TagCard';
-import { buildImage } from '../util';
+import { buildImage } from '../utils';
 import { Resize } from '@cloudinary/url-gen/actions';
 
 const ArticleCard = ({ post }) => {

@@ -2,6 +2,7 @@ const siteConfig = {
   seo: {
     title: 'itsrakesh - blog',
     author: 'Rakesh Potnuru',
+    copyright: 'itsrakesh',
     description:
       'Browse programming tutorials and articles written by Rakesh Potnuru. Learn Web Development, Blockchain, Web3 and Technical writing.',
     image:

@@ -12,6 +12,7 @@ const Meta = ({ title, description, url, image, canonical, ogType }) => {
       <meta name={'viewport'} content={'width=device-width, initial-scale=1'} />
       <meta name={'description'} content={description} />
       <meta name={'author'} content={siteConfig.seo.author} />
+      <meta name={'copyright'} content={siteConfig.seo.copyright} />
       <meta name={'application-name'} content={siteConfig.seo.title} />
       <meta
         name={'msapplication-TileColor'}

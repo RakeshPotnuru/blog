@@ -27,12 +27,12 @@ import NextLink from 'next/link';
 import Script from 'next/script';
 import Moment from 'react-moment';
 import readingTime from 'reading-time';
-
-import { CircleIcon } from '../../../assets/icons';
-import { MarkdownRenderer } from '../../../common/UIElements/markdownRenderer';
-import { SocialShareLinks } from '../../../common/UIElements';
-import { buildImage } from '../../../common/util';
 import { Resize } from '@cloudinary/url-gen/actions';
+
+import { CircleIcon } from '@/icons/index.js';
+import { MarkdownRenderer } from '@/UIElements/markdownRenderer';
+import { SocialShareLinks } from '@/UIElements/index.js';
+import { buildImage } from '@/utils/index.js';
 
 const Post = ({ post }) => {
   const [height, setHeight] = useState(0);
@@ -222,7 +222,7 @@ const Post = ({ post }) => {
 
             {/* BeyondWords audio player widget */}
             {post.audioId && (
-              <Box my={4} shadow={'lg'}>
+              <Box mt={4} mb={'-12%'}>
                 <iframe
                   allowFullScreen={false}
                   src={`https://audio.beyondwords.io/e/${post.audioId}`}

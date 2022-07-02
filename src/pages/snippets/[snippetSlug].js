@@ -1,11 +1,15 @@
 import { gql } from '@apollo/client';
 
-import { Analytics, SEO, client } from '../../common/util';
+import { Analytics, SEO, client } from '@/utils/index.js';
+import {
+  BreadcrumbSchemaMarkup,
+  ArticleSchemaMarkup
+} from '@/schemaMarkup/index.js';
 import siteConfig from '../../../config/site.config';
-import Navbar from '../../common/components/navbar/Navbar';
-import SnippetPage from '../../components/snippet/SnippetPage';
-import { Newsletter } from '../../common/components/misc';
-import Footer from '../../common/components/footer/Footer';
+import Navbar from '@/components/navbar/Navbar';
+import SnippetPage from '@/snippet/SnippetPage';
+import { Newsletter } from '@/components/misc';
+import Footer from '@/components/footer/Footer';
 
 const SnippetHome = ({ snippet, snippets, error }) => {
   return (
@@ -17,6 +21,34 @@ const SnippetHome = ({ snippet, snippets, error }) => {
         canonical={`${process.env.NEXT_PUBLIC_SITE_URL}/snippets/${snippet.slug}`}
         url={`${process.env.NEXT_PUBLIC_SITE_URL}/snippets/${snippet.slug}`}
         ogType={'article'}
+      />
+      <BreadcrumbSchemaMarkup
+        items={[
+          {
+            position: 1,
+            name: 'Home',
+            item: process.env.NEXT_PUBLIC_SITE_URL
+          },
+          {
+            position: 2,
+            name: 'Snippets',
+            item: `${process.env.NEXT_PUBLIC_SITE_URL}/snippets`
+          },
+          {
+            position: 3,
+            name: snippet.title,
+            item: `${process.env.NEXT_PUBLIC_SITE_URL}/snippets/${snippet.slug}`
+          }
+        ]}
+      />
+      <ArticleSchemaMarkup
+        url={`${process.env.NEXT_PUBLIC_SITE_URL}/${snippet.slug}`}
+        title={snippet.title}
+        image={siteConfig.seo.pages.snippets.image}
+        publishedAt={snippet.publishedAt}
+        updatedAt={snippet.updatedAt}
+        author={snippet.author.name}
+        description={snippet.description}
       />
       <Analytics />
 

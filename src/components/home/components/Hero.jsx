@@ -13,10 +13,10 @@ import {
 } from '@chakra-ui/react';
 import { ChevronRightIcon } from '@chakra-ui/icons';
 import NextLink from 'next/link';
-
-import { CategoryCard } from '../../../common/UIElements';
-import { buildImage } from '../../../common/util';
 import { Resize } from '@cloudinary/url-gen/actions';
+
+import { CategoryCard } from '@/UIElements/index.js';
+import { buildImage } from '@/utils/index.js';
 
 const Hero = ({ featuredPost, categories }) => {
   return (

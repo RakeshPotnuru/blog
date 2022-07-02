@@ -1,5 +1,6 @@
 import { Container, Heading, SimpleGrid } from '@chakra-ui/react';
-import { ArticleCard } from '../../../common/UIElements';
+
+import { ArticleCard } from '@/UIElements/index.js';
 
 const RelatedArticles = ({ posts }) => {
   return (

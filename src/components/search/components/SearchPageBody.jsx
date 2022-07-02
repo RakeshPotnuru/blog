@@ -19,7 +19,7 @@ import {
   ErrorBox,
   SnippetCard,
   TagCard
-} from '../../../common/UIElements';
+} from '@/UIElements/index.js';
 
 const changeRoute = (tabIndex, router, query) => {
   switch (tabIndex) {

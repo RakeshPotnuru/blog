@@ -50,7 +50,7 @@ export async function getStaticProps() {
   const { data, error } = await client.query({
     query: gql`
       query ArticlesPage {
-        posts(orderBy: publishedAt_DESC, first: 12) {
+        posts(orderBy: createdAt_DESC, first: 12) {
           featuredImage
           id
           customPublicationDate

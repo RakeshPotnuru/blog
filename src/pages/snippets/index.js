@@ -50,7 +50,7 @@ export async function getStaticProps() {
   const { data, error } = await client.query({
     query: gql`
       query SnippetsPage {
-        snippets(orderBy: publishedAt_DESC, first: 10) {
+        snippets(orderBy: createdAt_DESC, first: 10) {
           id
           title
           slug

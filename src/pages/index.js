@@ -33,7 +33,7 @@ export async function getStaticProps() {
   const { data, error } = await client.query({
     query: gql`
       query HomePage {
-        posts(orderBy: publishedAt_DESC, first: 3) {
+        posts(orderBy: createdAt_DESC, first: 3) {
           featuredImage
           customPublicationDate
           excerpt
@@ -44,7 +44,7 @@ export async function getStaticProps() {
           title
           content
         }
-        snippets(orderBy: publishedAt_DESC, first: 4) {
+        snippets(orderBy: createdAt_DESC, first: 4) {
           id
           title
           slug

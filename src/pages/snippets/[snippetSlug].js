@@ -85,7 +85,7 @@ export async function getStaticProps({ params }) {
         }
         snippets(
           first: 4
-          orderBy: publishedAt_DESC
+          orderBy: createdAt_DESC
           where: { slug_not: $slug }
         ) {
           title

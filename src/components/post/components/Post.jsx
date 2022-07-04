@@ -180,15 +180,16 @@ const Post = ({ post }) => {
             {!isLessThan1180px && (
               <Box
                 pos={'fixed'}
-                top={{ base: 40, '2xl': 60 }}
+                top={{ base: 60, '2xl': 60 }}
                 left={30}
-                maxW={{ base: 220, '2xl': 400 }}
+                maxW={'18%'}
               >
                 <AdSense
-                  style={{ display: 'block' }}
+                  style={{
+                    display: isLessThan1180px ? 'none' : 'block',
+                    maxWidth: '220px'
+                  }}
                   adSlot={3396306951}
-                  adFormat={'auto'}
-                  data-full-width-responsive={'true'}
                 />
               </Box>
             )}

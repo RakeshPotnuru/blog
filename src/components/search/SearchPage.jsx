@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { Box, Center } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import { useLazyQuery } from '@apollo/client/react';
 
 import { SearchPageBody, SearchPageHeader } from './components';
 import { queries } from './queries';
+import { AdSense } from 'common/utils';
 
 const SearchPage = ({
   activeTab,
@@ -90,6 +92,16 @@ const SearchPage = ({
         loading={loading}
         error={variableError}
       />
+      <Center>
+        <Box my={20}>
+          <AdSense
+            style={{ display: 'block' }}
+            adFormat={'fluid'}
+            adSlot={'3408517885'}
+            data-ad-layout-key={'-f9+52+6z-e1+5b'}
+          />
+        </Box>
+      </Center>
     </>
   );
 };

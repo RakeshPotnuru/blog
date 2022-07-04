@@ -14,16 +14,14 @@ const RelatedArticles = ({ posts }) => {
           ))}
         </SimpleGrid>
       </Container>
-      <Center>
-        <Box my={20}>
-          <AdSense
-            style={{ display: 'block' }}
-            adFormat={'fluid'}
-            adSlot={'3408517885'}
-            data-ad-layout-key={'-f9+52+6z-e1+5b'}
-          />
-        </Box>
-      </Center>
+      <Box my={20} mx={'auto'}>
+        <AdSense
+          style={{ display: 'block' }}
+          adFormat={'fluid'}
+          adSlot={'3408517885'}
+          data-ad-layout-key={'-f9+52+6z-e1+5b'}
+        />
+      </Box>
     </>
   );
 };

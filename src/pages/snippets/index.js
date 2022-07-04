@@ -63,7 +63,8 @@ export async function getStaticProps() {
     props: {
       snippets: data?.snippets,
       error: error ? error.message : null
-    }
+    },
+    revalidate: 60
   };
 }
 

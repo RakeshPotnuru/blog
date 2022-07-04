@@ -32,7 +32,7 @@ import { Resize } from '@cloudinary/url-gen/actions';
 import { CircleIcon } from '@/icons/index.js';
 import { MarkdownRenderer } from '@/UIElements/markdownRenderer';
 import { SocialShareLinks } from '@/UIElements/index.js';
-import { buildImage } from '@/utils/index.js';
+import { AdSense, buildImage } from '@/utils/index.js';
 
 const Post = ({ post }) => {
   const [height, setHeight] = useState(0);
@@ -174,6 +174,23 @@ const Post = ({ post }) => {
                   />
                 </HStack>
               </Center>
+            )}
+
+            {/* AdSense side display ad */}
+            {!isLessThan1180px && (
+              <Box
+                pos={'fixed'}
+                top={{ base: 40, '2xl': 60 }}
+                left={30}
+                maxW={{ base: 220, '2xl': 400 }}
+              >
+                <AdSense
+                  style={{ display: 'block' }}
+                  adSlot={3396306951}
+                  adFormat={'auto'}
+                  data-full-width-responsive={'true'}
+                />
+              </Box>
             )}
 
             {/* Post reading completion progress indicator */}

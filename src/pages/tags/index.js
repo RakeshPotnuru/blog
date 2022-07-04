@@ -63,7 +63,8 @@ export async function getStaticProps() {
     props: {
       tags: data?.__type?.enumValues,
       error: error ? error.message : null
-    }
+    },
+    revalidate: 60
   };
 }
 

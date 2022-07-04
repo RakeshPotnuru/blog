@@ -104,7 +104,8 @@ export async function getStaticProps({ params }) {
       snippet: data?.snippet,
       snippets: data?.snippets,
       error: error ? error.message : null
-    }
+    },
+    revalidate: 60
   };
 }
 
@@ -129,7 +130,7 @@ export async function getStaticPaths() {
 
   return {
     paths,
-    fallback: false
+    fallback: 'blocking'
   };
 }
 

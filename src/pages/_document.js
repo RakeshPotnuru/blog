@@ -7,9 +7,18 @@ export default function Document() {
         {/* Google AdSense */}
         <script
           async
-          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5607528168839545`} // Change this
-          crossOrigin={'anonymous'}
-        ></script>
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+            (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-5607528168839545",
+              enable_page_level_ads: true
+            });
+            `
+          }}
+        />
       </Head>
       <body>
         <Main />

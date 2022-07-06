@@ -1,5 +1,7 @@
 <div id="top"></div>
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/1c639728-6ada-4eaa-beb6-4bdcb492baa1/deploy-status)](https://app.netlify.com/sites/blog-itsrakesh/deploys)
+
 <br />
 <div align="center">
 
@@ -65,7 +67,7 @@ Follow [this]() guide to set up your own instance of this blog.
 * [Google Analytics](https://analytics.google.com/)
 * [Google AdSense](https://www.google.com/adsense/start/)
 * [Giscus](https://giscus.app/) - A comments system powered by [GitHub Discussions](https://docs.github.com/en/discussions).
-* [Vercel](https://vercel.com/)
+* [Netlify](https://netlify.com/)
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>

@@ -1,4 +1,12 @@
-import { Box, Flex, Spacer, Text } from '@chakra-ui/react';
+import {
+  Avatar,
+  Box,
+  Center,
+  Flex,
+  Link,
+  Spacer,
+  Text
+} from '@chakra-ui/react';
 
 import siteConfig from '../../../../config/site.config';
 
@@ -16,6 +24,20 @@ const CopyrightNotice = () => {
         <Spacer />
         <Text>v{siteConfig.siteVersion}</Text>
       </Flex>
+      <Center>
+        <Text>
+          &lt;/&gt; with 💖 &amp;{' '}
+          <Avatar
+            size={'xs'}
+            name={'NextJs'}
+            src={`${process.env.NEXT_PUBLIC_FAVICON_KIT_URL}/nextjs.org/144`}
+          />{' '}
+          by{' '}
+          <Link href={'https://itsrakesh.co'} isExternal>
+            Rakesh
+          </Link>
+        </Text>
+      </Center>
     </Box>
   );
 };

@@ -2,21 +2,11 @@ import { Badge, Link, Skeleton } from '@chakra-ui/react';
 import NextLink from 'next/link';
 import { motion } from 'framer-motion';
 
-const tagBgs = [
-  'brand.100',
-  'brand.200',
-  'brand.300',
-  'brand.400',
-  'brand.500'
-];
-
 const TagCard = ({ tag }) => {
   return (
     <NextLink href={`/articles?t=${tag}`} passHref>
       <Link tabIndex={-1}>
         <Badge
-          bg={tagBgs[Math.floor(Math.random() * (tagBgs.length - 1) + 1)]}
-          color={'white'}
           px={4}
           py={2}
           cursor={'pointer'}

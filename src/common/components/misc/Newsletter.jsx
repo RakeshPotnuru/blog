@@ -15,7 +15,8 @@ import {
   ListItem,
   VStack,
   CircularProgress,
-  SimpleGrid
+  SimpleGrid,
+  Divider
 } from '@chakra-ui/react';
 import { CheckCircleIcon } from '@chakra-ui/icons';
 
@@ -73,6 +74,7 @@ const Newsletter = () => {
               <Center>
                 <Heading size={'md'}>Weekly</Heading>
               </Center>
+              <Divider my={2} />
               <List spacing={4} my={2}>
                 <ListItem>
                   <ListIcon as={CheckCircleIcon} />
@@ -93,7 +95,13 @@ const Newsletter = () => {
               <Center>
                 <Heading size={'md'}>Monthly</Heading>
               </Center>
-              <Text>Coming soon...</Text>
+              <Divider my={2} />
+              <List spacing={4} my={2}>
+                <ListItem>
+                  <ListIcon as={CheckCircleIcon} />
+                  Coming soon...
+                </ListItem>
+              </List>
             </Box>
           </SimpleGrid>
 

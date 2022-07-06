@@ -61,6 +61,12 @@ const siteConfig = {
         description: 'This page contains itsrakesh - blog terms & conditions.',
         image:
           'https://ik.imagekit.io/itsrakesh/Blog/terms___conditions_jb7mesw-j.png?ik-sdk-version=javascript-1.4.3&updatedAt=1656350842954'
+      },
+      externalArticles: {
+        title: 'External Articles | itsrakesh - blog',
+        description: 'Read articles written by Rakesh Potnuru on other sites.',
+        image:
+          'https://ik.imagekit.io/itsrakesh/Blog/external_articles_urr6u2vH1.png?ik-sdk-version=javascript-1.4.3&updatedAt=1657081755552'
       }
     }
   },

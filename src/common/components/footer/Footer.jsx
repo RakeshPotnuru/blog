@@ -9,7 +9,8 @@ import {
   List,
   ListItem,
   SimpleGrid,
-  Link
+  Link,
+  Flex
 } from '@chakra-ui/react';
 import { FaTwitter, FaLinkedin, FaGithub } from 'react-icons/fa';
 
@@ -83,18 +84,22 @@ const Footer = () => {
                 fontSize={'small'}
                 alignSelf={'flex-start'}
                 whiteSpace={'nowrap'}
+                spacing={1}
               >
                 <ListItem>
                   <Link href={siteConfig.urls.about} isExternal>
                     About
                   </Link>
                 </ListItem>
-                {/* <ListItem>External Articles</ListItem> */}
                 <ListItem>
                   <Link href={siteConfig.urls.status} isExternal>
                     Status
                   </Link>
                 </ListItem>
+                <ListItem>
+                  <Link href={'/external-articles'}>External Articles</Link>
+                </ListItem>
+
                 <ListItem>
                   <Link href={siteConfig.urls.newsletter} isExternal>
                     Newsletter
@@ -112,7 +117,7 @@ const Footer = () => {
               <Heading size={'sm'} alignSelf={'flex-start'}>
                 LEGAL
               </Heading>
-              <List fontSize={'small'} alignSelf={'flex-start'}>
+              <List fontSize={'small'} alignSelf={'flex-start'} spacing={1}>
                 <ListItem>
                   <Link href={'/legal/privacy-policy'}>Privacy Policy</Link>
                 </ListItem>

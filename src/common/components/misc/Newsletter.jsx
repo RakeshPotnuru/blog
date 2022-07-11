@@ -1,60 +1,19 @@
-import { useState } from 'react';
 import {
   Box,
   Button,
   Center,
-  FormControl,
   Heading,
-  Text,
-  Input,
-  InputGroup,
-  InputRightElement,
   Link,
   List,
   ListIcon,
   ListItem,
   VStack,
-  CircularProgress,
   SimpleGrid,
   Divider
 } from '@chakra-ui/react';
-import { CheckCircleIcon } from '@chakra-ui/icons';
-
-import { ErrorBox } from '@/UIElements/index.js';
+import { CheckCircleIcon, ChevronRightIcon } from '@chakra-ui/icons';
 
 const Newsletter = () => {
-  const [isSubscribing, setIsSubscribing] = useState(false);
-  const [isSubscriptionError, setIsSubscriptionError] = useState(false);
-  const [message, setMessage] = useState('');
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsSubscribing(true);
-    const res = await fetch(`/api/revue`, {
-      body: JSON.stringify({
-        email: e.target.email.value
-      }),
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      method: 'POST'
-    });
-
-    const { error } = await res.json();
-    if (error) {
-      setIsSubscriptionError(true);
-      setIsSubscribing(false);
-      setMessage(
-        'Your e-mail address is invalid or you are already subscribed!'
-      );
-      return;
-    }
-
-    setIsSubscriptionError(false);
-    setIsSubscribing(false);
-    setMessage('Success! 🎉 You are now subscribed.');
-  };
-
   return (
     <Box
       id={'newsletter'}
@@ -68,6 +27,9 @@ const Newsletter = () => {
         <VStack>
           <Heading mb={4} textAlign={['center', null]}>
             Subscribe to Newsletter
+            <Center>
+              <Box my={2} w={'40%'} h={'5px'} bg={'brand.300'} />
+            </Center>
           </Heading>
           <SimpleGrid columns={[1, 2]} spacing={4} w={[null, '70%']}>
             <Box>
@@ -105,66 +67,17 @@ const Newsletter = () => {
             </Box>
           </SimpleGrid>
 
-          <Box w={['100%', '50%']} py={4}>
-            <form onSubmit={handleSubmit}>
-              <FormControl isRequired>
-                <InputGroup>
-                  <Input
-                    id={'email'}
-                    type={'email'}
-                    name={'email'}
-                    placeholder={'Your email address*'}
-                    _placeholder={{ color: 'white' }}
-                    borderColor={'white'}
-                    disabled={isSubscribing}
-                  />
-                  <InputRightElement w={'7rem'}>
-                    <Button
-                      type={'submit'}
-                      name={'subscribe'}
-                      size={'sm'}
-                      bg={'brand.400'}
-                      _hover={{ bg: 'brand.400', opacity: 0.8 }}
-                      _active={{ bg: 'brand.400', opacity: 0.8 }}
-                      disabled={isSubscribing}
-                    >
-                      {isSubscribing ? (
-                        <CircularProgress
-                          isIndeterminate
-                          size={6}
-                          color={'brand.50'}
-                        />
-                      ) : (
-                        'Subscribe'
-                      )}
-                    </Button>
-                  </InputRightElement>
-                </InputGroup>
-              </FormControl>
-
-              {isSubscriptionError ? (
-                <Box my={2} width={'fit-content'}>
-                  <ErrorBox error={message} />
-                </Box>
-              ) : (
-                <Box my={2} fontSize={'small'} color={'green.300'}>
-                  {message}
-                </Box>
-              )}
-
-              <Box fontSize={'small'} my={2}>
-                By subscribing, you agree with Revue&apos;s{' '}
-                <Link href={'https://www.getrevue.co/terms'} isExternal>
-                  Terms of Service
-                </Link>{' '}
-                and{' '}
-                <Link href={'https://www.getrevue.co/privacy'} isExternal>
-                  Privacy Policy
-                </Link>
-                .
-              </Box>
-            </form>
-          </Box>
+          <Link href={process.env.NEXT_PUBLIC_SUBSTACK_URL} isExternal>
+            <Button
+              rightIcon={<ChevronRightIcon />}
+              bg={'brand.300'}
+              color={'black'}
+              _hover={{ bg: 'brand.300', opacity: 0.8 }}
+              _active={{ bg: 'brand.300', opacity: 0.8 }}
+            >
+              Subscribe Now
+            </Button>
+          </Link>
         </VStack>
       </Center>
     </Box>

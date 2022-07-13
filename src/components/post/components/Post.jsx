@@ -74,6 +74,16 @@ const Post = ({ post }) => {
 
   return (
     <>
+      {/* Adsense Page top Ad */}
+      <Box my={10}>
+        <AdSense
+          style={{ display: 'block' }}
+          adSlot={'6183806725'}
+          adFormat={'auto'}
+          data-full-width-responsive={'true'}
+        />
+      </Box>
+
       {/* Breadcrumb */}
       <HStack mt={8} ml={6}>
         <NextLink href={'/'} passHref>
@@ -174,24 +184,6 @@ const Post = ({ post }) => {
                   />
                 </HStack>
               </Center>
-            )}
-
-            {/* AdSense side display ad */}
-            {!isLessThan1180px && (
-              <Box
-                pos={'fixed'}
-                top={{ base: 60, '2xl': 60 }}
-                left={30}
-                maxW={'18%'}
-              >
-                <AdSense
-                  style={{
-                    display: isLessThan1180px ? 'none' : 'block',
-                    maxWidth: '220px'
-                  }}
-                  adSlot={3396306951}
-                />
-              </Box>
             )}
 
             {/* Post reading completion progress indicator */}

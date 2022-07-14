@@ -77,10 +77,8 @@ const Post = ({ post }) => {
       {/* Adsense Page top Ad */}
       <Box my={10}>
         <AdSense
-          style={{ display: 'block' }}
+          style={{ display: 'inline-block', width: '100%', height: '90px' }}
           adSlot={'6183806725'}
-          adFormat={'auto'}
-          data-full-width-responsive={'true'}
         />
       </Box>
 
@@ -191,7 +189,7 @@ const Post = ({ post }) => {
               <Box
                 id={'side-content'}
                 pos={'fixed'}
-                top={{ base: 40, '2xl': 60 }}
+                top={{ base: 60, '2xl': 60 }}
                 right={{ base: 40, '2xl': 80 }}
                 display={sideContentVisibility}
               >

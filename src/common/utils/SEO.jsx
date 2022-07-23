@@ -2,7 +2,7 @@ import Head from 'next/head';
 
 import siteConfig from '../../../config/site.config';
 
-const Meta = ({ title, description, url, image, canonical, ogType }) => {
+const Meta = ({ title, description, url, image, canonical, ogType, altText }) => {
   return (
     <Head>
       {/* Primary Meta Tags */}
@@ -41,7 +41,8 @@ const Meta = ({ title, description, url, image, canonical, ogType }) => {
       <meta property={'og:title'} content={title} />
       <meta property={'og:description'} content={description} />
       <meta property={'og:image'} content={image} />
-      <meta property="og:locale" content="en" />
+      <meta property={'og:image:alt'} content={altText}></meta>
+      <meta property={'og:locale'} content={'en'} />
 
       {/* Twitter */}
       <meta property={'twitter:card'} content={'summary_large_image'} />
@@ -155,6 +156,7 @@ Meta.defaultProps = {
   description: siteConfig.seo.description,
   url: process.env.NEXT_PUBLIC_SITE_URL,
   image: siteConfig.seo.image,
+  altText: siteConfig.seo.altText,
   ogType: siteConfig.seo.ogType,
   canonical: process.env.NEXT_PUBLIC_SITE_URL
 };

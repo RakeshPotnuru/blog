@@ -15,6 +15,7 @@ const Articles = ({ posts, error }) => {
         title={siteConfig.seo.pages.articles.title}
         description={siteConfig.seo.pages.articles.description}
         image={siteConfig.seo.pages.articles.image}
+        altText={siteConfig.seo.pages.articles.title}
         canonical={`${process.env.NEXT_PUBLIC_SITE_URL}/articles`}
         url={`${process.env.NEXT_PUBLIC_SITE_URL}/articles`}
       />

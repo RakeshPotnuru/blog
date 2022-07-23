@@ -15,6 +15,7 @@ const Snippets = ({ snippets, error }) => {
         title={siteConfig.seo.pages.snippets.title}
         description={siteConfig.seo.pages.snippets.description}
         image={siteConfig.seo.pages.snippets.image}
+        altText={siteConfig.seo.pages.snippets.title}
         canonical={`${process.env.NEXT_PUBLIC_SITE_URL}/snippets`}
         url={`${process.env.NEXT_PUBLIC_SITE_URL}/snippets`}
       />

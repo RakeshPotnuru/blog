@@ -27,11 +27,6 @@ const ArticleCard = ({ post }) => {
 
   const readTime = readingTime(post.content);
 
-  // Cut description to 180 characters
-  const cutText = (text) => {
-    return text.substring(0, 180) + '...';
-  };
-
   return (
     <VStack my={10} p={4} borderRadius={'xl'} shadow={shadow} h={'max-content'}>
       {/* Cover image */}
@@ -81,8 +76,8 @@ const ArticleCard = ({ post }) => {
       </NextLink>
 
       {/* Excerpt */}
-      <Text alignSelf={'flex-start'} color={textColor}>
-        {cutText(post.excerpt)}
+      <Text alignSelf={'flex-start'} color={textColor} noOfLines={5}>
+        {post.excerpt}
       </Text>
 
       {/* Tags */}

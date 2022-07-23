@@ -22,10 +22,34 @@ import remarkGfm from 'remark-gfm';
 import { CustomCode } from './';
 
 const MarkdownRenderer = ({ content }) => {
-  const [isLessThan780px] = useMediaQuery('(max-width: 360px)');
+  const [isLessThan660px] = useMediaQuery('(max-width: 660px)');
+  const [isLessThan560px] = useMediaQuery('(max-width: 590px)');
+  const [isLessThan520px] = useMediaQuery('(max-width: 520px)');
+  const [isLessThan460px] = useMediaQuery('(max-width: 460px)');
+  const [isLessThan410px] = useMediaQuery('(max-width: 410px)');
+  const [isLessThan360px] = useMediaQuery('(max-width: 360px)');
+  const [isLessThan280px] = useMediaQuery('(max-width: 280px)');
 
   return (
-    <Container maxW={'container.md'}>
+    <Container
+      maxW={
+        isLessThan280px
+          ? '40%'
+          : isLessThan360px
+          ? '50%'
+          : isLessThan410px
+          ? '55%'
+          : isLessThan460px
+          ? '65%'
+          : isLessThan520px
+          ? '75%'
+          : isLessThan560px
+          ? '85%'
+          : isLessThan660px
+          ? '95%'
+          : 'container.md'
+      }
+    >
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         components={{

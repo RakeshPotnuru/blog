@@ -32,6 +32,7 @@ const Legal = ({ data, legalSlug }) => {
         title={title}
         description={description}
         image={image}
+        altText={title}
         canonical={`${process.env.NEXT_PUBLIC_SITE_URL}/legal/${legalSlug}`}
         url={`${process.env.NEXT_PUBLIC_SITE_URL}/legal/${legalSlug}`}
       />

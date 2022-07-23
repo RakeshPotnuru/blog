@@ -19,6 +19,7 @@ const ExternalArticles = ({ articles }) => {
         title={siteConfig.seo.pages.externalArticles.title}
         description={siteConfig.seo.pages.externalArticles.description}
         image={siteConfig.seo.pages.externalArticles.image}
+        altText={siteConfig.seo.pages.externalArticles.title}
         canonical={`${process.env.NEXT_PUBLIC_SITE_URL}${path}`}
         url={`${process.env.NEXT_PUBLIC_SITE_URL}${path}`}
       />

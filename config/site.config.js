@@ -7,6 +7,7 @@ const siteConfig = {
       'Browse programming tutorials and articles written by Rakesh Potnuru. Learn Web Development, Blockchain, Web3 and Technical writing.',
     image:
       'https://ik.imagekit.io/itsrakesh/Blog/itsrakesh_-_blog_r0SAC1__p.png?ik-sdk-version=javascript-1.4.3&updatedAt=1656350838485',
+    altText: 'itsrakesh - blog',
     ogType: 'website',
     monetizationTag: '$ilp.uphold.com/82eq8NKY4NEZ',
     twitterUsername: '@rakesh_at_tweet',

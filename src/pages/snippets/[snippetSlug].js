@@ -18,6 +18,7 @@ const SnippetHome = ({ snippet, snippets, error }) => {
         title={snippet.title}
         description={snippet.description}
         image={siteConfig.seo.pages.snippets.image}
+        altText={snippet.title}
         canonical={`${process.env.NEXT_PUBLIC_SITE_URL}/snippets/${snippet.slug}`}
         url={`${process.env.NEXT_PUBLIC_SITE_URL}/snippets/${snippet.slug}`}
         ogType={'article'}

@@ -15,6 +15,7 @@ const Categories = ({ categories, error }) => {
         title={siteConfig.seo.pages.categories.title}
         description={siteConfig.seo.pages.categories.description}
         image={siteConfig.seo.pages.categories.image}
+        altText={siteConfig.seo.pages.categories.title}
         canonical={`${process.env.NEXT_PUBLIC_SITE_URL}/categories`}
         url={`${process.env.NEXT_PUBLIC_SITE_URL}/categories`}
       />

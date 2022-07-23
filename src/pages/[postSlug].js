@@ -22,6 +22,7 @@ const PostHome = ({ post, posts, error }) => {
           `${process.env.NEXT_PUBLIC_SITE_URL}/${post.slug}`
         }
         image={post.featuredImage.url}
+        altText={post.title}
         ogType={'article'}
       />
       <BreadcrumbSchemaMarkup

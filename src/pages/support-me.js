@@ -18,6 +18,7 @@ const SupportMe = () => {
         title={siteConfig.seo.pages.supportMe.title}
         description={siteConfig.seo.pages.supportMe.description}
         image={siteConfig.seo.pages.supportMe.image}
+        altText={siteConfig.seo.pages.supportMe.title}
         canonical={`${process.env.NEXT_PUBLIC_SITE_URL}${path}`}
         url={`${process.env.NEXT_PUBLIC_SITE_URL}${path}`}
       />

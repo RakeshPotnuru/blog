@@ -15,6 +15,7 @@ const Tags = ({ tags, loading, error }) => {
         title={siteConfig.seo.pages.tags.title}
         description={siteConfig.seo.pages.tags.description}
         image={siteConfig.seo.pages.tags.image}
+        altText={siteConfig.seo.pages.tags.title}
         canonical={`${process.env.NEXT_PUBLIC_SITE_URL}/tags`}
         url={`${process.env.NEXT_PUBLIC_SITE_URL}/tags`}
       />

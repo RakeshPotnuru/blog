@@ -23,6 +23,7 @@ import rehypeRaw from 'rehype-raw';
 import { CustomCode } from './';
 
 const MarkdownRenderer = ({ content }) => {
+  const [isLessThan780px] = useMediaQuery('(max-width: 780px)');
   const [isLessThan660px] = useMediaQuery('(max-width: 660px)');
   const [isLessThan560px] = useMediaQuery('(max-width: 590px)');
   const [isLessThan520px] = useMediaQuery('(max-width: 520px)');

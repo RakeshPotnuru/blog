@@ -44,7 +44,6 @@ const Snippet = ({ snippet }) => {
               <HStack
                 alignSelf={'flex-start'}
                 textTransform={'uppercase'}
-                mt={7}
                 mb={5}
                 fontSize={'sm'}
               >

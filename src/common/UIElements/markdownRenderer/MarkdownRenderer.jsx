@@ -18,6 +18,7 @@ import {
 } from '@chakra-ui/react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import rehypeRaw from 'rehype-raw';
 
 import { CustomCode } from './';
 
@@ -52,6 +53,7 @@ const MarkdownRenderer = ({ content }) => {
     >
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
+        rehypePlugins={[rehypeRaw]}
         components={{
           h1: Heading,
           h2: (props) => <Heading my={6} size="lg" {...props} />,

@@ -36,7 +36,7 @@ const ExternalArticleCard = ({ article }) => {
         <Avatar
           size={'xs'}
           name={article.domainName.split('.')[0]}
-          src={`${process.env.NEXT_PUBLIC_FAVICON_KIT_URL}/${article.domainName}/144`}
+          src={article.logoUrl}
         />
         <Link href={`https://${article.domainName}`} isExternal>
           {article.domainName}

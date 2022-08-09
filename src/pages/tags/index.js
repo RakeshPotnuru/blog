@@ -65,7 +65,7 @@ export async function getStaticProps() {
       tags: data?.__type?.enumValues,
       error: error ? error.message : null
     },
-    revalidate: 60
+    revalidate: 300
   };
 }
 

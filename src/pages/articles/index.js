@@ -72,7 +72,7 @@ export async function getStaticProps() {
       posts: data?.posts,
       error: error ? error.message : null
     },
-    revalidate: 60
+    revalidate: 300
   };
 }
 

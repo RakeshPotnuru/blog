@@ -57,6 +57,7 @@ export async function getStaticProps() {
         externalArticles(orderBy: publishedDate_DESC, stage: PUBLISHED) {
           id
           domainName
+          logoUrl
           featuredImage
           publishedDate
           title
@@ -71,7 +72,7 @@ export async function getStaticProps() {
     props: {
       articles: data.externalArticles
     },
-    revalidate: 60
+    revalidate: 300
   };
 }
 

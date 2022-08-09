@@ -30,7 +30,9 @@ const CopyrightNotice = () => {
           <Avatar
             size={'xs'}
             name={'NextJs'}
-            src={`${process.env.NEXT_PUBLIC_FAVICON_KIT_URL}/nextjs.org/144`}
+            src={
+              'https://pbs.twimg.com/profile_images/1468045715083509767/JrehsCpb_400x400.png'
+            }
           />{' '}
           by{' '}
           <Link href={'https://itsrakesh.co'} isExternal>

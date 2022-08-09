@@ -133,7 +133,7 @@ export async function getStaticProps({ params }) {
       posts: data?.posts,
       error: error ? error.message : null
     },
-    revalidate: 60
+    revalidate: 300
   };
 }
 

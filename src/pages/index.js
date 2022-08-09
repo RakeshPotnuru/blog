@@ -78,7 +78,7 @@ export async function getStaticProps() {
       featuredPost: featuredPost?.data?.posts[0],
       error: error ? error.message : null
     },
-    revalidate: 60
+    revalidate: 300
   };
 }
 

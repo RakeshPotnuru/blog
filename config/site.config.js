@@ -103,6 +103,13 @@ const siteConfig = {
     newsletter: 'https://newsletter.itsrakesh.co',
     kofi: 'https://ko-fi.com/itsrakesh'
   },
+  adsense: {
+    publisherId: 'pub-5607528168839545',
+    slots: {
+      pageTop: '6183806725',
+      inFeed: '3408517885'
+    }
+  },
   copyrightText: `@ ${new Date().getFullYear()} itsrakesh. All rights reserved.`,
   siteVersion: '1.0.0'
 };

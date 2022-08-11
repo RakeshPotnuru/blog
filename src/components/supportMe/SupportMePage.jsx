@@ -87,7 +87,7 @@ const SupportMePage = () => {
         <AdSense
           style={{ display: 'block' }}
           adFormat={'fluid'}
-          adSlot={'3408517885'}
+          adSlot={siteConfig.adsense.slots.inFeed}
           data-ad-layout-key={'-f9+52+6z-e1+5b'}
         />
       </Box>

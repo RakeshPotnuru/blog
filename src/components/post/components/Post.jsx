@@ -33,6 +33,7 @@ import { CircleIcon } from '@/icons/index.js';
 import { MarkdownRenderer } from '@/UIElements/markdownRenderer';
 import { SocialShareLinks } from '@/UIElements/index.js';
 import { AdSense, buildImage } from '@/utils/index.js';
+import siteConfig from '../../../../config/site.config';
 
 const Post = ({ post }) => {
   const [height, setHeight] = useState(0);
@@ -78,7 +79,7 @@ const Post = ({ post }) => {
       <Box my={10}>
         <AdSense
           style={{ display: 'inline-block', width: '100%', height: '90px' }}
-          adSlot={'6183806725'}
+          adSlot={siteConfig.adsense.slots.pageTop}
         />
       </Box>
 

@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
 
+import siteConfig from '../../../config/site.config';
+
 const AdSense = ({ adFormat, adSlot, ...props }) => {
   const loadAds = () => {
     try {
@@ -19,7 +21,7 @@ const AdSense = ({ adFormat, adSlot, ...props }) => {
     <ins
       className={'adsbygoogle'}
       data-ad-format={adFormat}
-      data-ad-client={'ca-pub-5607528168839545'}
+      data-ad-client={'ca-' + siteConfig.adsense.publisherId}
       data-ad-slot={adSlot}
       {...props}
     ></ins>

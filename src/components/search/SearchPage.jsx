@@ -6,6 +6,7 @@ import { useLazyQuery } from '@apollo/client/react';
 import { SearchPageBody, SearchPageHeader } from './components';
 import { queries } from './queries';
 import { AdSense } from 'common/utils';
+import siteConfig from '../../../config/site.config';
 
 const SearchPage = ({
   activeTab,
@@ -96,7 +97,7 @@ const SearchPage = ({
         <AdSense
           style={{ display: 'block' }}
           adFormat={'fluid'}
-          adSlot={'3408517885'}
+          adSlot={siteConfig.adsense.slots.inFeed}
           data-ad-layout-key={'-f9+52+6z-e1+5b'}
         />
       </Box>

@@ -17,6 +17,7 @@ import Moment from 'react-moment';
 import { MarkdownRenderer } from '@/UIElements/markdownRenderer';
 import { SocialShareLinks } from '@/UIElements/index.js';
 import { AdSense } from 'common/utils';
+import siteConfig from '../../../../config/site.config';
 
 const Snippet = ({ snippet }) => {
   const { hasCopied, onCopy } = useClipboard(
@@ -31,7 +32,7 @@ const Snippet = ({ snippet }) => {
       <Box my={10}>
         <AdSense
           style={{ display: 'inline-block', width: '100%', height: '90px' }}
-          adSlot={'6183806725'}
+          adSlot={siteConfig.adsense.slots.pageTop}
         />
       </Box>
 

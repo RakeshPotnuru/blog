@@ -120,7 +120,7 @@ Setup project locally for development.
    ```sh
    yarn dev
    ```
- 5. Your project will be running at http://localhost:3000
+5. Your project will be running at http://localhost:3000
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -129,8 +129,6 @@ Setup project locally for development.
 <!-- CONTRIBUTING -->
 ## Contributing
 
-Not open for code contributions yet.
-<!-- 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
 If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
@@ -141,7 +139,7 @@ Don't forget to give the project a star! Thanks again!
 3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
--->
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -162,6 +160,8 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 Twitter - [@rakesh_at_tweet](https://twitter.com/your_username)
 
 Project Link: [https://github.com/RakeshPotnuru/Blog](https://github.com/RakeshPotnuru/Blog)
+
+Status - [status.itsrakesh.co](https://status.itsrakesh.co)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 

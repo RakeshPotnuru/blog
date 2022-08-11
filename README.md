@@ -58,7 +58,7 @@ Follow [this]() guide to set up your own instance of this blog.
 
 * [Next.js](https://nextjs.org/)
 * [Chakra UI](https://chakra-ui.com/)
-* [GraphCMS](https://graphcms.com/)
+* [Hygraph](https://hygraph.com/) (Previously GraphCMS)
 
 ### Tools And Technologies Used
 
@@ -84,14 +84,14 @@ Setup project locally for development.
 
 ### Prerequisites
 
-#### GraphCMS project set up
-* Create or sign in to your [GraphCMS](https://app.graphcms.com/) account. 
+#### Hygraph project set up
+* Create or sign in to your [Hygraph](https://hygraph.com/) account.
 * Click the button below to clone the GraphCMS project.
 
-  [![Clone project](https://graphcms.com/button)](https://app.graphcms.com/clone/13f9db967a6640af82423ad6f304025d?name=itsrakesh-blog)
+[![Clone project](https://hygraph.com/button)](https://app.hygraph.com/clone/13f9db967a6640af82423ad6f304025d?name=itsrakesh-blog)
 
-* Create or sign in to your [Cloudinary]() account.
-* Follow [this](https://graphcms.com/blog/integrate-cloudinary-with-graphcms-ui-extensions) guide to install Cloudinary UI extension in GraphCMS.
+* Create or sign in to your [Cloudinary](https://cloudinary.com/) account.
+* Follow [this](https://hygraph.com/blog/integrate-cloudinary-with-hygraph-ui-extensions) guide to install Cloudinary UI extension in GraphCMS.
 
 #### Blog set up
 * npm
@@ -100,8 +100,8 @@ Setup project locally for development.
   ```
 * Create `.env.local` file at the root level of the project and copy env variables from `.env.example` file. You need to fill atleast these three variables for development purpose.
   ```sh
-  NEXT_PUBLIC_GRAPHCMS_CONTENT_API_URL=
-  NEXT_PUBLIC_GRAPHCMS_AUTH_TOKEN=
+  NEXT_PUBLIC_HYGRAPH_CONTENT_API_URL=
+  NEXT_PUBLIC_HYGRAPH_AUTH_TOKEN=
   NEXT_PUBLIC_CLOUDINARY_CLOUDNAME=
   ```
 

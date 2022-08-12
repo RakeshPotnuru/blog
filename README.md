@@ -48,7 +48,7 @@
 
 [![itsrakesh blog][product-screenshot]](https://blog.itsrakesh.co)
 
-Follow [this]() guide to set up your own instance of this blog.
+Follow [this](https://blog.itsrakesh.co/how-to-set-up-your-own-personal-blog-step-by-step-guide) guide to set up your own instance of this blog.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -80,7 +80,7 @@ Follow [this]() guide to set up your own instance of this blog.
 Setup project locally for development.
 
 > **Note** [Important]
-> These instructions are for development purposes only. Follow [this]() guide to set up your own instance of this blog.
+> These instructions are for development purposes only. Follow [this](https://blog.itsrakesh.co/how-to-set-up-your-own-personal-blog-step-by-step-guide) guide to set up your own instance of this blog.
 
 ### Prerequisites
 

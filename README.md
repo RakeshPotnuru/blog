@@ -86,12 +86,12 @@ Setup project locally for development.
 
 #### Hygraph project set up
 * Create or sign in to your [Hygraph](https://hygraph.com/) account.
-* Click the button below to clone the GraphCMS project.
+* Click the button below to clone the Hygraph project.
 
 [![Clone project](https://hygraph.com/button)](https://app.hygraph.com/clone/13f9db967a6640af82423ad6f304025d?name=itsrakesh-blog)
 
 * Create or sign in to your [Cloudinary](https://cloudinary.com/) account.
-* Follow [this](https://hygraph.com/blog/integrate-cloudinary-with-hygraph-ui-extensions) guide to install Cloudinary UI extension in GraphCMS.
+* Follow [this](https://hygraph.com/blog/integrate-cloudinary-with-hygraph-ui-extensions) guide to install Cloudinary UI extension in HyGraph.
 
 #### Blog set up
 * npm

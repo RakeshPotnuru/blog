@@ -91,7 +91,7 @@ Setup project locally for development.
 [![Clone project](https://hygraph.com/button)](https://app.hygraph.com/clone/13f9db967a6640af82423ad6f304025d?name=itsrakesh-blog)
 
 * Create or sign in to your [Cloudinary](https://cloudinary.com/) account.
-* Follow [this](https://hygraph.com/blog/integrate-cloudinary-with-hygraph-ui-extensions) guide to install Cloudinary UI extension in HyGraph.
+* Follow [this](https://hygraph.com/blog/integrate-cloudinary-with-hygraph-ui-extensions) guide to install Cloudinary UI extension in Hygraph.
 
 #### Blog set up
 * npm

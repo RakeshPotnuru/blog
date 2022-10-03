@@ -2,7 +2,15 @@ import Head from 'next/head';
 
 import siteConfig from '../../../config/site.config';
 
-const Meta = ({ title, description, url, image, canonical, ogType, altText }) => {
+const Meta = ({
+  title,
+  description,
+  url,
+  image,
+  canonical,
+  ogType,
+  altText
+}) => {
   return (
     <Head>
       {/* Primary Meta Tags */}
@@ -136,17 +144,11 @@ const Meta = ({ title, description, url, image, canonical, ogType, altText }) =>
       <link
         rel={'alternate'}
         href={'https://blog.itsrakesh.co'}
-        hreflang={'x-default'}
+        hrefLang={'x-default'}
       />
 
       <link rel={'preconnect'} href={'https://fonts.googleapis.com'} />
-      <link rel={'preconnect'} href={'https://fonts.gstatic.com'} crossorigin />
-      <link
-        href={
-          'https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap'
-        }
-        rel={'stylesheet'}
-      />
+      <link rel={'preconnect'} href={'https://fonts.gstatic.com'} crossOrigin />
     </Head>
   );
 };

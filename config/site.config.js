@@ -111,7 +111,7 @@ const siteConfig = {
     }
   },
   copyrightText: `@ ${new Date().getFullYear()} itsrakesh. All rights reserved.`,
-  siteVersion: '1.0.0'
+  siteVersion: '1.1.0'
 };
 
 export default siteConfig;

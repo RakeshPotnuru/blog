@@ -110,7 +110,7 @@ const siteConfig = {
       inFeed: '3408517885'
     }
   },
-  copyrightText: `@ ${new Date().getFullYear()} itsrakesh. All rights reserved.`,
+  copyrightText: `© ${new Date().getFullYear()} itsrakesh. All rights reserved.`,
   siteVersion: '1.1.0'
 };
 

@@ -262,7 +262,7 @@ const Post = ({ post }) => {
             id={'blog-content'}
             sx={{
                 width:"fillAvailaible"
-               }}
+            }}
           >
             <MarkdownRenderer content={post.content} />
           </Box>

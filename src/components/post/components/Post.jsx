@@ -260,6 +260,9 @@ const Post = ({ post }) => {
             letterSpacing={'wide'}
             color={textColor}
             id={'blog-content'}
+            sx={{
+                width:"fillAvailaible"
+               }}
           >
             <MarkdownRenderer content={post.content} />
           </Box>

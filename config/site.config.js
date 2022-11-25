@@ -53,7 +53,7 @@ const siteConfig = {
       },
       cookie: {
         title: 'Cookie Policy | itsrakesh - blog',
-        description: 'This page contains itsrakesh - blog privacy policies.',
+        description: 'This page contains itsrakesh - blog cookie policies.',
         image:
           'https://ik.imagekit.io/itsrakesh/Blog/cookie_policy_ulfXI9cMG.png?ik-sdk-version=javascript-1.4.3&updatedAt=1656351873708'
       },

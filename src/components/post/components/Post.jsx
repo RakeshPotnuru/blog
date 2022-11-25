@@ -17,6 +17,7 @@ import {
   Image,
   Link,
   SimpleGrid,
+  Stack,
   useClipboard,
   useColorModeValue,
   useMediaQuery,
@@ -150,13 +151,13 @@ const Post = ({ post }) => {
               <VStack spacing={0}>
                 {/* Author name */}
                 <HStack>
-                  <Box color={'brand.50'}>{post.author.name}</Box>{' '}
-                  <HStack>
-                    <SimpleGrid columns={[1, 2]}>
-                      <Badge colorScheme={'green'}>Author</Badge>
-                      {post.sponsored && <Badge>sponsored</Badge>}
-                    </SimpleGrid>
-                  </HStack>
+                  <Box color={'brand.50'}>{post.author.name}</Box>
+                  <Badge colorScheme={'green'} w={'max-content'}>
+                    Author
+                  </Badge>
+                  {post.sponsored && (
+                    <Badge colorScheme={'purple'}>sponsored</Badge>
+                  )}
                 </HStack>
 
                 {/* Published date */}

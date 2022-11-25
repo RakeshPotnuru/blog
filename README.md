@@ -157,7 +157,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Twitter - [@rakesh_at_tweet](https://twitter.com/your_username)
+Twitter - [@rakesh_at_tweet](https://twitter.com/rakesh_at_tweet)
 
 Project Link: [https://github.com/RakeshPotnuru/Blog](https://github.com/RakeshPotnuru/Blog)
 

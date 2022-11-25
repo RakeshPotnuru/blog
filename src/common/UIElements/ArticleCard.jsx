@@ -63,7 +63,13 @@ const ArticleCard = ({ post }) => {
 
         {/* Read time */}
         <Text textTransform={'uppercase'}>{readTime.text}</Text>
-        {post.sponsored && <Badge>sponsored</Badge>}
+        {post.sponsored && (
+          <Center>
+            <Badge h={'max-content'} colorScheme={'purple'}>
+              sponsored
+            </Badge>
+          </Center>
+        )}
       </Wrap>
 
       {/* Title */}

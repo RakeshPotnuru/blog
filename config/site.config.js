@@ -72,7 +72,7 @@ const siteConfig = {
     }
   },
   branding: {
-    logo: 'https://ik.imagekit.io/itsrakesh/Blog/blog_logo_Gk6jqlMK8.png?ik-sdk-version=javascript-1.4.3&updatedAt=1650611776118',
+    logo: 'https://ik.imagekit.io/itsrakesh/Blog/christmas_Blog_logo_MksQPIHWE.png?ik-sdk-version=javascript-1.4.3&updatedAt=1670691448833',
     colors: {
       brand: {
         50: '#7868E6',

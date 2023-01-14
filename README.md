@@ -124,7 +124,24 @@ Setup project locally for development.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
+## Or
 
+### With Docker
+
+1. Fork the repo
+2. Clone the repo
+   ```sh
+   git clone https://github.com/[YOUR_USERNAME]/[YOUR_FORKED_PROJECT_NAME].git
+   ```
+3. Build the image
+   ```sh
+   docker-compose build
+   ```
+4. Run docker image
+   ```sh
+   docker-compose up
+   ```
+5. Your project will be running at http://localhost:3000
 
 <!-- CONTRIBUTING -->
 ## Contributing

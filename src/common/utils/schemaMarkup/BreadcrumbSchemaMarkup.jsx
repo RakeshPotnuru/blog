@@ -3,6 +3,7 @@ import Script from 'next/script';
 const BreadcrumbSchemaMarkup = ({ items }) => {
   return (
     <Script
+      id={'breadcrumb-schema'}
       type={'application/ld+json'}
       dangerouslySetInnerHTML={{
         __html: JSON.stringify({

@@ -13,6 +13,7 @@ const ArticleSchemaMarkup = ({
 }) => {
   return (
     <Script
+      id={'article-schema'}
       type={'application/ld+json'}
       dangerouslySetInnerHTML={{
         __html: JSON.stringify({

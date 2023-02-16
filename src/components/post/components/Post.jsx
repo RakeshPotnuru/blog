@@ -252,7 +252,9 @@ const Post = ({ post }) => {
             />
 
             {/* Post title */}
-            <Heading py={5}>{post.title}</Heading>
+            <Heading as={'h1'} py={5}>
+              {post.title}
+            </Heading>
           </Box>
 
           {/* Post content */}
@@ -262,8 +264,8 @@ const Post = ({ post }) => {
             color={textColor}
             id={'blog-content'}
             sx={{
-                width:"fillAvailaible"
-               }}
+              width: 'fillAvailaible'
+            }}
           >
             <MarkdownRenderer content={post.content} />
           </Box>

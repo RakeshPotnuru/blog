@@ -110,6 +110,9 @@ const siteConfig = {
       inFeed: '3408517885'
     }
   },
+  yandex: {
+    id: '67e35e70e8aa9e9d'
+  },
   copyrightText: `© ${new Date().getFullYear()} itsrakesh. All rights reserved.`,
   siteVersion: '1.1.0'
 };

@@ -42,6 +42,8 @@ const Meta = ({
       {/* Web monetization - https://webmonetization.org/ */}
       <meta name={'monetization'} content={siteConfig.seo.monetizationTag} />
 
+      <meta name={'yandex-verification'} content={siteConfig.yandex.id} />
+
       {/* Open Graph / Facebook */}
       <meta property={'og:site_name'} content={siteConfig.seo.title} />
       <meta property={'og:type'} content={ogType} />

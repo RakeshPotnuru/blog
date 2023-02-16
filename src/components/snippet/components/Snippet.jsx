@@ -93,7 +93,9 @@ const Snippet = ({ snippet }) => {
             <Divider />
 
             {/* Snippet title */}
-            <Heading py={5}>{snippet.title}</Heading>
+            <Heading as={'h1'} py={5}>
+              {snippet.title}
+            </Heading>
           </Box>
 
           {/* Snippet content */}

@@ -109,7 +109,7 @@ const Post = ({ post }) => {
       </HStack>
 
       {/* Post body */}
-      <Container maxW={'container.md'}>
+      <Container maxW={'container.md'} style={{width: "100dvw"}}>
         <VStack>
           <Box id={'head-content'}>
             <HStack
@@ -266,6 +266,7 @@ const Post = ({ post }) => {
             sx={{
               width: 'fillAvailaible'
             }}
+            style={{width: "100dvw"}}
           >
             <MarkdownRenderer content={post.content} />
           </Box>

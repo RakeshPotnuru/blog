@@ -17,7 +17,7 @@ import { CheckCircleIcon } from '@chakra-ui/icons';
 
 import { KofiWidget } from './components';
 import siteConfig from '../../../config/site.config';
-import { AdSense } from 'common/utils';
+// import { AdSense } from 'common/utils';
 
 const SupportMePage = () => {
   const bgColor = useColorModeValue('gray.100', 'gray.700');
@@ -83,14 +83,14 @@ const SupportMePage = () => {
           </SimpleGrid>
         </Box>
       </Box>
-      <Box my={20} mx={'auto'}>
+      {/* <Box my={20} mx={'auto'}>
         <AdSense
           style={{ display: 'block' }}
           adFormat={'fluid'}
           adSlot={siteConfig.adsense.slots.inFeed}
           data-ad-layout-key={'-f9+52+6z-e1+5b'}
         />
-      </Box>
+      </Box> */}
     </>
   );
 };

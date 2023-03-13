@@ -16,8 +16,6 @@ import {
   IconButton,
   Image,
   Link,
-  SimpleGrid,
-  Stack,
   useClipboard,
   useColorModeValue,
   useMediaQuery,
@@ -33,8 +31,8 @@ import { Resize } from '@cloudinary/url-gen/actions';
 import { CircleIcon } from '@/icons/index.js';
 import { MarkdownRenderer } from '@/UIElements/markdownRenderer';
 import { SocialShareLinks } from '@/UIElements/index.js';
-import { AdSense, buildImage } from '@/utils/index.js';
-import siteConfig from '../../../../config/site.config';
+import { buildImage } from '@/utils/index.js';
+// import siteConfig from '../../../../config/site.config';
 
 const Post = ({ post }) => {
   const [height, setHeight] = useState(0);
@@ -77,12 +75,12 @@ const Post = ({ post }) => {
   return (
     <>
       {/* Adsense Page top Ad */}
-      <Box my={10}>
+      {/* <Box my={10}>
         <AdSense
           style={{ display: 'inline-block', width: '100%', height: '90px' }}
           adSlot={siteConfig.adsense.slots.pageTop}
         />
-      </Box>
+      </Box> */}
 
       {/* Breadcrumb */}
       <HStack mt={8} ml={6}>

@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Center } from '@chakra-ui/react';
+// import { Box, Center } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import { useLazyQuery } from '@apollo/client/react';
 
 import { SearchPageBody, SearchPageHeader } from './components';
 import { queries } from './queries';
-import { AdSense } from 'common/utils';
-import siteConfig from '../../../config/site.config';
+// import { AdSense } from 'common/utils';
+// import siteConfig from '../../../config/site.config';
 
 const SearchPage = ({
   activeTab,
@@ -93,14 +93,14 @@ const SearchPage = ({
         loading={loading}
         error={variableError}
       />
-      <Box my={20} mx={'auto'}>
+      {/* <Box my={20} mx={'auto'}>
         <AdSense
           style={{ display: 'block' }}
           adFormat={'fluid'}
           adSlot={siteConfig.adsense.slots.inFeed}
           data-ad-layout-key={'-f9+52+6z-e1+5b'}
         />
-      </Box>
+      </Box> */}
     </>
   );
 };

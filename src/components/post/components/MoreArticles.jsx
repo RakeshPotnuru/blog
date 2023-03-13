@@ -1,8 +1,8 @@
-import { Box, Container, Heading, SimpleGrid } from '@chakra-ui/react';
+import { Container, Heading, SimpleGrid } from '@chakra-ui/react';
 
 import { ArticleCard } from '@/UIElements/index.js';
-import { AdSense } from 'common/utils';
-import siteConfig from '../../../../config/site.config';
+// import { AdSense } from 'common/utils';
+// import siteConfig from '../../../../config/site.config';
 
 const RelatedArticles = ({ posts }) => {
   return (
@@ -15,14 +15,14 @@ const RelatedArticles = ({ posts }) => {
           ))}
         </SimpleGrid>
       </Container>
-      <Box my={20} mx={'auto'}>
+      {/* <Box my={20} mx={'auto'}>
         <AdSense
           style={{ display: 'block' }}
           adFormat={'fluid'}
           adSlot={siteConfig.adsense.slots.inFeed}
           data-ad-layout-key={'-f9+52+6z-e1+5b'}
         />
-      </Box>
+      </Box> */}
     </>
   );
 };

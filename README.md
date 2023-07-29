@@ -11,7 +11,7 @@
     Browse programming tutorials and articles written by Rakesh Potnuru.
     <br />
     <br />
-    <a href="https://blog.itsrakesh.co">View Example</a>
+    <a href="https://blog.itsrakesh.com">View Example</a>
     ·
     <a href="https://github.com/RakeshPotnuru/Blog/issues">Report Bug</a>
     ·
@@ -46,9 +46,9 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![itsrakesh blog][product-screenshot]](https://blog.itsrakesh.co)
+[![itsrakesh blog][product-screenshot]](https://blog.itsrakesh.com)
 
-Follow [this](https://blog.itsrakesh.co/how-to-set-up-your-own-personal-blog-step-by-step-guide) guide to set up your own instance of this blog.
+Follow [this](https://blog.itsrakesh.com/how-to-set-up-your-own-personal-blog-step-by-step-guide) guide to set up your own instance of this blog.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -80,7 +80,7 @@ Follow [this](https://blog.itsrakesh.co/how-to-set-up-your-own-personal-blog-ste
 Setup project locally for development.
 
 > **Note** [Important]
-> These instructions are for development purposes only. Follow [this](https://blog.itsrakesh.co/how-to-set-up-your-own-personal-blog-step-by-step-guide) guide to set up your own instance of this blog.
+> These instructions are for development purposes only. Follow [this](https://blog.itsrakesh.com/how-to-set-up-your-own-personal-blog-step-by-step-guide) guide to set up your own instance of this blog.
 
 ### Prerequisites
 
@@ -178,7 +178,7 @@ Twitter - [@rakesh_at_tweet](https://twitter.com/rakesh_at_tweet)
 
 Project Link: [https://github.com/RakeshPotnuru/Blog](https://github.com/RakeshPotnuru/Blog)
 
-Status - [status.itsrakesh.co](https://status.itsrakesh.co)
+Status - [status.itsrakesh.com](https://status.itsrakesh.com)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 

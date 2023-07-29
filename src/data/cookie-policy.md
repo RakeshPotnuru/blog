@@ -2,7 +2,7 @@ Effective as of: 2022-06-19 07:36:45
 
 # Cookie Policy
 
-In this Cookie Policy we will provide you with detailed information on how itsrakesh - blog (hereinafter - the "we" or "our"), shall undertake to ensure the security of personal information and the protection of rights of the visitors and users of the websites (hereinafter - the "Visitors", "You") while you use our websites including but not limited to https://blog.itsrakesh.co (hereinafter - the "Site") and the content on it.
+In this Cookie Policy we will provide you with detailed information on how itsrakesh - blog (hereinafter - the "we" or "our"), shall undertake to ensure the security of personal information and the protection of rights of the visitors and users of the websites (hereinafter - the "Visitors", "You") while you use our websites including but not limited to https://blog.itsrakesh.com (hereinafter - the "Site") and the content on it.
 
 ## 1. What is a cookie?
 
@@ -36,7 +36,7 @@ Third-party cookies:
 Many web browsers are set so that they would automatically accept all cookies.
 The Visitors may, at their discretion, manage, block or delete cookies, if the settings of their browser or device enable them to do so. Nevertheless, if you refuse or block the cookies or other similar technologies, some functions of the Site may be inaccessible to you or they may operate not properly.
 We draw your attention that necessary cookies are critical for functioning of our Site, and in case of your objections, some features of the Site may not work or may not work properly.
-You may require that we delete all the data about you, as collected and processed with the help of the cookies, by contacting to the email address rakesh@itsrakesh.co.
+You may require that we delete all the data about you, as collected and processed with the help of the cookies, by contacting to the email address rakesh@itsrakesh.com.
 You can opt out of Google Analytics without affecting how you visit our Site. For more information on opting out of being tracked by Google Analytics across all websites you use, visit this Google page: https://tools.google.com/dlpage/gaoptout.
 You may find more information about how to delete cookies, as well as the other useful information related to the use of the cookies, on the website http://www.allaboutcookies.org/.
 

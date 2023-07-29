@@ -35,7 +35,7 @@ const CopyrightNotice = () => {
             }
           />{' '}
           by{' '}
-          <Link href={'https://itsrakesh.co'} isExternal>
+          <Link href={'https://itsrakesh.com'} isExternal>
             Rakesh
           </Link>
         </Text>

@@ -98,9 +98,9 @@ const siteConfig = {
       github: 'https://github.com/RakeshPotnuru',
       showwcase: 'https://www.showwcase.com/itsrakesh'
     },
-    about: 'https://itsrakesh.co/about',
-    status: 'https://status.itsrakesh.co',
-    newsletter: 'https://newsletter.itsrakesh.co',
+    about: 'https://itsrakesh.com/about',
+    status: 'https://status.itsrakesh.com',
+    newsletter: 'https://newsletter.itsrakesh.com',
     kofi: 'https://ko-fi.com/itsrakesh'
   },
   adsense: {

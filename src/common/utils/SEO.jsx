@@ -145,7 +145,7 @@ const Meta = ({
       <link rel={'canonical'} href={canonical} />
       <link
         rel={'alternate'}
-        href={'https://blog.itsrakesh.co'}
+        href={'https://blog.itsrakesh.com'}
         hrefLang={'x-default'}
       />
 

@@ -1,6 +1,7 @@
 <div id="top"></div>
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/1c639728-6ada-4eaa-beb6-4bdcb492baa1/deploy-status)](https://app.netlify.com/sites/blog-itsrakesh/deploys)
+[![Better Stack Badge](https://uptime.betterstack.com/status-badges/v1/monitor/sq5a.svg)](https://status.itsrakesh.com)
 
 <br />
 <div align="center">

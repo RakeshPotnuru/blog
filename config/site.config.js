@@ -114,7 +114,8 @@ const siteConfig = {
     id: '67e35e70e8aa9e9d'
   },
   copyrightText: `© ${new Date().getFullYear()} itsrakesh. All rights reserved.`,
-  siteVersion: '1.1.0'
+  siteVersion: '1.1.0',
+  showBanner: true
 };
 
 export default siteConfig;

@@ -1,4 +1,5 @@
 import { Box, Center, Link } from '@chakra-ui/react';
+import siteConfig from '../../../../config/site.config';
 
 const Banner = () => {
   return (
@@ -6,7 +7,7 @@ const Banner = () => {
       <Center>
         Support Publish Studio on
         <Link
-          href={'https://www.producthunt.com/products/publish-studio'}
+          href={siteConfig.urls.productHunt}
           isExternal
           color={'brand.100'}
           ml={1}

@@ -101,7 +101,8 @@ const siteConfig = {
     about: 'https://itsrakesh.com/about',
     status: 'https://status.itsrakesh.com',
     newsletter: 'https://newsletter.itsrakesh.com',
-    kofi: 'https://ko-fi.com/itsrakesh'
+    kofi: 'https://ko-fi.com/itsrakesh',
+    productHunt: 'https://pbst.link/ph'
   },
   adsense: {
     publisherId: 'pub-5607528168839545',

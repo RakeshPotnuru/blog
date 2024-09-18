@@ -1,18 +1,17 @@
 import { Box, Center, Link } from '@chakra-ui/react';
-import siteConfig from '../../../../config/site.config';
 
 const Banner = () => {
   return (
     <Box bg="black" color="white" p={1} fontSize={'sm'}>
       <Center>
-        Support Publish Studio on
+        Open for hire
         <Link
-          href={siteConfig.urls.productHunt}
-          isExternal
+          href={"mailto:rakesh@itsrakesh.com"}
+          // isExternal
           color={'brand.100'}
           ml={1}
         >
-          Product Hunt
+          Contact me
         </Link>
       </Center>
     </Box>

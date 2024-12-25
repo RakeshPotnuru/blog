@@ -1,14 +1,13 @@
 import { gql } from '@apollo/client';
 
-import { Analytics, SEO, client } from '@/utils/index.js';
-import {
-  BreadcrumbSchemaMarkup,
-  ArticleSchemaMarkup
-} from '@/schemaMarkup/index.js';
+import Footer from '@/components/footer/Footer';
 import Navbar from '@/components/navbar/Navbar';
 import PostPage from '@/post/PostPage';
-import { Newsletter } from '@/components/misc';
-import Footer from '@/components/footer/Footer';
+import {
+  ArticleSchemaMarkup,
+  BreadcrumbSchemaMarkup
+} from '@/schemaMarkup/index.js';
+import { Analytics, SEO, client } from '@/utils/index.js';
 
 const PostHome = ({ post, posts, error }) => {
   return (
@@ -68,7 +67,7 @@ const PostHome = ({ post, posts, error }) => {
 
       <main>
         <PostPage post={post} posts={posts} error={error} />
-        <Newsletter />
+        {/* <Newsletter /> */}
       </main>
 
       <Footer />

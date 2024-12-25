@@ -4,19 +4,15 @@ import {
   Center,
   Heading,
   Link,
-  List,
-  ListIcon,
-  ListItem,
   SimpleGrid,
   Spacer,
   Text,
   useColorModeValue
 } from '@chakra-ui/react';
 import { FaTwitter } from 'react-icons/fa';
-import { CheckCircleIcon } from '@chakra-ui/icons';
 
-import { KofiWidget } from './components';
 import siteConfig from '../../../config/site.config';
+import { KofiWidget } from './components';
 // import { AdSense } from 'common/utils';
 
 const SupportMePage = () => {
@@ -66,12 +62,6 @@ const SupportMePage = () => {
                 Your donations keep this blog running and motivate me to create
                 more content.
               </Text>
-              <List my={4}>
-                <ListItem>
-                  <ListIcon as={CheckCircleIcon} color={'green.500'} />
-                  You will be added to the list of supporters.
-                </ListItem>
-              </List>
               <Text as={'i'} fontSize={'sm'}>
                 If you don&apos;t want to use this widget, you can donate via my{' '}
                 <Link href={siteConfig.urls.kofi} color={'brand.50'} isExternal>

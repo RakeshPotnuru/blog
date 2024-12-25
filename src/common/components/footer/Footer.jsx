@@ -1,20 +1,18 @@
 import {
   Box,
   Heading,
-  VStack,
   HStack,
-  IconButton,
   Icon,
-  Spacer,
+  IconButton,
+  Link,
   List,
   ListItem,
   SimpleGrid,
-  Link,
-  Flex
+  Spacer,
+  VStack
 } from '@chakra-ui/react';
-import { FaTwitter, FaLinkedin, FaGithub } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
 
-import { ShowwcaseIcon } from '@/icons/index.js';
 import siteConfig from '../../../../config/site.config';
 import CopyrightNotice from './CopyrightNotice';
 
@@ -56,15 +54,8 @@ const Footer = () => {
                   icon={<Icon as={FaGithub} w={6} h={6} />}
                 />
               </Link>
-              <Link href={siteConfig.urls.socials.showwcase} isExternal>
-                <IconButton
-                  aria-label="showwcase"
-                  bg={'transparent'}
-                  _hover={{ bg: 'transparent', color: 'whiteAlpha.500' }}
-                  _active={{ bg: 'transparent', color: 'whiteAlpha.500' }}
-                  _visited={{ bg: 'transparent', color: 'whiteAlpha.500' }}
-                  icon={<Icon as={ShowwcaseIcon} w={6} h={6} />}
-                />
+              <Link href={siteConfig.urls.socials.myonepost} isExternal>
+                1️⃣
               </Link>
             </HStack>
           </VStack>
@@ -100,11 +91,11 @@ const Footer = () => {
                   <Link href={'/external-articles'}>External Articles</Link>
                 </ListItem>
 
-                <ListItem>
+                {/* <ListItem>
                   <Link href={siteConfig.urls.newsletter} isExternal>
                     Newsletter
                   </Link>
-                </ListItem>
+                </ListItem> */}
                 <ListItem>
                   <Link href={'/support-me'}>Support Me </Link>❤️
                 </ListItem>

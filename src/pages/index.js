@@ -1,7 +1,6 @@
 import { gql } from '@apollo/client';
 
 import Footer from '@/components/footer/Footer';
-import { Banner, Newsletter } from '@/components/misc';
 import Navbar from '@/components/navbar/Navbar';
 import HomePage from '@/home/HomePage';
 import { Analytics, client, SEO } from '../common/utils';
@@ -22,7 +21,8 @@ const Home = ({ featuredPost, posts, snippets, categories, error }) => {
           categories={categories}
           error={error}
         />
-        <Newsletter />
+
+        {/* <Newsletter /> */}
       </main>
       <Footer />
     </>

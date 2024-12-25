@@ -1,12 +1,11 @@
 import { gql } from '@apollo/client';
 
-import { Analytics, client, SEO } from '@/utils/index.js';
-import { BreadcrumbSchemaMarkup } from '@/schemaMarkup/index.js';
-import siteConfig from '../../../config/site.config';
-import Navbar from '@/components/navbar/Navbar';
-import SearchPage from '@/search/SearchPage';
-import { Newsletter } from '@/components/misc';
 import Footer from '@/components/footer/Footer';
+import Navbar from '@/components/navbar/Navbar';
+import { BreadcrumbSchemaMarkup } from '@/schemaMarkup/index.js';
+import SearchPage from '@/search/SearchPage';
+import { Analytics, client, SEO } from '@/utils/index.js';
+import siteConfig from '../../../config/site.config';
 
 const Tags = ({ tags, loading, error }) => {
   return (
@@ -39,7 +38,7 @@ const Tags = ({ tags, loading, error }) => {
 
       <main>
         <SearchPage activeTab={3} tags={tags} loading={loading} error={error} />
-        <Newsletter />
+        {/* <Newsletter /> */}
       </main>
 
       <Footer />

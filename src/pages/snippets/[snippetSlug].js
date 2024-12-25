@@ -1,15 +1,14 @@
 import { gql } from '@apollo/client';
 
-import { Analytics, SEO, client } from '@/utils/index.js';
-import {
-  BreadcrumbSchemaMarkup,
-  ArticleSchemaMarkup
-} from '@/schemaMarkup/index.js';
-import siteConfig from '../../../config/site.config';
-import Navbar from '@/components/navbar/Navbar';
-import SnippetPage from '@/snippet/SnippetPage';
-import { Newsletter } from '@/components/misc';
 import Footer from '@/components/footer/Footer';
+import Navbar from '@/components/navbar/Navbar';
+import {
+  ArticleSchemaMarkup,
+  BreadcrumbSchemaMarkup
+} from '@/schemaMarkup/index.js';
+import SnippetPage from '@/snippet/SnippetPage';
+import { Analytics, SEO, client } from '@/utils/index.js';
+import siteConfig from '../../../config/site.config';
 
 const SnippetHome = ({ snippet, snippets, error }) => {
   return (
@@ -57,7 +56,7 @@ const SnippetHome = ({ snippet, snippets, error }) => {
 
       <main>
         <SnippetPage snippet={snippet} snippets={snippets} error={error} />
-        <Newsletter />
+        {/* <Newsletter /> */}
       </main>
 
       <Footer />

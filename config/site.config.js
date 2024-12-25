@@ -93,10 +93,10 @@ const siteConfig = {
   },
   urls: {
     socials: {
-      twitter: 'https://twitter.com/rakesh_at_tweet',
-      linkedin: 'https://www.linkedin.com/in/itsrakesh',
-      github: 'https://github.com/RakeshPotnuru',
-      showwcase: 'https://www.showwcase.com/itsrakesh'
+      twitter: 'https://rksh.link/x',
+      linkedin: 'https://rksh.link/linkedin',
+      github: 'https://rksh.link/github',
+      myonepost: 'https://rksh.link/myonepost'
     },
     about: 'https://itsrakesh.com/about',
     status: 'https://status.itsrakesh.com',
